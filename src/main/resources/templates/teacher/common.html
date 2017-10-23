@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="header">
+    <!--/*@thymesVar id="templateDir" type="java.lang.String"*/-->
+    <h1>Hello, your id is <!--/*@thymesVar id="user" type="test.domain.Teacherlogin"*/-->
+    <span th:text="${session.user.getTeacherLogin()}">ID</span> and your type is <span th:text="${session.templateDir}">TYPE</span></h1>
+</div>
+</body>
+</html>

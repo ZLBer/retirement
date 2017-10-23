@@ -1,0 +1,33 @@
+.head{
+    width: 100%;
+    min-width: 1240px;
+    height: 100px;
+    background-color: #8fde9c;
+}
+.footer{
+    min-width: 1240px;
+    width: 100%;
+    clear: both;
+    height: 120px;
+    background-color: #58C9F3;
+}
+.left{
+    min-height: 550px;
+    width: 19.5%;
+    float: left;
+    background-color: #f7e1b5;
+}
+.right{
+    overflow: scroll;
+    min-height: 550px;
+    float: right;
+    width: 80%;
+    background-color: #fabeca;
+}
+.body{
+    min-width: 1240px;
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    min-height: 550px;
+}

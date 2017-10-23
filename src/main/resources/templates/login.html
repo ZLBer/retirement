@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="base :: common_header(~{::title},~{::link},~{::script})">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<span th:text="${#strings.isEmpty(errMsg)?'':errMsg}">错误信息</span>
+<form action="validate" method="post" class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名：</label>
+        <div class="layui-input-inline">
+            <input type="text" name="username" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码：</label>
+        <div class="layui-input-inline">
+            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-form-mid layui-word-aux">辅助文字</div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户类型:</label>
+        <div class="layui-input-block">
+            <input type="radio" name="type" value="1" title="学生" checked="true">
+            <input type="radio" name="type" value="2" title="老师">
+            <input type="radio" name="type" value="3" title="学院">
+            <input type="radio" name="type" value="4" title="管理员">
+        </div>
+    </div>
+    <div class="layui-input-block">
+        <button class="layui-btn" type="submit">登录</button>
+    </div>
+</form>
+<script>
+    layui.use('form',function () {
+        var form = layui.form;
+    })
+</script>
+</body>
+</html>

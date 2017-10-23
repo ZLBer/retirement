@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加课题</title>
+</head>
+<body>
+<div th:fragment="mainContent" id="addSubject">
+    课题名：<input id="subjectName" type="text" name="subjectName"th:value="${subject.subjectName}"><br>
+    最大可选人数：<input id="subjectNumber" type="text" name="subjectNumber"  th:value="${subject.subjectNumber}"><br>
+    课题描述:<input id="other" type="text" name="other" th:value="${subject.other}"><br>
+    <input id="submit" type="button" value="提交">
+</div>
+</body>
+</html>

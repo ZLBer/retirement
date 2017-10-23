@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--/*@thymesVar id="templateName" type="java.lang.String"*/-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base::common_header(~{::title},~{::link},~{::script})">
+    <title>Main</title>
+    <script src="/js/common.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <style>
+        h1>span{
+            color: red;
+        }
+    </style>
+    <div class="head">
+        <!--/*@thymesVar id="templateDir" type="java.lang.String"*/-->
+        <!--/*@thymesVar id="common" type="java.lang.String"*/-->
+        <div th:include="~{(${session.templateDir}+'/common')::header}">顶部</div>   <div><a href="/logout">退出登录</a></div>
+    </div>
+    <div class="body">
+        <div class="left">
+            <div th:replace="(${session.templateDir}+'/left')::mainContent">左侧导航栏</div>
+        </div>
+        <div class="right">
+            <div th:if="${not #strings.isEmpty(bodyRightContent)}">
+                <!--/*@thymesVar id="bodyRightContent" type="java.lang.String"*/-->
+                <div th:replace="~{${bodyRightContent}::mainContent}">右侧内容</div>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div class="footer"><div th:replace="base::common_footer">页脚</div></div>
+</body>
+</html>

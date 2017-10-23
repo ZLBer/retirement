@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="common_header(title,links,scripts)">
+
+    <title th:replace="${title}">The awesome application</title>
+
+    <!-- Common styles and scripts -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/layui/layui.js"></script>
+    <script src="/Echarts/echarts.js"></script>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+
+    <th:block th:replace="${scripts}"/>
+    <!--/* Per-page placeholder for additional links */-->
+    <th:block th:replace="${links}" />
+
+</head>
+<body>
+<!--footer-->
+<div th:fragment="common_footer">
+    Copyright@山东农业大学-英杰工作室
+</div>
+
+<div th:fragment="common_left(items)">
+
+    <div class="item"><a href="/gotoModifyPwd">修改密码</a></div>
+
+    <th:block th:replace="${items}"></th:block>
+</div>
+
+</body>
+</html>

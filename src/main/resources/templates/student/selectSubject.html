@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+</head>
+<body>
+    <div th:fragment="mainContent" class="layui-collapse">
+        <!--/*@thymesVar id="teachers" type="java.util.List"*/-->
+        <!--/*@thymesVar id="teacher" type="test.domain.Teacher"*/-->
+        <div th:each="teacher:${teachers}" th:if="${teacher!=null}" class="layui-colla-item">
+            <div class="layui-colla-title">
+                教师姓名:<span th:text="${teacher.teacherName}">XXX</span>&nbsp;&nbsp;&nbsp;
+                <!--职称：<span th:text="${teacher.teacherProfessional}">XXX</span>&nbsp;&nbsp;&nbsp;-->
+                联系方式:<span th:text="${teacher.teacherTel}">XXX</span>&nbsp;&nbsp;&nbsp;
+            </div>
+            <!--/*@thymesVar id="subjects" type="java.util.List"*/-->
+            <div class="layui-colla-content layui-show">
+                <table  class="layui-table" th:with="subjects=${subjectsMap[teacher.teacherId]}">
+                    <colgroup>
+                        <col width="150"/>
+                        <col width="400"/>
+                        <col width="130"/>
+                        <col width="80"/>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>课题名称</th>
+                            <th>课题描述</th>
+                            <th>人数限额（已选/预定）</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <!--/*@thymesVar id="subject" type="test.domain.Subject"*/-->
+                    <tbody>
+                        <tr th:each="subject:${subjects}">
+                            <td th:text="${subject.subjectName}">课题名称</td>
+                            <td th:text="${subject.other}">课题描述</td>
+                            <td th:text="|${subject.subjectSnumber}/${subject.subjectNumber}|">已选/预定</td>
+                            <td><a href="#">申请</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>完善个人信息</title>
+</head>
+<body>
+    <!--/*@thymesVar id="userInfo" type="test.domain.Student"*/-->
+    <div th:fragment="mainContent"  id="personalInfo" th:with="user=${session.userInfo}">
+        手机号:
+        <input type="text" name="phoneNum" id="phoneNum" th:attr="value=(${user!=null}?${user.studentTel}:'')"><br>
+        QQ:
+        <input type="text" name="qqNum" id="qqNum" th:attr="value=(${user!=null}?${user.studentQq}:'')"><br>
+        邮箱：
+        <input type="text" name="email" id="email" th:attr="value=(${user!=null}?${user.studentEmail}:'')"><br>
+        <input type="button" id="submit" value="提交">
+    </div>
+</body>
+</html>

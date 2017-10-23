@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+</head>
+<body>
+    <div th:fragment="mainContent">
+        条件查询：
+        <div id="test">
+            <!--<form action="/student/dotest" method="post">-->
+            学号<input type="text" name="studentId">
+            匹配方式:
+            <select name="idType">
+                <option value="0">精准</option>
+                <option value="1">模糊</option>
+                <option value="2">大于</option>
+                <option value="3">小于</option>
+                <option value="4">之间</option>
+            </select>
+            <br>
+            姓名<input type="text" name="studentName">
+            匹配方式:
+            <select name="nameType">
+                <option value="0">精准</option>
+                <option value="1">模糊</option>
+                <option value="2">大于</option>
+                <option value="3">小于</option>
+                <option value="4">之间</option>
+            </select>
+            <br>
+            性别<input type="text" name="studentSex">
+            匹配方式:
+            <select name="sexType">
+                <option value="0">精准</option>
+                <option value="1">模糊</option>
+                <option value="2">大于</option>
+                <option value="3">小于</option>
+                <option value="4">之间</option>
+            </select>
+            <br>
+            学院<input type="text" name="studentCollege">
+            匹配方式:
+            <select name="collegeType">
+                <option value="0">精准</option>
+                <option value="1">模糊</option>
+                <option value="2">大于</option>
+                <option value="3">小于</option>
+                <option value="4">之间</option>
+            </select>
+            <br>
+            专业<input type="text" name="studentMajor">
+            匹配方式:
+            <select name="majorType">
+                <option value="0">精准</option>
+                <option value="1">模糊</option>
+                <option value="2">大于</option>
+                <option value="3">小于</option>
+                <option value="4">之间</option>
+            </select>
+            <br>
+            电话<input type="text" name="studentTel">
+            匹配方式:
+            <select name="telType">
+                <option value="0">精准</option>
+                <option value="1">模糊</option>
+                <option value="2">大于</option>
+                <option value="3">小于</option>
+                <option value="4">之间</option>
+            </select>
+            <br>
+            邮箱<input type="text" name="studentEmail">
+            匹配方式:
+            <select name="emailType">
+                <option value="0">精准</option>
+                <option value="1">模糊</option>
+                <option value="2">大于</option>
+                <option value="3">小于</option>
+                <option value="4">之间</option>
+            </select>
+            <br>
+            QQ <input type="text" name="studentQq">
+            匹配方式:
+            <select name="qqType">
+                <option value="0">精准</option>
+                <option value="1">模糊</option>
+                <option value="2">大于</option>
+                <option value="3">小于</option>
+                <option value="4">之间</option>
+            </select>
+            <br>
+            <button id="submit">查询</button>
+            <button id="export-to-excel">导出当前数据</button>
+            <!--</form>-->
+        </div>
+        <div id="data">
+            <div id="data-table-filter">
+                筛选显示数据: <br>
+            </div>
+            <table id="dataTable" lay-filter="test"></table>
+        </div>
+        <div id="graphic">
+            <div id="graphic-x">
+                选择查看项: <br>
+            </div>
+            <div id="main" style="width: 600px;height:400px;"></div>
+        </div>
+        <script src="/js/JSONToExcel.js"></script>
+        <script src="/js/test.js"></script>
+        <!--<script src="/lib/js-xlsx/xlsx.core.min.js"></script>-->
+    </div>
+</body>
+</html>
