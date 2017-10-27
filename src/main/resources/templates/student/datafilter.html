@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="filter(title,options)" class="data-filter" id="politics-info">
+    <!--/*@thymesVar id="title" type="java.lang.String"*/-->
+    <h3 th:text="${title}">政治面貌信息</h3> <br>
+    <button>添加查询字段</button>
+    查询字段：
+    <select>
+        <th:block th:replace="${options}"/>
+    </select>
+    <input type="text">
+    匹配方式:
+    <select>
+        <option value="0">精准</option>
+        <option value="1">模糊</option>
+        <option value="2">大于</option>
+        <option value="3">小于</option>
+        <option value="4">之间</option>
+    </select>
+    <select>
+        <option value="and">与</option>
+        <option value="or">或</option>
+    </select>
+    <input type="text">
+    匹配方式:
+    <select>
+        <option value="0">精准</option>
+        <option value="1">模糊</option>
+        <option value="2">大于</option>
+        <option value="3">小于</option>
+        <option value="4">之间</option>
+    </select>
+</div>
+</body>
+</html>

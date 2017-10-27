@@ -1,14 +1,10 @@
 package test.service.impl;
 
 import org.springframework.stereotype.Service;
-import test.domain.Adminuser;
-import test.domain.Collegeuser;
-import test.domain.Studentlogin;
-import test.domain.Teacherlogin;
-import test.mapper.AdminuserMapper;
-import test.mapper.CollegeuserMapper;
-import test.mapper.StudentloginMapper;
-import test.mapper.TeacherloginMapper;
+import test.domain.AdminLogin;
+import test.domain.MemberLogin;
+import test.mapper.AdminLoginMapper;
+import test.mapper.MemberLoginMapper;
 import test.service.IModifyPwdService;
 
 import javax.annotation.Resource;
@@ -20,39 +16,20 @@ import javax.annotation.Resource;
 public class ModifyPwdService implements IModifyPwdService {
 
     @Resource
-    StudentloginMapper studentloginMapper;
+    MemberLoginMapper memberLoginMapper;
     @Resource
-    CollegeuserMapper collegeuserMapper;
-    @Resource
-    TeacherloginMapper teacherloginMapper;
-    @Resource
-    AdminuserMapper adminuserMapper;
+    AdminLoginMapper adminLoginMapper;
 
     @Override
-   public int  modifyStudentPwd(Object user, String password){
-       Studentlogin studentlogin=(Studentlogin)user;
-        studentlogin.setStudentPassword(password);
-         return studentloginMapper.updateByPrimaryKey(studentlogin);
-    }
-    @Override
-    public int modifyCollegePwd(Object user, String password){
-   Collegeuser  collegeuser=(Collegeuser)user;
-     collegeuser.setCollegePassword(password);
-     return collegeuserMapper.updateByPrimaryKey(collegeuser);
-
-
-    }
-    @Override
-    public int modifyTeacherPwd(Object user, String password){
-
-      Teacherlogin  teacherlogin=(Teacherlogin)user;
-        teacherlogin.setTeacherPassword(password);
-        return  teacherloginMapper.updateByPrimaryKey(teacherlogin);
+   public int modifyMemberPwd(Object user, String password){
+       MemberLogin studentlogin=(MemberLogin)user;
+        studentlogin.setMemberPassword(password);
+         return memberLoginMapper.updateByPrimaryKey(studentlogin);
     }
     public  int modifyAdminPwd(Object user, String password){
-      Adminuser  adminuser=(Adminuser)user;
+      AdminLogin adminuser=(AdminLogin)user;
         adminuser.setAdminPassword(password);
-        return adminuserMapper.updateByPrimaryKey(adminuser);
+        return adminLoginMapper.updateByPrimaryKey(adminuser);
 
     }
 }

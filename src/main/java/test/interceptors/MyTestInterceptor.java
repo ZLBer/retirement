@@ -3,10 +3,6 @@ package test.interceptors;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import test.domain.Student;
-import test.domain.StudentExample;
-import test.mapper.StudentMapper;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Field;
@@ -44,10 +40,10 @@ public class MyTestInterceptor implements HandlerInterceptor {
     };
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        System.out.println(TAG+" : >>>>>>>>>>>>>>>>>>>>>>>>>preHandle<<<<<<<<<<<<<<<<<<<<<<");
+        /*System.out.println(TAG+" : >>>>>>>>>>>>>>>>>>>>>>>>>preHandle<<<<<<<<<<<<<<<<<<<<<<");
         String[][] params = getParameters(httpServletRequest);
         StudentExample example = generateExample(params);
-        httpServletRequest.setAttribute("example",example);
+        httpServletRequest.setAttribute("example",example);*/
         return true;
     }
 
@@ -74,7 +70,7 @@ public class MyTestInterceptor implements HandlerInterceptor {
         return params;
     }
 
-    StudentExample generateExample(String[][] params){
+    /*StudentExample generateExample(String[][] params){
         String order = "student_id asc";
         StudentExample example = new StudentExample();
         StudentExample.Criteria criteria = example.createCriteria();
@@ -118,5 +114,5 @@ public class MyTestInterceptor implements HandlerInterceptor {
             e.printStackTrace();
         }
 
-    }
+    }*/
 }

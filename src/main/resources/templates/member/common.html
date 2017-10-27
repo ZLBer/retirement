@@ -4,10 +4,10 @@
     <title>Title</title>
 </head>
 <body>
-<!--/*@thymesVar id="user" type="test.domain.AdminLogin"*/-->
+<!--/*@thymesVar id="user" type="test.domain.MemberLogin"*/-->
 <div th:fragment="header">
     <!--/*@thymesVar id="templateDir" type="java.lang.String"*/-->
-    <h1>Hello, your id is <span th:text="${session.user.adminName}">ID</span> and your type is <span th:text="${session.templateDir}">TYPE</span></h1>
+    <h1>Hello, your id is <span th:text="${session.user.memberName}">ID</span> and your type is <span th:text="${session.templateDir}">TYPE</span></h1>
 </div>
 </body>
 </html>

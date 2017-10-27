@@ -46,9 +46,7 @@ public class ModifyPwdController {
 
     private boolean modPwd(String type, Object user, String passsord) {
         int result = 0;
-        if (type.equals("student")) result = modifyPwdService.modifyStudentPwd(user, passsord);
-        else if (type.equals("teacher")) result = modifyPwdService.modifyTeacherPwd(user, passsord);
-        else if (type.equals("college")) result = modifyPwdService.modifyCollegePwd(user, passsord);
+        if (type.equals("member")) result = modifyPwdService.modifyMemberPwd(user, passsord);
         else result = modifyPwdService.modifyAdminPwd(user, passsord);
         return result > 0 ? true : false;
 

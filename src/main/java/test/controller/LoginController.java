@@ -9,13 +9,12 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import static test.GlobleVariance.USER_ADMIN;
+import static test.GlobleVariance.USER_MEMBER;
+
 @Controller
 @SessionAttributes({"user","templateDir"})
 public class LoginController {
-    public static final int USER_STUDENT = 1;
-    public static final int USER_TEACHER = 2;
-    public static final int USER_COLLEGE = 3;
-    public static final int USER_ADMIN = 4;
 
     private String templateDir;
 
@@ -61,15 +60,9 @@ public class LoginController {
         String password = request.getParameter("password");
         int type = Integer.parseInt(request.getParameter("type"));
         switch (type){
-            case USER_STUDENT:
-                templateDir = "student";
-                return loginService.verifySUserIdentity(username,password);
-            case USER_TEACHER:
-                templateDir = "teacher";
-                return loginService.verifyTUserIdentity(username,password);
-            case USER_COLLEGE:
-                templateDir = "college";
-                return  loginService.verifyCUserIdentity(username,password);
+            case USER_MEMBER:
+                templateDir = "member";
+                return loginService.verifyMUserIdentity(username,password);
             case USER_ADMIN:
                 templateDir = "admin";
                 return loginService.verifyAUserIdentity(username,password);
