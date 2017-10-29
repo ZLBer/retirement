@@ -4,36 +4,37 @@
     <title>Title</title>
 </head>
 <body>
-<div th:fragment="filter(title,options)" class="data-filter" id="politics-info">
+<div th:fragment="filter(title,options,idValue,name)" class="data-filter" id="politics-info" th:attr="id=${idValue}">
     <!--/*@thymesVar id="title" type="java.lang.String"*/-->
     <h3 th:text="${title}">政治面貌信息</h3> <br>
-    <button>添加查询字段</button>
-    查询字段：
-    <select>
-        <th:block th:replace="${options}"/>
-    </select>
-    <input type="text">
-    匹配方式:
-    <select>
-        <option value="0">精准</option>
-        <option value="1">模糊</option>
-        <option value="2">大于</option>
-        <option value="3">小于</option>
-        <option value="4">之间</option>
-    </select>
-    <select>
-        <option value="and">与</option>
-        <option value="or">或</option>
-    </select>
-    <input type="text">
-    匹配方式:
-    <select>
-        <option value="0">精准</option>
-        <option value="1">模糊</option>
-        <option value="2">大于</option>
-        <option value="3">小于</option>
-        <option value="4">之间</option>
-    </select>
+    <button class="add-field" onclick="add(this)">添加查询字段</button>
+    <button class="remove-field" onclick="removeS(this)">删除查询字段</button>
+    <br>
+    <div class="selectors-and-inputs">
+        查询字段：
+        <select onchange="bindInputNameWithSelectors(this)">
+            <th:block th:replace="${options}"/>
+        </select>
+        <input type="text" th:attr="name=${name}">
+        匹配方式:
+        <select th:attr="name=(${name}+'Type')">
+            <option value="0">精准</option>
+            <option value="1">模糊</option>
+            <option value="2">大于</option>
+            <option value="3">小于</option>
+            <option value="4">之间</option>
+        </select>
+        <span>或者</span>
+        <input type="text" th:attr="name=(${name}+'2')">
+        匹配方式:
+        <select th:attr="name=(${name}+'Type2')">
+            <option value="0">精准</option>
+            <option value="1">模糊</option>
+            <option value="2">大于</option>
+            <option value="3">小于</option>
+            <option value="4">之间</option>
+        </select>
+    </div>
 </div>
 </body>
 </html>

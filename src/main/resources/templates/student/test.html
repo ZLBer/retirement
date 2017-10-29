@@ -5,149 +5,72 @@
 </head>
 <body>
     <div th:fragment="mainContent">
-        <div th:replace="student/datafilter::filter('基本信息',~{this::option})">
-            <option value="category">人员类别</option>
-            <option value="name">姓名</option>
-            <option value="sex">性别</option>
-            <option value="nation">民族</option>
-            <option value="nativePlace">籍贯</option>
-            <option value="birthday">出生年月</option>
-            <option value="idNumber">身份证号</option>
-        </div>
-        <div th:replace="student/datafilter::filter('政治面貌信息',~{this::option})">
-            <option value="politicsStatus">政治面貌</option>
-            <option value="joinpartTime">入党时间</option>
-            <option value="conversionTime">转正时间</option>
-        </div>
-        <div th:replace="student/datafilter::filter('原工作信息',~{this::option})">
-            <option value="identity">身份</option>
-            <option value="educationLevel">文化程度</option>
-            <option value="originWorkplace">原单位</option>
-            <option value="originDuties">原职务</option>
-            <option value="originDutiesLevel">原职务级别</option>
-            <option value="originProfessional">原职称</option>
-            <option value="originProfessionalLevel">原职称级别</option>
-            <option value="treatment">享受待遇</option>
-            <option value="timeWork">参加工作时间</option>
-            <option value="timeRetirement">离退休时间</option>
-        </div>
-        <div th:replace="student/datafilter::filter('现工作信息',~{this::option})">
-            <option value="partyBranch">党支部名称</option>
-            <option value="administration">行政组</option>
-            <option value="basicpartyDuties">基层党组织职务</option>
-            <option value="timeBasicparty">基层党组织职务开始时间</option>
-            <option value="endtimeBasicparty">基层党组织职务结束时间</option>
-            <option value="administrationDuties">行政组职务</option>
-            <option value="timeAdministration">行政组职务开始时间</option>
-            <option value="endtimeAdministraion">行政组职务结束时间</option>
-            <option value="committeeDuties">关工委工作职务</option>
-            <option value="timeCommittee">关工委工作职务开始时间</option>
-            <option value="endtimeCommittee">关工委工作职务结束时间</option>
-            <option value="steeringMember">督导组成员</option>
-            <option value="timeSteering">督导组成员开始时间</option>
-            <option value="endtimeSteering">督导组成员结束时间</option>
-            <option value="organizationMember">特邀党建组织成员</option>
-            <option value="timeOrganization">特邀党建组织成员开始时间</option>
-            <option value="endtimeOrganization">特邀党建组织成员结束时间</option>
-            <option value="corporationDuties">老年文化社团职务</option>
-            <option value="timeCorporation">老年文化社团职务开始时间</option>
-            <option value="endtimeCorporation">老年文化社团职务结束时间</option>
-        </div>
-        <div th:replace="student/datafilter::filter('联系信息',~{this::option})">
-            <option value="homeAddress">家庭住址</option>
-            <option value="phoneHome">家庭电话</option>
-            <option value="phoneOwn">手机号码</option>
-            <option value="phoneChildren">子女电话</option>
-            <option value="phoneOther">其他联系电话</option>
-        </div>
-        <div th:replace="~{student/datafilter::filter('备注信息',~{this::option})}">
-            <option value="spouse">配偶情况</option>
-            <option value="statusChildren">子女情况</option>
-            <option value="timeDeath">去世时间</option>
-            <option value="statusOther">其他情况</option>
-        </div>
-        条件查询：
+        <script type="text/html" id="barDemo">
+            <a class="layui-btn layui-btn-mini" lay-event="detail">查看详细信息</a>
+        </script>
         <div id="test">
             <!--<form action="/student/dotest" method="post">-->
-            学号<input type="text" name="studentId">
-            匹配方式:
-            <select name="idType">
-                <option value="0">精准</option>
-                <option value="1">模糊</option>
-                <option value="2">大于</option>
-                <option value="3">小于</option>
-                <option value="4">之间</option>
-            </select>
-            <br>
-            姓名<input type="text" name="studentName">
-            匹配方式:
-            <select name="nameType">
-                <option value="0">精准</option>
-                <option value="1">模糊</option>
-                <option value="2">大于</option>
-                <option value="3">小于</option>
-                <option value="4">之间</option>
-            </select>
-            <br>
-            性别<input type="text" name="studentSex">
-            匹配方式:
-            <select name="sexType">
-                <option value="0">精准</option>
-                <option value="1">模糊</option>
-                <option value="2">大于</option>
-                <option value="3">小于</option>
-                <option value="4">之间</option>
-            </select>
-            <br>
-            学院<input type="text" name="studentCollege">
-            匹配方式:
-            <select name="collegeType">
-                <option value="0">精准</option>
-                <option value="1">模糊</option>
-                <option value="2">大于</option>
-                <option value="3">小于</option>
-                <option value="4">之间</option>
-            </select>
-            <br>
-            专业<input type="text" name="studentMajor">
-            匹配方式:
-            <select name="majorType">
-                <option value="0">精准</option>
-                <option value="1">模糊</option>
-                <option value="2">大于</option>
-                <option value="3">小于</option>
-                <option value="4">之间</option>
-            </select>
-            <br>
-            电话<input type="text" name="studentTel">
-            匹配方式:
-            <select name="telType">
-                <option value="0">精准</option>
-                <option value="1">模糊</option>
-                <option value="2">大于</option>
-                <option value="3">小于</option>
-                <option value="4">之间</option>
-            </select>
-            <br>
-            邮箱<input type="text" name="studentEmail">
-            匹配方式:
-            <select name="emailType">
-                <option value="0">精准</option>
-                <option value="1">模糊</option>
-                <option value="2">大于</option>
-                <option value="3">小于</option>
-                <option value="4">之间</option>
-            </select>
-            <br>
-            QQ <input type="text" name="studentQq">
-            匹配方式:
-            <select name="qqType">
-                <option value="0">精准</option>
-                <option value="1">模糊</option>
-                <option value="2">大于</option>
-                <option value="3">小于</option>
-                <option value="4">之间</option>
-            </select>
+            <div th:replace="student/datafilter::filter('基本信息',~{this::option[@field='1']},'basic','category')">
+                <option field="1" value="category">人员类别</option>
+                <option field="1" value="name">姓名</option>
+                <option field="1" value="sex">性别</option>
+                <option field="1" value="nation">民族</option>
+                <option field="1" value="nativePlace">籍贯</option>
+                <option field="1" value="birthday">出生年月</option>
+                <option field="1" value="idNumber">身份证号</option>
+            </div>
+            <div th:replace="student/datafilter::filter('政治面貌信息',~{this::option[@field='2']},'politics','politicsStatus')">
+                <option field="2" value="politicsStatus">政治面貌</option>
+                <option field="2" value="joinpartTime">入党时间</option>
+                <option field="2" value="conversionTime">转正时间</option>
+            </div>
+            <div th:replace="student/datafilter::filter('原工作信息',~{this::option[@field='3']},'original','identity')">
+                <option field="3" value="identity">身份</option>
+                <option field="3" value="educationLevel">文化程度</option>
+                <option field="3" value="originWorkplace">原单位</option>
+                <option field="3" value="originDuties">原职务</option>
+                <option field="3" value="originDutiesLevel">原职务级别</option>
+                <option field="3" value="originProfessional">原职称</option>
+                <option field="3" value="originProfessionalLevel">原职称级别</option>
+                <option field="3" value="treatment">享受待遇</option>
+                <option field="3" value="timeWork">参加工作时间</option>
+                <option field="3" value="timeRetirement">离退休时间</option>
+            </div>
+            <div th:replace="student/datafilter::filter('现工作信息',~{this::option[@field='4']},'present','partyBranch')">
+                <option field="4" value="partyBranch">党支部名称</option>
+                <option field="4" value="administration">行政组</option>
+                <option field="4" value="basicpartyDuties">基层党组织职务</option>
+                <option field="4" value="timeBasicparty">基层党组织职务开始时间</option>
+                <option field="4" value="endtimeBasicparty">基层党组织职务结束时间</option>
+                <option field="4" value="administrationDuties">行政组职务</option>
+                <option field="4" value="timeAdministration">行政组职务开始时间</option>
+                <option field="4" value="endtimeAdministraion">行政组职务结束时间</option>
+                <option field="4" value="committeeDuties">关工委工作职务</option>
+                <option field="4" value="timeCommittee">关工委工作职务开始时间</option>
+                <option field="4" value="endtimeCommittee">关工委工作职务结束时间</option>
+                <option field="4" value="steeringMember">督导组成员</option>
+                <option field="4" value="timeSteering">督导组成员开始时间</option>
+                <option field="4" value="endtimeSteering">督导组成员结束时间</option>
+                <option field="4" value="organizationMember">特邀党建组织成员</option>
+                <option field="4" value="timeOrganization">特邀党建组织成员开始时间</option>
+                <option field="4" value="endtimeOrganization">特邀党建组织成员结束时间</option>
+                <option field="4" value="corporationDuties">老年文化社团职务</option>
+                <option field="4" value="timeCorporation">老年文化社团职务开始时间</option>
+                <option field="4" value="endtimeCorporation">老年文化社团职务结束时间</option>
+            </div>
+            <div th:replace="student/datafilter::filter('联系信息',~{this::option[@field='5']},'contact','homeAddress')">
+                <option field="5" value="homeAddress">家庭住址</option>
+                <option field="5" value="phoneHome">家庭电话</option>
+                <option field="5" value="phoneOwn">手机号码</option>
+                <option field="5" value="phoneChildren">子女电话</option>
+                <option field="5" value="phoneOther">其他联系电话</option>
+            </div>
+            <div th:replace="~{student/datafilter::filter('备注信息',~{this::option[@field='6']},'supplement','spouse')}">
+                <option field="6" value="spouse">配偶情况</option>
+                <option field="6" value="statusChildren">子女情况</option>
+                <option field="6" value="timeDeath">去世时间</option>
+                <option field="6" value="statusOther">其他情况</option>
+            </div>
             <br>
             <button id="submit">查询</button>
             <button id="export-to-excel">导出当前数据</button>
@@ -167,7 +90,6 @@
         </div>
         <script src="/js/JSONToExcel.js"></script>
         <script src="/js/test.js"></script>
-        <!--<script src="/lib/js-xlsx/xlsx.core.min.js"></script>-->
     </div>
 </body>
 </html>

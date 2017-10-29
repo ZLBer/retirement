@@ -1,8 +1,14 @@
+var selectorAndInputs = [6];
+var addButtons;
+var removeButtons;
 /**
  * 绑定事件
  */
 $(function () {
-    getData($('#test>#submit'),'/student/dotest');
+    // initTableOptions();
+    getSelectorsAndInputs();
+    bindOnAddAndRemoveButtion();
+    getData($('#test').find('#submit'),'/student/dotest');
     addCheckBox($("#data-table-filter"),fields,updateTableOption);
     addRadio($("#graphic-x"),fields,updateGraphic);
     $('#export-to-excel').click(function () {
@@ -14,9 +20,57 @@ $(function () {
         JSONToExcelConvertor(JSON_DATA.data,"人员信息表",JSON_DATA.title);
     })
 });
-
+/**
+ *
+ * @param element
+ */
+function bindInputNameWithSelectors(element) {
+    var name = $(element).prop("value");
+    var inputs = $(element).siblings("input");
+    $(inputs[0]).prop("name",name);
+    $(inputs[1]).prop("name",name+"2");
+    var selects = $(element).siblings("select");
+    $(selects[0]).prop("name",name+"Type");
+    $(selects[1]).prop("name",name+"Type2");
+}
+/**
+ *
+ */
+function bindOnAddAndRemoveButtion() {
+    addButtons = $(".add-field");
+    removeButtons = $(".remove-field");
+}
+function add(element) {
+    for (var i=0;i<addButtons.length;i++){
+        if (addButtons[i]===element){
+            $(addButtons[i]).parent().append(selectorAndInputs[i].clone());
+            return;
+        }
+    }
+}
+function removeS(element) {
+    for (var i=0;i<removeButtons.length;i++){
+        if (removeButtons[i]===element){
+            $(element).siblings(".selectors-and-inputs:last").remove();
+            return;
+        }
+    }
+}
+/**
+ * 获取每个表的查询字段原型html
+ */
+function getSelectorsAndInputs() {
+    var a = $(".data-filter");
+    for (var i=0;i<a.length;i++){
+        selectorAndInputs[i]=$(a[i]).children(".selectors-and-inputs").clone();
+    }
+}
+/**
+ * 验证数据有效性
+ * @returns {boolean}
+ */
 function verifiedData() {
-    if (tableOptions.data===undefined||tableOptions.data.length==0){
+    if (tableOptions.data===undefined||tableOptions.data.length===0){
         alert("还没有数据，请先查询！");
         return false;
     }
@@ -62,8 +116,8 @@ function addCheckBox(element,array,func) {
         element.append(array[i].title + "<input type='checkbox' name='table-field-option' value='" + i + "' checked>&nbsp;&nbsp;&nbsp;")
     }
     var inputs = element.children("input");
-    for (var input in inputs){
-        $(input).change(func);
+    for (var i=0;i<inputs.length;i++){
+        $(inputs[i]).change(func);
     }
 }
 
@@ -81,42 +135,155 @@ function updateTableOption() {
             newCol.push(fields[i]);
         }
     }
+    newCol.push({fixed: 'right', width:150, align:'center', toolbar: '#barDemo'});
     tableOptions.cols[0] = newCol;
     table.render(tableOptions);
 }
+function initTableOptions() {
+    for (var a in fields){
+        tableOptions.cols[0].push(a);
+    }
+}
 var fields = [
-    {field:'studentId',title:'ID',width:100,sort:true},
-    {field:'studentName',title:'姓名',width:100},
-    {field:'studentSex',title:'性别',width:100},
-    {field:'studentCollege',title:'学院',width:100},
-    {field:'studentMajor',title:'专业',width:100},
-    {field:'studentTel',title:'电话',width:100},
-    {field:'studentEmail',title:'邮箱',width:100},
-    {field:'studentQq',title:'QQ',width:100}
+    //基本信息字段7
+    {field:'name',title:'姓名',width:100},
+    {field:'sex',title:'性别',width:100},
+    {field:'nation',title:'民族',width:100},
+    {field:'nativePlace',title:'籍贯',width:100},
+    {field:'birthday',title:'出生年月',width:100},
+    {field:'idNumber',title:'身份证号',width:100},
+    {field:'category',title:'人员类别',width:100},
+    //政治面貌信息3
+    {field:'politicsStatus',title:'政治面貌',width:100},
+    {field:'joinpartyTime',title:'民族',width:100},
+    {field:'conversionTime',title:'转正时间',width:100},
+    //原工作信息10
+    {field:'identity',title:'身份',width:100},
+    {field:'educationLevel',title:'文化水平',width:100},
+    {field:'originWorkplace',title:'原工作单位',width:100},
+    {field:'originDuties',title:'原职务',width:100},
+    {field:'orginDutiesLevel',title:'原职务级别',width:100},
+    {field:'originProfessional',title:'原职称',width:100},
+    {field:'originProfessional_level',title:'原职务级别',width:100},
+    {field:'treatment',title:'享受待遇',width:100},
+    {field:'timeWork',title:'参加工作时间',width:100},
+    {field:'timeRetirement',title:'离退休时间',width:100},
+    //现工作信息20
+    // {field:'partyBranch',title:'身份',width:100},
+    // {field:'administration',title:'行政组',width:100},
+    // {field:'basicpartyDuties',title:'基层党组织职务',width:100},
+    // {field:'timeBasicparty',title:'基层党组织职务起时间',width:100},
+    // {field:'endtimeBasicparty',title:'基层党组织职务止时间',width:100},
+    // {field:'administrationDuties',title:'行政组职务',width:100},
+    // {field:'timeAdministration',title:'行政组工作起时间',width:100},
+    // {field:'endtimeAdministration',title:'行政组工作止时间',width:100},
+    // {field:'committeeDuties',title:'关工委工作职务',width:100},
+    // {field:'timeCommittee',title:'关工委工作起时间',width:100},
+    // {field:'endtimeCommittee',title:'关工委工作起时间',width:100},
+    // {field:'steeringMember',title:'督导组成员',width:100},
+    // {field:'timeSteering',title:'导组督成员起时间',width:100},
+    // {field:'endtimeSteering',title:'导组督成员止时间',width:100},
+    // {field:'organizationMember',title:'特邀党建组织员',width:100},
+    // {field:'timeOrganization',title:'特邀党建组织起时间',width:100},
+    // {field:'endtimeOrganization',title:'特邀党建组织止时间',width:100},
+    // {field:'corporationDuties',title:'老年文体社团职务',width:100},
+    // {field:'timeCorporation',title:'老年文体社团职务起时间',width:100},
+    // {field:'endtimeCorporation',title:'老年文体社团职务止时间',width:100},
+    //联系信息5
+    {field:'homeAddress',title:'家庭住址',width:100},
+    {field:'phoneHome',title:'家庭电话',width:100},
+    {field:'phoneOwn',title:'手机号码',width:100},
+    {field:'phoneChildren',title:'子女电话',width:100},
+    {field:'phoneOther',title:'其他联系电话',width:100},
+    //备注信息4
+    {field:'spouse',title:'配偶',width:100},
+    {field:'statusChildren',title:'子女情况',width:100},
+    {field:'timeDeath',title:'去世时间',width:100},
+    {field:'statusOther',title:'其他情况',width:100}
 ];
 var table;
 var tableOptions = {
     elem:'#dataTable',
-    height:315,
+    height:450,
     cols:[ [
         {checkbox:true},
-        {field:'studentId',title:'ID',width:100,sort:true},
-        {field:'studentName',title:'姓名',width:100},
-        {field:'studentSex',title:'性别',width:100},
-        {field:'studentCollege',title:'学院',width:100},
-        {field:'studentMajor',title:'专业',width:100},
-        {field:'studentTel',title:'电话',width:100},
-        {field:'studentEmail',title:'邮箱',width:100},
-        {field:'studentQq',title:'QQ',width:100}
+        //基本信息字段7
+        {field:'name',title:'姓名',width:100},
+        {field:'sex',title:'性别',width:100},
+        {field:'nation',title:'民族',width:100},
+        {field:'nativePlace',title:'籍贯',width:100},
+        {field:'birthday',title:'出生年月',width:100},
+        {field:'idNumber',title:'身份证号',width:100},
+        {field:'category',title:'人员类别',width:100},
+        //政治面貌信息3
+        {field:'politicsStatus',title:'政治面貌',width:100},
+        {field:'joinpartyTime',title:'民族',width:100},
+        {field:'conversionTime',title:'转正时间',width:100},
+        //原工作信息10
+        {field:'identity',title:'身份',width:100},
+        {field:'educationLevel',title:'文化水平',width:100},
+        {field:'originWorkplace',title:'原工作单位',width:100},
+        {field:'originDuties',title:'原职务',width:100},
+        {field:'orginDutiesLevel',title:'原职务级别',width:100},
+        {field:'originProfessional',title:'原职称',width:100},
+        {field:'originProfessional_level',title:'原职务级别',width:100},
+        {field:'treatment',title:'享受待遇',width:100},
+        {field:'timeWork',title:'参加工作时间',width:100},
+        {field:'timeRetirement',title:'离退休时间',width:100},
+        //现工作信息20
+        // {field:'partyBranch',title:'身份',width:100},
+        // {field:'administration',title:'行政组',width:100},
+        // {field:'basicpartyDuties',title:'基层党组织职务',width:100},
+        // {field:'timeBasicparty',title:'基层党组织职务起时间',width:100},
+        // {field:'endtimeBasicparty',title:'基层党组织职务止时间',width:100},
+        // {field:'administrationDuties',title:'行政组职务',width:100},
+        // {field:'timeAdministration',title:'行政组工作起时间',width:100},
+        // {field:'endtimeAdministration',title:'行政组工作止时间',width:100},
+        // {field:'committeeDuties',title:'关工委工作职务',width:100},
+        // {field:'timeCommittee',title:'关工委工作起时间',width:100},
+        // {field:'endtimeCommittee',title:'关工委工作起时间',width:100},
+        // {field:'steeringMember',title:'督导组成员',width:100},
+        // {field:'timeSteering',title:'导组督成员起时间',width:100},
+        // {field:'endtimeSteering',title:'导组督成员止时间',width:100},
+        // {field:'organizationMember',title:'特邀党建组织员',width:100},
+        // {field:'timeOrganization',title:'特邀党建组织起时间',width:100},
+        // {field:'endtimeOrganization',title:'特邀党建组织止时间',width:100},
+        // {field:'corporationDuties',title:'老年文体社团职务',width:100},
+        // {field:'timeCorporation',title:'老年文体社团职务起时间',width:100},
+        // {field:'endtimeCorporation',title:'老年文体社团职务止时间',width:100},
+        //联系信息5
+        {field:'homeAddress',title:'家庭住址',width:100},
+        {field:'phoneHome',title:'家庭电话',width:100},
+        {field:'phoneOwn',title:'手机号码',width:100},
+        {field:'phoneChildren',title:'子女电话',width:100},
+        {field:'phoneOther',title:'其他联系电话',width:100},
+        //备注信息4
+        {field:'spouse',title:'配偶',width:100},
+        {field:'statusChildren',title:'子女情况',width:100},
+        {field:'timeDeath',title:'去世时间',width:100},
+        {field:'statusOther',title:'其他情况',width:100},
+        {fixed: 'right', width:150, align:'center', toolbar: '#barDemo'}
     ] ],
     page:true,
-    width:900
+    width:1300
 };
 layui.use('table', function(){
     table = layui.table;
-    table.render(tableOptions)
+    table.render(tableOptions);
+    table.on('tool(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+        var data = obj.data; //获得当前行数据
+        var layEvent = obj.event; //获得 lay-event 对应的值
+        var tr = obj.tr; //获得当前行 tr 的DOM对象
+        if(layEvent === 'detail'){ //查看
+            $.post('/student/detail', {dataType:'html'}, function(str){
+                layer.open({
+                    type: 1,
+                    content: str //注意，如果str是object，那么需要字符拼接。
+                });
+            });
+        }
+    });
 });
-
 /**
  * 获取数据
  * @param element
@@ -125,8 +292,8 @@ layui.use('table', function(){
 function getData(element,url) {
     var time = 1500;
     element.on("click",function () {
-        var inputs = element.siblings("input");
-        var selectors = element.siblings("select");
+        var inputs = element.parent().find("input");
+        var selectors = inputs.next();
         var param = {};
         for(var i=0;i<inputs.length;i++){
             var input = $(inputs[i]);
@@ -136,13 +303,9 @@ function getData(element,url) {
             var input = $(selectors[i]);
             param[input.attr("name")]=input.val();
         }
-        $.post(url,param,function (data,status,xhr) {
+        $.get(url,param,function (data,status,xhr) {
             if(status==="success") {
                 tableOptions.data = data;
-//                                layui.use('table', function(){
-//                                    var table = layui.table;
-//                                    table.render(tableOptions);
-//                                });
                 table.render(tableOptions)
             }else{
                 layer.msg('请求失败，请重试',{icon:2,time:time})
@@ -160,8 +323,8 @@ function addRadio(element,array,func) {
         element.append(array[i].title + "<input type='radio' name='graphic-x-option' value='" + i + "'>&nbsp;&nbsp;&nbsp;")
     }
     var inputs = element.children("input");
-    for (var input in inputs){
-        $(input).change(func);
+    for (var i=0;i<inputs.length;i++){
+        $(inputs[i]).change(func);
     }
 }
 
@@ -221,3 +384,4 @@ var option = {
 
 // 使用刚指定的配置项和数据显示图表。
 myChart.setOption(option);
+
