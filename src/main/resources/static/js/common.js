@@ -15,7 +15,13 @@ $(function () {
     bindAjaxSubmitTo($("#modifyPwd>#submit"),"/modifyPwd");
     bindAjaxSubmitTo($("#personalInfo>#submit"),"/student/perfectPersonalInfo");
     bindAjaxSubmitTo($("#addSubject>#submit"),"/teacher/saveSubject");
-
+    seletAll($("#selectAll1"));
+    seletAll($("#selectAll2"));
+    seletAll($("#selectAll3"));
+    seletAll($("#selectAll4"));
+    seletAll($("#selectAll5"));
+    seletAll($("#selectAll6"));
+    progressbar();
     //bindAjaxSubmitTo($("#test>#submit"),"/student/dotest");
 });
 //通用绑定按钮异步提交操作
@@ -45,4 +51,57 @@ function bindAjaxSubmitTo(element,url) {
             }
         })
     })
+}
+function seletAll(element){
+   element.click(  function(){
+        var checkboxName="i"+element.prop("name");
+        if(this.checked){
+            $("input[name="+checkboxName+"]").prop('checked', true)
+        }else{
+            $("input[name="+checkboxName+"]").prop('checked', false)
+        }
+    })
+}
+function progressbar() {
+    var time = 1500;
+
+    $("#submitExcel").click( function(){
+        $.ajax({
+            url: "/admin/uploadExcel",
+            type: 'POST',
+            cache: false,
+            data: new FormData($('#infoLogoForm')[0]),
+            processData: false,
+            contentType: false,
+            dataType:"json",
+            success : function(data) {
+                if (data.state == 1) {
+                    layer.msg('上传成功，正在处理数据',{icon:1,time:time})
+                    $("#percent").show();
+                  var  interval= window.setInterval(function(){
+                        $.ajax({
+                            url: "/admin/percent",
+                            type: 'GET',
+                            processData: false,
+                            contentType: false,
+                            dataType:"json",
+                            success : function(data) {
+                                if (data.state == 1) {
+
+                                    if(data.msg="100%")
+                                    clearInterval(interval);
+                                    element.progress('percentChildren',data.msg)
+                                }
+                                }
+                            })
+
+                    },1000);
+                } else {
+                    layer.msg('请求失败，请重试',{icon:2,time:time})
+                }
+            }
+        }).on(function () {
+
+        });
+    });
 }
