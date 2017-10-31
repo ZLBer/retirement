@@ -5,7 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="spouse" jdbcType="VARCHAR" property="spouse" />
     <result column="status_children" jdbcType="VARCHAR" property="statusChildren" />
-    <result column="time_death" jdbcType="DATE" property="timeDeath" />
+    <result column="living_condition" jdbcType="VARCHAR" property="livingCondition" />
     <result column="status_other" jdbcType="VARCHAR" property="statusOther" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -67,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, spouse, status_children, time_death, status_other
+    id, spouse, status_children, living_condition, status_other
   </sql>
   <select id="selectByExample" parameterType="test.domain.InformationSupplementExample" resultMap="BaseResultMap">
     select
@@ -101,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="test.domain.InformationSupplement">
     insert into information_supplement (id, spouse, status_children, 
-      time_death, status_other)
+      living_condition, status_other)
     values (#{id,jdbcType=INTEGER}, #{spouse,jdbcType=VARCHAR}, #{statusChildren,jdbcType=VARCHAR}, 
-      #{timeDeath,jdbcType=DATE}, #{statusOther,jdbcType=VARCHAR})
+      #{livingCondition,jdbcType=VARCHAR}, #{statusOther,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="test.domain.InformationSupplement">
     insert into information_supplement
@@ -117,8 +117,8 @@
       <if test="statusChildren != null">
         status_children,
       </if>
-      <if test="timeDeath != null">
-        time_death,
+      <if test="livingCondition != null">
+        living_condition,
       </if>
       <if test="statusOther != null">
         status_other,
@@ -134,8 +134,8 @@
       <if test="statusChildren != null">
         #{statusChildren,jdbcType=VARCHAR},
       </if>
-      <if test="timeDeath != null">
-        #{timeDeath,jdbcType=DATE},
+      <if test="livingCondition != null">
+        #{livingCondition,jdbcType=VARCHAR},
       </if>
       <if test="statusOther != null">
         #{statusOther,jdbcType=VARCHAR},
@@ -160,8 +160,8 @@
       <if test="record.statusChildren != null">
         status_children = #{record.statusChildren,jdbcType=VARCHAR},
       </if>
-      <if test="record.timeDeath != null">
-        time_death = #{record.timeDeath,jdbcType=DATE},
+      <if test="record.livingCondition != null">
+        living_condition = #{record.livingCondition,jdbcType=VARCHAR},
       </if>
       <if test="record.statusOther != null">
         status_other = #{record.statusOther,jdbcType=VARCHAR},
@@ -176,7 +176,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       spouse = #{record.spouse,jdbcType=VARCHAR},
       status_children = #{record.statusChildren,jdbcType=VARCHAR},
-      time_death = #{record.timeDeath,jdbcType=DATE},
+      living_condition = #{record.livingCondition,jdbcType=VARCHAR},
       status_other = #{record.statusOther,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -191,8 +191,8 @@
       <if test="statusChildren != null">
         status_children = #{statusChildren,jdbcType=VARCHAR},
       </if>
-      <if test="timeDeath != null">
-        time_death = #{timeDeath,jdbcType=DATE},
+      <if test="livingCondition != null">
+        living_condition = #{livingCondition,jdbcType=VARCHAR},
       </if>
       <if test="statusOther != null">
         status_other = #{statusOther,jdbcType=VARCHAR},
@@ -204,7 +204,7 @@
     update information_supplement
     set spouse = #{spouse,jdbcType=VARCHAR},
       status_children = #{statusChildren,jdbcType=VARCHAR},
-      time_death = #{timeDeath,jdbcType=DATE},
+      living_condition = #{livingCondition,jdbcType=VARCHAR},
       status_other = #{statusOther,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

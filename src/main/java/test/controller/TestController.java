@@ -1,8 +1,11 @@
 package test.controller;
 
+import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import test.GlobleVariance;
@@ -12,6 +15,8 @@ import test.mapper.InformationAllMapper;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -36,8 +41,25 @@ public class TestController {
     }
 
     @PostMapping("/student/detail")
-    String detail(Model model){
+    String detail(Model model, HttpServletRequest request){
+        String json = request.getParameter("rowData");
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            InformationAll all = mapper.readValue(json,InformationAll.class);
+            model.addAttribute("all",all);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "student/detail";
+    }
+
+    @GetMapping("/student/download/{id}")
+    String download(Model model, HttpServletResponse response, HttpServletRequest request, @PathVariable Integer id){
+        InformationAll all = informationAllMapper.selectByPrimaryKey(id);
+        model.addAttribute("all",all);
+        response.setHeader("content-Type", "application/msword");
+        response.setHeader("Content-Disposition", "attachment;filename="+all.getName()+".doc");
+        return "student/info.xml";
     }
 
 }

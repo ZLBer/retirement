@@ -1,7 +1,5 @@
 package test.domain;
 
-import java.util.Date;
-
 public class InformationSupplement {
     private Integer id;
 
@@ -9,7 +7,7 @@ public class InformationSupplement {
 
     private String statusChildren;
 
-    private Date timeDeath;
+    private String livingCondition;
 
     private String statusOther;
 
@@ -37,12 +35,12 @@ public class InformationSupplement {
         this.statusChildren = statusChildren == null ? null : statusChildren.trim();
     }
 
-    public Date getTimeDeath() {
-        return timeDeath;
+    public String getLivingCondition() {
+        return livingCondition;
     }
 
-    public void setTimeDeath(Date timeDeath) {
-        this.timeDeath = timeDeath;
+    public void setLivingCondition(String livingCondition) {
+        this.livingCondition = livingCondition == null ? null : livingCondition.trim();
     }
 
     public String getStatusOther() {

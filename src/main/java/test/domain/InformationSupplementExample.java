@@ -1,8 +1,6 @@
 package test.domain;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class InformationSupplementExample {
@@ -104,32 +102,6 @@ public class InformationSupplementExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIdIsNull() {
@@ -332,63 +304,73 @@ public class InformationSupplementExample {
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathIsNull() {
-            addCriterion("time_death is null");
+        public Criteria andLivingConditionIsNull() {
+            addCriterion("living_condition is null");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathIsNotNull() {
-            addCriterion("time_death is not null");
+        public Criteria andLivingConditionIsNotNull() {
+            addCriterion("living_condition is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathEqualTo(Date value) {
-            addCriterionForJDBCDate("time_death =", value, "timeDeath");
+        public Criteria andLivingConditionEqualTo(String value) {
+            addCriterion("living_condition =", value, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathNotEqualTo(Date value) {
-            addCriterionForJDBCDate("time_death <>", value, "timeDeath");
+        public Criteria andLivingConditionNotEqualTo(String value) {
+            addCriterion("living_condition <>", value, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathGreaterThan(Date value) {
-            addCriterionForJDBCDate("time_death >", value, "timeDeath");
+        public Criteria andLivingConditionGreaterThan(String value) {
+            addCriterion("living_condition >", value, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("time_death >=", value, "timeDeath");
+        public Criteria andLivingConditionGreaterThanOrEqualTo(String value) {
+            addCriterion("living_condition >=", value, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathLessThan(Date value) {
-            addCriterionForJDBCDate("time_death <", value, "timeDeath");
+        public Criteria andLivingConditionLessThan(String value) {
+            addCriterion("living_condition <", value, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("time_death <=", value, "timeDeath");
+        public Criteria andLivingConditionLessThanOrEqualTo(String value) {
+            addCriterion("living_condition <=", value, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathIn(List<Date> values) {
-            addCriterionForJDBCDate("time_death in", values, "timeDeath");
+        public Criteria andLivingConditionLike(String value) {
+            addCriterion("living_condition like", value, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathNotIn(List<Date> values) {
-            addCriterionForJDBCDate("time_death not in", values, "timeDeath");
+        public Criteria andLivingConditionNotLike(String value) {
+            addCriterion("living_condition not like", value, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("time_death between", value1, value2, "timeDeath");
+        public Criteria andLivingConditionIn(List<String> values) {
+            addCriterion("living_condition in", values, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("time_death not between", value1, value2, "timeDeath");
+        public Criteria andLivingConditionNotIn(List<String> values) {
+            addCriterion("living_condition not in", values, "livingCondition");
+            return (Criteria) this;
+        }
+
+        public Criteria andLivingConditionBetween(String value1, String value2) {
+            addCriterion("living_condition between", value1, value2, "livingCondition");
+            return (Criteria) this;
+        }
+
+        public Criteria andLivingConditionNotBetween(String value1, String value2) {
+            addCriterion("living_condition not between", value1, value2, "livingCondition");
             return (Criteria) this;
         }
 

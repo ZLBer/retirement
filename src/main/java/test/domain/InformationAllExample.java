@@ -3302,63 +3302,73 @@ public class InformationAllExample {
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathIsNull() {
-            addCriterion("time_death is null");
+        public Criteria andLivingConditionIsNull() {
+            addCriterion("living_condition is null");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathIsNotNull() {
-            addCriterion("time_death is not null");
+        public Criteria andLivingConditionIsNotNull() {
+            addCriterion("living_condition is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathEqualTo(Date value) {
-            addCriterionForJDBCDate("time_death =", value, "timeDeath");
+        public Criteria andLivingConditionEqualTo(String value) {
+            addCriterion("living_condition =", value, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathNotEqualTo(Date value) {
-            addCriterionForJDBCDate("time_death <>", value, "timeDeath");
+        public Criteria andLivingConditionNotEqualTo(String value) {
+            addCriterion("living_condition <>", value, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathGreaterThan(Date value) {
-            addCriterionForJDBCDate("time_death >", value, "timeDeath");
+        public Criteria andLivingConditionGreaterThan(String value) {
+            addCriterion("living_condition >", value, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("time_death >=", value, "timeDeath");
+        public Criteria andLivingConditionGreaterThanOrEqualTo(String value) {
+            addCriterion("living_condition >=", value, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathLessThan(Date value) {
-            addCriterionForJDBCDate("time_death <", value, "timeDeath");
+        public Criteria andLivingConditionLessThan(String value) {
+            addCriterion("living_condition <", value, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("time_death <=", value, "timeDeath");
+        public Criteria andLivingConditionLessThanOrEqualTo(String value) {
+            addCriterion("living_condition <=", value, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathIn(List<Date> values) {
-            addCriterionForJDBCDate("time_death in", values, "timeDeath");
+        public Criteria andLivingConditionLike(String value) {
+            addCriterion("living_condition like", value, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathNotIn(List<Date> values) {
-            addCriterionForJDBCDate("time_death not in", values, "timeDeath");
+        public Criteria andLivingConditionNotLike(String value) {
+            addCriterion("living_condition not like", value, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("time_death between", value1, value2, "timeDeath");
+        public Criteria andLivingConditionIn(List<String> values) {
+            addCriterion("living_condition in", values, "livingCondition");
             return (Criteria) this;
         }
 
-        public Criteria andTimeDeathNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("time_death not between", value1, value2, "timeDeath");
+        public Criteria andLivingConditionNotIn(List<String> values) {
+            addCriterion("living_condition not in", values, "livingCondition");
+            return (Criteria) this;
+        }
+
+        public Criteria andLivingConditionBetween(String value1, String value2) {
+            addCriterion("living_condition between", value1, value2, "livingCondition");
+            return (Criteria) this;
+        }
+
+        public Criteria andLivingConditionNotBetween(String value1, String value2) {
+            addCriterion("living_condition not between", value1, value2, "livingCondition");
             return (Criteria) this;
         }
 
@@ -3429,6 +3439,216 @@ public class InformationAllExample {
 
         public Criteria andStatusOtherNotBetween(String value1, String value2) {
             addCriterion("status_other not between", value1, value2, "statusOther");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailIsNull() {
+            addCriterion("email is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailIsNotNull() {
+            addCriterion("email is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailEqualTo(String value) {
+            addCriterion("email =", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotEqualTo(String value) {
+            addCriterion("email <>", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailGreaterThan(String value) {
+            addCriterion("email >", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailGreaterThanOrEqualTo(String value) {
+            addCriterion("email >=", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLessThan(String value) {
+            addCriterion("email <", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLessThanOrEqualTo(String value) {
+            addCriterion("email <=", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLike(String value) {
+            addCriterion("email like", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotLike(String value) {
+            addCriterion("email not like", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailIn(List<String> values) {
+            addCriterion("email in", values, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotIn(List<String> values) {
+            addCriterion("email not in", values, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailBetween(String value1, String value2) {
+            addCriterion("email between", value1, value2, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotBetween(String value1, String value2) {
+            addCriterion("email not between", value1, value2, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqIsNull() {
+            addCriterion("qq is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqIsNotNull() {
+            addCriterion("qq is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqEqualTo(String value) {
+            addCriterion("qq =", value, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqNotEqualTo(String value) {
+            addCriterion("qq <>", value, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqGreaterThan(String value) {
+            addCriterion("qq >", value, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqGreaterThanOrEqualTo(String value) {
+            addCriterion("qq >=", value, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqLessThan(String value) {
+            addCriterion("qq <", value, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqLessThanOrEqualTo(String value) {
+            addCriterion("qq <=", value, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqLike(String value) {
+            addCriterion("qq like", value, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqNotLike(String value) {
+            addCriterion("qq not like", value, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqIn(List<String> values) {
+            addCriterion("qq in", values, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqNotIn(List<String> values) {
+            addCriterion("qq not in", values, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqBetween(String value1, String value2) {
+            addCriterion("qq between", value1, value2, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqNotBetween(String value1, String value2) {
+            addCriterion("qq not between", value1, value2, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andWechatIsNull() {
+            addCriterion("wechat is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWechatIsNotNull() {
+            addCriterion("wechat is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWechatEqualTo(String value) {
+            addCriterion("wechat =", value, "wechat");
+            return (Criteria) this;
+        }
+
+        public Criteria andWechatNotEqualTo(String value) {
+            addCriterion("wechat <>", value, "wechat");
+            return (Criteria) this;
+        }
+
+        public Criteria andWechatGreaterThan(String value) {
+            addCriterion("wechat >", value, "wechat");
+            return (Criteria) this;
+        }
+
+        public Criteria andWechatGreaterThanOrEqualTo(String value) {
+            addCriterion("wechat >=", value, "wechat");
+            return (Criteria) this;
+        }
+
+        public Criteria andWechatLessThan(String value) {
+            addCriterion("wechat <", value, "wechat");
+            return (Criteria) this;
+        }
+
+        public Criteria andWechatLessThanOrEqualTo(String value) {
+            addCriterion("wechat <=", value, "wechat");
+            return (Criteria) this;
+        }
+
+        public Criteria andWechatLike(String value) {
+            addCriterion("wechat like", value, "wechat");
+            return (Criteria) this;
+        }
+
+        public Criteria andWechatNotLike(String value) {
+            addCriterion("wechat not like", value, "wechat");
+            return (Criteria) this;
+        }
+
+        public Criteria andWechatIn(List<String> values) {
+            addCriterion("wechat in", values, "wechat");
+            return (Criteria) this;
+        }
+
+        public Criteria andWechatNotIn(List<String> values) {
+            addCriterion("wechat not in", values, "wechat");
+            return (Criteria) this;
+        }
+
+        public Criteria andWechatBetween(String value1, String value2) {
+            addCriterion("wechat between", value1, value2, "wechat");
+            return (Criteria) this;
+        }
+
+        public Criteria andWechatNotBetween(String value1, String value2) {
+            addCriterion("wechat not between", value1, value2, "wechat");
             return (Criteria) this;
         }
     }

@@ -8,6 +8,9 @@
     <result column="phone_own" jdbcType="CHAR" property="phoneOwn" />
     <result column="phone_children" jdbcType="VARCHAR" property="phoneChildren" />
     <result column="phone_other" jdbcType="VARCHAR" property="phoneOther" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="wechat" jdbcType="VARCHAR" property="wechat" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, home_address, phone_home, phone_own, phone_children, phone_other
+    id, home_address, phone_home, phone_own, phone_children, phone_other, email, wechat, 
+    qq
   </sql>
   <select id="selectByExample" parameterType="test.domain.InformationContactExample" resultMap="BaseResultMap">
     select
@@ -102,11 +106,11 @@
   </delete>
   <insert id="insert" parameterType="test.domain.InformationContact">
     insert into information_contact (id, home_address, phone_home, 
-      phone_own, phone_children, phone_other
-      )
+      phone_own, phone_children, phone_other, 
+      email, wechat, qq)
     values (#{id,jdbcType=INTEGER}, #{homeAddress,jdbcType=VARCHAR}, #{phoneHome,jdbcType=VARCHAR}, 
-      #{phoneOwn,jdbcType=CHAR}, #{phoneChildren,jdbcType=VARCHAR}, #{phoneOther,jdbcType=VARCHAR}
-      )
+      #{phoneOwn,jdbcType=CHAR}, #{phoneChildren,jdbcType=VARCHAR}, #{phoneOther,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="test.domain.InformationContact">
     insert into information_contact
@@ -129,6 +133,15 @@
       <if test="phoneOther != null">
         phone_other,
       </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="wechat != null">
+        wechat,
+      </if>
+      <if test="qq != null">
+        qq,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -148,6 +161,15 @@
       </if>
       <if test="phoneOther != null">
         #{phoneOther,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -178,6 +200,15 @@
       <if test="record.phoneOther != null">
         phone_other = #{record.phoneOther,jdbcType=VARCHAR},
       </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wechat != null">
+        wechat = #{record.wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qq != null">
+        qq = #{record.qq,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -190,7 +221,10 @@
       phone_home = #{record.phoneHome,jdbcType=VARCHAR},
       phone_own = #{record.phoneOwn,jdbcType=CHAR},
       phone_children = #{record.phoneChildren,jdbcType=VARCHAR},
-      phone_other = #{record.phoneOther,jdbcType=VARCHAR}
+      phone_other = #{record.phoneOther,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      wechat = #{record.wechat,jdbcType=VARCHAR},
+      qq = #{record.qq,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,6 +247,15 @@
       <if test="phoneOther != null">
         phone_other = #{phoneOther,jdbcType=VARCHAR},
       </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -222,7 +265,10 @@
       phone_home = #{phoneHome,jdbcType=VARCHAR},
       phone_own = #{phoneOwn,jdbcType=CHAR},
       phone_children = #{phoneChildren,jdbcType=VARCHAR},
-      phone_other = #{phoneOther,jdbcType=VARCHAR}
+      phone_other = #{phoneOther,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      wechat = #{wechat,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

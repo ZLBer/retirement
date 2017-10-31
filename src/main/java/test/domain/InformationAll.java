@@ -99,9 +99,15 @@ public class InformationAll {
 
     private String statusChildren;
 
-    private Date timeDeath;
+    private String livingCondition;
 
     private String statusOther;
+
+    private String email;
+
+    private String qq;
+
+    private String wechat;
 
     public Integer getId() {
         return id;
@@ -487,12 +493,12 @@ public class InformationAll {
         this.statusChildren = statusChildren == null ? null : statusChildren.trim();
     }
 
-    public Date getTimeDeath() {
-        return timeDeath;
+    public String getLivingCondition() {
+        return livingCondition;
     }
 
-    public void setTimeDeath(Date timeDeath) {
-        this.timeDeath = timeDeath;
+    public void setLivingCondition(String livingCondition) {
+        this.livingCondition = livingCondition == null ? null : livingCondition.trim();
     }
 
     public String getStatusOther() {
@@ -501,5 +507,29 @@ public class InformationAll {
 
     public void setStatusOther(String statusOther) {
         this.statusOther = statusOther == null ? null : statusOther.trim();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq == null ? null : qq.trim();
+    }
+
+    public String getWechat() {
+        return wechat;
+    }
+
+    public void setWechat(String wechat) {
+        this.wechat = wechat == null ? null : wechat.trim();
     }
 }

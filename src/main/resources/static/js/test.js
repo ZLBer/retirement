@@ -18,7 +18,7 @@ $(function () {
         generateExcelTitle();
         generateExcelBody();
         JSONToExcelConvertor(JSON_DATA.data,"人员信息表",JSON_DATA.title);
-    })
+    });
 });
 /**
  *
@@ -112,11 +112,12 @@ function generateExcelBody() {
  * @param func
  */
 function addCheckBox(element,array,func) {
-    for (var i=0;i<array.length;i++) {
+    var i;
+    for (i=0;i<array.length;i++) {
         element.append(array[i].title + "<input type='checkbox' name='table-field-option' value='" + i + "' checked>&nbsp;&nbsp;&nbsp;")
     }
     var inputs = element.children("input");
-    for (var i=0;i<inputs.length;i++){
+    for (i=0;i<inputs.length;i++){
         $(inputs[i]).change(func);
     }
 }
@@ -189,16 +190,19 @@ var fields = [
     // {field:'corporationDuties',title:'老年文体社团职务',width:100},
     // {field:'timeCorporation',title:'老年文体社团职务起时间',width:100},
     // {field:'endtimeCorporation',title:'老年文体社团职务止时间',width:100},
-    //联系信息5
+    //联系信息8
     {field:'homeAddress',title:'家庭住址',width:100},
     {field:'phoneHome',title:'家庭电话',width:100},
     {field:'phoneOwn',title:'手机号码',width:100},
     {field:'phoneChildren',title:'子女电话',width:100},
     {field:'phoneOther',title:'其他联系电话',width:100},
+    {field:'qq',title:'QQ',width:100},
+    {field:'wechat',title:'微信',width:100},
+    {field:'email',title:'邮箱',width:100},
     //备注信息4
     {field:'spouse',title:'配偶',width:100},
     {field:'statusChildren',title:'子女情况',width:100},
-    {field:'timeDeath',title:'去世时间',width:100},
+    {field:'livingCondition',title:'健在情况',width:100},
     {field:'statusOther',title:'其他情况',width:100}
 ];
 var table;
@@ -257,10 +261,13 @@ var tableOptions = {
         {field:'phoneOwn',title:'手机号码',width:100},
         {field:'phoneChildren',title:'子女电话',width:100},
         {field:'phoneOther',title:'其他联系电话',width:100},
+        {field:'qq',title:'QQ',width:100},
+        {field:'wechat',title:'微信',width:100},
+        {field:'email',title:'邮箱',width:100},
         //备注信息4
         {field:'spouse',title:'配偶',width:100},
         {field:'statusChildren',title:'子女情况',width:100},
-        {field:'timeDeath',title:'去世时间',width:100},
+        {field:'livingCondition',title:'建在情况',width:100},
         {field:'statusOther',title:'其他情况',width:100},
         {fixed: 'right', width:150, align:'center', toolbar: '#barDemo'}
     ] ],
@@ -271,16 +278,25 @@ layui.use('table', function(){
     table = layui.table;
     table.render(tableOptions);
     table.on('tool(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
-        var data = obj.data; //获得当前行数据
+        var data = JSON.stringify(obj.data); //获得当前行数据
         var layEvent = obj.event; //获得 lay-event 对应的值
         var tr = obj.tr; //获得当前行 tr 的DOM对象
         if(layEvent === 'detail'){ //查看
-            $.post('/student/detail', {dataType:'html'}, function(str){
+            $.post('/student/detail', {rowData:data,dataType:'html'}, function(str){
+                layer.open({
+                    type: 1,
+                    content: str,//注意，如果str是object，那么需要字符拼接。
+                    area:'860px'
+                });
+            });
+        }else if (layEvent==='download'){
+            /*$.post('/student/download', {data:data,dataType:'html'}, function(str){
                 layer.open({
                     type: 1,
                     content: str //注意，如果str是object，那么需要字符拼接。
                 });
-            });
+            });*/
+            window.location.href="download/"+obj.data.id;
         }
     });
 });
@@ -295,12 +311,14 @@ function getData(element,url) {
         var inputs = element.parent().find("input");
         var selectors = inputs.next();
         var param = {};
-        for(var i=0;i<inputs.length;i++){
-            var input = $(inputs[i]);
+        var input;
+        var i;
+        for(i=0;i<inputs.length;i++){
+            input = $(inputs[i]);
             param[input.attr("name")]=input.val();
         }
-        for(var i=0;i<selectors.length;i++){
-            var input = $(selectors[i]);
+        for(i=0;i<selectors.length;i++){
+            input = $(selectors[i]);
             param[input.attr("name")]=input.val();
         }
         $.get(url,param,function (data,status,xhr) {
@@ -319,11 +337,12 @@ function getData(element,url) {
  * 图表
  */
 function addRadio(element,array,func) {
-    for (var i=0;i<array.length;i++) {
+    var i;
+    for (i=0;i<array.length;i++) {
         element.append(array[i].title + "<input type='radio' name='graphic-x-option' value='" + i + "'>&nbsp;&nbsp;&nbsp;")
     }
     var inputs = element.children("input");
-    for (var i=0;i<inputs.length;i++){
+    for (i=0;i<inputs.length;i++){
         $(inputs[i]).change(func);
     }
 }

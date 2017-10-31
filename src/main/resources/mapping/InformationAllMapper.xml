@@ -50,8 +50,11 @@
     <result column="phone_other" jdbcType="VARCHAR" property="phoneOther" />
     <result column="spouse" jdbcType="VARCHAR" property="spouse" />
     <result column="status_children" jdbcType="VARCHAR" property="statusChildren" />
-    <result column="time_death" jdbcType="DATE" property="timeDeath" />
+    <result column="living_condition" jdbcType="VARCHAR" property="livingCondition" />
     <result column="status_other" jdbcType="VARCHAR" property="statusOther" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="wechat" jdbcType="VARCHAR" property="wechat" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -92,8 +95,8 @@
 #     committee_duties, time_committee, endtime_committee, steering_member, time_steering,
 #     endtime_steering, organization_member, time_organization, endtime_organization, corporation_duties,
 #     time_corporation, endtime_corporation,
-    home_address, phone_home, phone_own, phone_children,
-    phone_other, spouse, status_children, time_death, status_other
+    home_address, phone_home, phone_own, phone_children,qq, wechat, email
+    phone_other, spouse, status_children, living_condition, status_other
   </sql>
   <sql id="Join_Table_List">
     information_basic AS a
@@ -129,7 +132,7 @@
     <include refid="Join_Table_List"/>
     on
     <include refid="Join_On_Condition"/>
-    where information_basic.id = #{id,jdbcType=INTEGER}
+    where a.id = #{id,jdbcType=INTEGER}
   </select>
   <select id="countByExample" parameterType="test.domain.InformationAllExample" resultType="java.lang.Long">
     select count(*) from

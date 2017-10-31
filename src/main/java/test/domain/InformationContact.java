@@ -13,6 +13,12 @@ public class InformationContact {
 
     private String phoneOther;
 
+    private String email;
+
+    private String wechat;
+
+    private String qq;
+
     public Integer getId() {
         return id;
     }
@@ -59,5 +65,29 @@ public class InformationContact {
 
     public void setPhoneOther(String phoneOther) {
         this.phoneOther = phoneOther == null ? null : phoneOther.trim();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public String getWechat() {
+        return wechat;
+    }
+
+    public void setWechat(String wechat) {
+        this.wechat = wechat == null ? null : wechat.trim();
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq == null ? null : qq.trim();
     }
 }
