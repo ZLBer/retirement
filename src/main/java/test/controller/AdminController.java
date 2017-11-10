@@ -1,19 +1,21 @@
 package test.controller;
 
 import org.apache.commons.io.FileUtils;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
-import test.domain.Result;
+import test.domain.*;
 import test.service.IAdminService;
 import test.service.impl.AdminService;
 
@@ -108,21 +110,18 @@ public class AdminController {
                         adminService.addSave(s, mm);
                         columen+=1;
                         percent=columen/m.size()*100;
-                        System.out.println("pppppppppppppppppppppppppppppppp"+percent);
                     }
                 } else if (IType.equals("2")) {
                     for (List mm : m) {
                         adminService.insertOrUpdateSave(s, mm);
                         columen+=1;
                         percent=columen/m.size()*100;
-                        System.out.println("pppppppppppppppppppppppppppppppp"+percent);
                     }
                 } else {
                     for (List mm : m) {
                         adminService.coverSave(s, mm);
                         columen+=1;
                         percent=columen/m.size()*100;
-                        System.out.println("pppppppppppppppppppppppppppppppp"+percent);
                     }
                 }
 
@@ -136,6 +135,19 @@ public class AdminController {
     public Result precent() throws IOException {
 
         Result result = new Result(1, "", (int)percent+"%");
-return  result;
+        return  result;
+    }
+    @RequestMapping(path = "/goPersonInfo")
+    public String goAdd(Model model){
+        model.addAttribute("bodyRightContent", "admin/personInfo");
+        return "main";
+    }
+    @ResponseBody
+    @RequestMapping(path = "/addPerson")
+    public Result addPerson(@RequestBody InformationAll informationAll){
+        System.out.println(informationAll.getName());
+        System.out.println(informationAll.getEmail());
+        Result result = new Result(1, "", "添加成功");
+        return  result;
     }
 }

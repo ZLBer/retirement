@@ -1,27 +1,105 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-
+    <link rel="stylesheet" href="../css/main.css">
     <title>excel表上传</title>
 </head>
 <body>
-<div th:fragment="mainContent" >
-    *身份证号为必选项
-    <form action="/admin/downloadExcel">
-     </br>1.基本信息板块： <input id="selectAll1" type="checkbox" name="nformationBasic"value="begin">全选 <input  type="checkbox" name="informationBasic"  value="人员类别">人员类别  <input  type="checkbox" name="informationBasic" value="姓名">姓名
-    <input type="checkbox" name="informationBasic" value="性别"> 性别 <input  type="checkbox" name="informationBasic" value="民族">民族<input id="nativePlace" type="checkbox" name="informationBasic" value="籍贯">籍贯
-    <input type="checkbox" name="informationBasic" value="出生年月">出生年月
-    </br> 2.政治面貌信息板块： <input id="selectAll2" type="checkbox" name="nformationPolitics" value="begin">全选<input  type="checkbox" name="informationPolitics" value="政治面貌"> 政治面貌<input  type="checkbox" name="informationPolitics" value="入党时间">入党时间<input  type="checkbox" name="informationPolitics" value="转正时间">转正时间
-    </br> 3.原工作信息板块： <input id="selectAll3" type="checkbox" name="nformationOriginal" value="begin">全选 <input  type="checkbox" name="informationOriginal" value="身份"> 身份  <input  type="checkbox" name="informationOriginal" value="文化程度">文化程度<input  type="checkbox" name="informationOriginal" value="原单位">原单位<input  type="checkbox" name="informationOriginal" value="原职务">原职务<input  type="checkbox" name="informationOriginal" value="原职务级别">原职务级别
-        <input  type="checkbox" name="informationOriginal" value="原职称">原职称<input  type="checkbox" name="informationOriginal" value="原职称级别">原职称级别<input  type="checkbox" name="informationOriginal" value="享受待遇">享受待遇<input  type="checkbox" name="informationOriginal" value="参加工作时间">参加工作时间<input  type="checkbox" name="informationOriginal" value="离退休时间">离退休时间
-        </br> 4.现工作信息板块:<input  id="selectAll4"type="checkbox" name="nformationPresent"  value="begin">全选<input  type="checkbox" name="informationPresent"  value="党支部名称">党支部名称<input  type="checkbox" name="informationPresent"  value="行政组">行政组<input  type="checkbox" name="informationPresent"  value="基层党组织职务">基层党组织职务<input  type="checkbox" name="informationPresent"  value="基层党组织开始时间">基层党组织开始时间<input  type="checkbox" name="informationPresent"  value="基层党组织结束时间">基层党组织结束时间
-        <input  type="checkbox" name="informationPresent"  value="行政组职务">行政组职务<input  type="checkbox" name="informationPresent"  value="行政组开始时间">行政组开始时间<input  type="checkbox" name="informationPresent"  value="行政组结束时间">行政组结束时间<input  type="checkbox" name="informationPresent"  value="关工委工作职务">关工委工作职务<input  type="checkbox" name="informationPresent"  value="关工委工作职务开始时间">关工委工作职务开始时间<input  type="checkbox" name="informationPresent"  value="关工委工作职务结束时间">关工委工作职务结束时间
-        <input  type="checkbox" name="informationPresent"  value="督导组成员">督导组成员<input  type="checkbox" name="informationPresent"  value="督导组成员开始时间">督导组成员开始时间<input  type="checkbox" name="informationPresent"  value="督导组成员结束时间">督导组成员结束时间<input  type="checkbox" name="informationPresent"  value="特邀党建组织员">特邀党建组织员<input  type="checkbox" name="informationPresent"  value="特邀党建组织员开始时间">特邀党建组织员开始时间<input  type="checkbox" name="informationPresent"  value="特邀党建组织员结束时间">特邀党建组织员结束时间<input  type="checkbox" name="informationPresent"  value="老年文体社团职务">老年文体社团职务
-        <input  type="checkbox" name="informationPresent"  value="老年文体社团职务开始时间">老年文体社团职务开始时间<input  type="checkbox" name="informationPresent"  value="老年文体社团职务结束时间">老年文体社团职务结束时间
-        </br> 5.联系信息板块:<input id="selectAll5" type="checkbox" name="nformationContact"  value="begin">全选<input  type="checkbox" name="informationContact"  value="家庭住址">家庭住址<input  type="checkbox" name="informationContact"  value="家庭电话">家庭电话<input  type="checkbox" name="informationContact"  value="手机号码">手机号码<input  type="checkbox" name="informationContact"  value="子女电话">子女电话<input  type="checkbox" name="informationContact"  value="其他联系电话">其他联系电话<input  type="checkbox" name="informationContact"  value="电子邮件">电子邮件<input  type="checkbox" name="informationContact"  value="QQ">QQ<input  type="checkbox" name="informationContact"  value="微信">微信
-        </br> 6.备注：<input id="selectAll6" type="checkbox" name="nformationSupplement"  value="begin">全选<input  type="checkbox" name="informationSupplement"  value="配偶情况">配偶情况<input  type="checkbox" name="informationSupplement"  value="子女情况">子女情况<input  type="checkbox" name="informationSupplement"  value="健在情况">健在情况<input  type="checkbox" name="informationSupplement"  value="其他情况">其他情况
-        </br>
-     </br><input type="submit" value="excel表模板下载">
+<div th:fragment="mainContent">
+    <blockquote class="layui-elem-quote">*身份证号为必选项</blockquote>
+
+    <form class="layui-form" action="/admin/downloadExcel" >
+        <div class="layui-form-item">
+          <label class="layui-form-label " style="width: 140px">1.基本信息板块：</label>
+             <div class="layui-input-block">
+                 <input lay-filter="selectAll1" type="checkbox" name="nformationBasic"value="begin" title="全选" lay-skin="primary">
+                 <input  type="checkbox" name="informationBasic"  value="人员类别" title="人员类别" lay-skin="primary">
+                 <input  type="checkbox" name="informationBasic" value="姓名" title="姓名" lay-skin="primary">
+                 <input  type="checkbox" name="informationBasic" value="性别" title="性别" lay-skin="primary">
+                 <input  type="checkbox" name="informationBasic" value="民族" title="民族" lay-skin="primary">
+                 <input type="checkbox" name="informationBasic" value="籍贯" title="籍贯" lay-skin="primary">
+                 <input type="checkbox" name="informationBasic" value="出生年月" title="出生年月" lay-skin="primary">
+              </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label " style="width: 140px">2.政治面貌信息板块：</label>
+            <div class="layui-input-block">
+                <input lay-filter="selectAll2" type="checkbox" name="nformationPolitics" value="begin" title="全选" lay-skin="primary">
+                <input  type="checkbox" name="informationPolitics" value="政治面貌" title="政治面貌" lay-skin="primary">
+                <input  type="checkbox" name="informationPolitics" value="入党时间" title="入党时间" lay-skin="primary">
+                <input  type="checkbox" name="informationPolitics" value="转正时间" title="转正时间" lay-skin="primary">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label " style="width: 140px">3.原工作信息板块：</label>
+            <div class="layui-input-block">
+                <input lay-filter="selectAll3" type="checkbox" name="nformationOriginal" value="begin" title="全选" lay-skin="primary">
+                <input  type="checkbox" name="informationOriginal" value="身份" title="身份" lay-skin="primary">
+                <input  type="checkbox" name="informationOriginal" value="文化程度" title="文化程度" lay-skin="primary">
+                <input  type="checkbox" name="informationOriginal" value="原单位" title="原单位" lay-skin="primary">
+                <input  type="checkbox" name="informationOriginal" value="原职务" title="原职务" lay-skin="primary">
+                <input  type="checkbox" name="informationOriginal" value="原职务级别" title="原职务级别" lay-skin="primary">
+                <input  type="checkbox" name="informationOriginal" value="原职称" title="原职称" lay-skin="primary">
+                <input  type="checkbox" name="informationOriginal" value="原职称级别" title="原职称级别" lay-skin="primary"><br>
+                <input  type="checkbox" name="informationOriginal" value="享受待遇" title="享受待遇" lay-skin="primary">
+                <input  type="checkbox" name="informationOriginal" value="参加工作时间" title="参加工作时间" lay-skin="primary">
+                <input  type="checkbox" name="informationOriginal" value="离退休时间" title="离退休时间" lay-skin="primary">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 140px">4.现工作信息板块:</label>
+            <div class="layui-input-block">
+                <input  lay-filter="selectAll4"type="checkbox" name="nformationPresent"  value="begin" title="全选" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="党支部名称" title="党支部名称" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="行政组" title="行政组" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="基层党组织职务" title="基层党组织职务" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="基层党组织开始时间" title="基层党组织开始时间" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="基层党组织结束时间" title="基层党组织结束时间" lay-skin="primary"><br>
+                <input  type="checkbox" name="informationPresent"  value="行政组职务" title="行政组职务" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="行政组开始时间" title="行政组开始时间" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="行政组结束时间" title="行政组结束时间" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="关工委工作职务" title="关工委工作职务" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="关工委工作职务开始时间" title="关工委工作职务开始时间" lay-skin="primary"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input  type="checkbox" name="informationPresent"  value="关工委工作职务结束时间" title="关工委工作职务结束时间" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="督导组成员" title="督导组成员" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="督导组成员开始时间" title="督导组成员开始时间" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="督导组成员结束时间" title="督导组成员结束时间" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="特邀党建组织员" title="特邀党建组织员" lay-skin="primary">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input  type="checkbox" name="informationPresent"  value="特邀党建组织员开始时间" title="特邀党建组织员开始时间" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="特邀党建组织员结束时间" title="特邀党建组织员结束时间" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="老年文体社团职务" title="老年文体社团职务" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="老年文体社团职务开始时间" title="老年文体社团职务开始时间" lay-skin="primary">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input  type="checkbox" name="informationPresent"  value="老年文体社团职务结束时间" title="老年文体社团职务结束时间" lay-skin="primary">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label " style="width: 140px"> 5.联系信息板块:</label>
+            <div class="layui-input-block">
+                <input lay-filter="selectAll5" type="checkbox" name="nformationContact"  value="begin" title="全选" lay-skin="primary">
+                <input  type="checkbox" name="informationContact"  value="家庭住址" title="家庭住址" lay-skin="primary">
+                <input  type="checkbox" name="informationContact"  value="家庭电话" title="家庭电话" lay-skin="primary">
+                <input  type="checkbox" name="informationContact"  value="手机号码" title="手机号码" lay-skin="primary">
+                <input  type="checkbox" name="informationContact"  value="子女电话" title="子女电话" lay-skin="primary">
+                <input  type="checkbox" name="informationContact"  value="其他联系电话" title="其他联系电话" lay-skin="primary">
+                <input  type="checkbox" name="informationContact"  value="电子邮件" title="电子邮件" lay-skin="primary">
+                <input  type="checkbox" name="informationContact"  value="QQ" title="QQ" lay-skin="primary">
+                <input  type="checkbox" name="informationContact"  value="微信" title="微信" lay-skin="primary">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label " style="width: 140px"> 6.备注：</label>
+            <div class="layui-input-block">
+                <input lay-filter="selectAll6" type="checkbox" name="nformationSupplement"  value="begin" title="全选" lay-skin="primary">
+                <input  type="checkbox" name="informationSupplement"  value="配偶情况" title="配偶情况" lay-skin="primary">
+                <input  type="checkbox" name="informationSupplement"  value="子女情况" title="子女情况" lay-skin="primary">
+                <input  type="checkbox" name="informationSupplement"  value="健在情况" title="健在情况" lay-skin="primary">
+                <input  type="checkbox" name="informationSupplement"  value="其他情况" title="其他情况" lay-skin="primary">
+            </div>
+        </div>
+        <input class="layui-btn layui-btn-big" type="submit" value="excel表模板下载">
     </form>
 </div>
 </body>

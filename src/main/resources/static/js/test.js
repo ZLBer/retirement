@@ -114,7 +114,7 @@ function generateExcelBody() {
 function addCheckBox(element,array,func) {
     var i;
     for (i=0;i<array.length;i++) {
-        element.append(array[i].title + "<input type='checkbox' name='table-field-option' value='" + i + "' checked>&nbsp;&nbsp;&nbsp;")
+        element.append( "<div class='layui-col-md2'><input type='checkbox' title='"+array[i].title +"' lay-skin='primary' name='table-field-option' value='" + i + "' checked></div>")
     }
     var inputs = element.children("input");
     for (i=0;i<inputs.length;i++){
@@ -123,7 +123,7 @@ function addCheckBox(element,array,func) {
 }
 
 /**
- * 依照复选框改变表格列选项
+ * 依照复选框改变表格列选项0000
  */
 function updateTableOption() {
     if (!verifiedData()){
@@ -339,7 +339,7 @@ function getData(element,url) {
 function addRadio(element,array,func) {
     var i;
     for (i=0;i<array.length;i++) {
-        element.append(array[i].title + "<input type='radio' name='graphic-x-option' value='" + i + "'>&nbsp;&nbsp;&nbsp;")
+        element.append( "<div class='layui-col-md2'><input type='radio'  title='"+array[i].title +"' name='graphic-x-option' value='" + i + "'></div>")
     }
     var inputs = element.children("input");
     for (i=0;i<inputs.length;i++){

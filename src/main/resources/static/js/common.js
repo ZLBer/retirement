@@ -9,18 +9,145 @@ $(function () {
     layui.use('element',function () {
         element = layui.element;
     })
-    // layui.use('table', function(){
-    //     table = layui.table;
-    // });
+    layui.use('form',function () {
+        var form = layui.form;
+        form.render();
+        form.on('submit(demo1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url:'/admin/addPerson',
+                contentType:'application/json',
+                data:JSON.stringify(data.field) ,
+                success: function(data){
+                    layer.msg('添加成功',{icon:1,time:time})
+                },
+                error: function(xhr, type){
+                    layer.msg('添加失败',{icon:1,time:time})
+                }
+            })
+            return false;
+        });
+           form.on('checkbox(selectAll1)', function(data){
+               console.log(data.elem)
+               var child = $(data.elem).parents('div').find(' input[name="informationBasic"]');
+               child.each(function(index, item){
+                   item.checked = data.elem.checked;
+               });
+               form.render('checkbox');
+               layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+           });
+        form.on('checkbox(selectAll2)', function(data){
+            console.log(data.elem)
+            var child = $(data.elem).parents('div').find(' input[name="informationPolitics"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+            form.render('checkbox');
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+        form.on('checkbox(selectAll3)', function(data){
+            console.log(data.elem)
+            var child = $(data.elem).parents('div').find(' input[name="informationOriginal"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+            form.render('checkbox');
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+        form.on('checkbox(selectAll4)', function(data){
+            console.log(data.elem)
+            var child = $(data.elem).parents('div').find(' input[name="informationPresent"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+            form.render('checkbox');
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+        form.on('checkbox(selectAll5)', function(data){
+            console.log(data.elem)
+            var child = $(data.elem).parents('div').find(' input[name="informationContact"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+            form.render('checkbox');
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+        form.on('checkbox(selectAll6)', function(data){
+            console.log(data.elem)
+            var child = $(data.elem).parents('div').find(' input[name="informationSupplement"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+            form.render('checkbox');
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+    })
+    layui.use('table', function(){
+        table = layui.table;
+    });
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#birthday'//指定元素
+        });
+        laydate.render({
+            elem: '#joinpartyTime'
+        });
+        laydate.render({
+            elem:'#conversionTime'
+        });
+        laydate.render({
+            elem:'#timeWork'
+        });
+        laydate.render({
+            elem:'#timeRetirement'
+        });
+        laydate.render({
+            elem:'#timeBasicparty'
+        });
+        laydate.render({
+            elem:'#endtimeBasicparty'
+        });
+        laydate.render({
+            elem:'#timeAdministration'
+        });
+        laydate.render({
+            elem:'#endtimeAdministration'
+        });
+        laydate.render({
+            elem:'#timeCommittee'
+        });
+        laydate.render({
+            elem:'#endtimeCommittee'
+        });
+        laydate.render({
+            elem:'#timeSteering'
+        });
+        laydate.render({
+            elem:'#endtimeSteering'
+        });
+        laydate.render({
+            elem:'#timeOrganization'
+        });
+        laydate.render({
+            elem:'#endtimeOrganization'
+        });
+        laydate.render({
+            elem:'#timeCorporation'
+        });
+        laydate.render({
+            elem:'#endtimeCorporation'
+        });
+    });
     bindAjaxSubmitTo($("#modifyPwd>#submit"),"/modifyPwd");
     bindAjaxSubmitTo($("#personalInfo>#submit"),"/student/perfectPersonalInfo");
     bindAjaxSubmitTo($("#addSubject>#submit"),"/teacher/saveSubject");
-    seletAll($("#selectAll1"));
-    seletAll($("#selectAll2"));
-    seletAll($("#selectAll3"));
-    seletAll($("#selectAll4"));
-    seletAll($("#selectAll5"));
-    seletAll($("#selectAll6"));
     progressbar();
     //bindAjaxSubmitTo($("#test>#submit"),"/student/dotest");
 });
@@ -62,6 +189,7 @@ function seletAll(element){
         }
     })
 }
+
 function progressbar() {
     var time = 1500;
 

@@ -7,7 +7,7 @@
 <!--/*@thymesVar id="user" type="test.domain.Studentlogin"*/-->
 <div th:fragment="header">
     <!--/*@thymesVar id="templateDir" type="java.lang.String"*/-->
-    <h1>Hello, your id is <span th:text="${session.user.studentId}">ID</span> and your type is <span th:text="${session.templateDir}">TYPE</span></h1>
+    <h1>, your id is <span th:text="$Hello{session.user.studentId}">ID</span> and your type is <span th:text="${session.templateDir}">TYPE</span></h1>
 </div>
 </body>
 </html>

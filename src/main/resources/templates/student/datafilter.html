@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="css/layui.css">
 <head>
     <title>Title</title>
 </head>
+<style>
+    button{
+        background: transparent; /*完全透明*/
+    }
+</style>
 <body>
 <div th:fragment="filter(title,options,idValue,name)" class="data-filter" id="politics-info" th:attr="id=${idValue}">
     <!--/*@thymesVar id="title" type="java.lang.String"*/-->
+
     <h3 th:text="${title}">政治面貌信息</h3> <br>
-    <button class="add-field" onclick="add(this)">添加查询字段</button>
-    <button class="remove-field" onclick="removeS(this)">删除查询字段</button>
-    <br>
-    <div class="selectors-and-inputs">
+
+       <button style="background: transparent; border: none" class="add-field layui-btn-small" onclick="add(this)"><i class="layui-icon">&#xe61f;</i><!--添加查询字段--></button>
+        <button style="background: transparent; border: none" class="remove-field" onclick="removeS(this)"><i class="layui-icon">&#x1007;</i><!--删除查询字段--></button>
+<br>
+    <div class="selectors-and-inputs layui-form" >
         查询字段：
-        <select onchange="bindInputNameWithSelectors(this)">
-            <th:block th:replace="${options}"/>
+       <div class="layui-inline">
+        <select onchange="bindInputNameWithSelectors(this)" >
+            <th:block th:replace="${options}" />
         </select>
-        <input type="text" th:attr="name=${name}">
+       </div>
+        <div class="layui-inline">
+        <input class="layui-input" style="width: 200px" type="text" th:attr="name=${name}">
+        </div>
         匹配方式:
-        <select th:attr="name=(${name}+'Type')">
-            <option value="0">精准</option>
+        <div class="layui-inline">
+        <select th:attr="name=(${name}+'Type')"lay-verify="">
+            <option value="0" >精准</option>
             <option value="1">模糊</option>
             <option value="2">大于</option>
             <option value="3">小于</option>
             <option value="4">之间</option>
         </select>
+        </div>
         <span>或者</span>
-        <input type="text" th:attr="name=(${name}+'2')">
+        <div class="layui-inline">
+        <input class="layui-input" style="width: 200px" type="text" th:attr="name=(${name}+'2')">
+        </div>
         匹配方式:
+        <div class="layui-inline">
         <select th:attr="name=(${name}+'Type2')">
             <option value="0">精准</option>
             <option value="1">模糊</option>
@@ -34,6 +51,7 @@
             <option value="3">小于</option>
             <option value="4">之间</option>
         </select>
+        </div>
     </div>
 </div>
 </body>

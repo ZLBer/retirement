@@ -8,24 +8,28 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="/layui/layui.js"></script>
     <script src="/Echarts/echarts.js"></script>
-    <link rel="stylesheet" href="/layui/css/layui.css">
+   <link rel="stylesheet" href="/layui/css/layui.css">
+    <!--<link rel="stylesheet" href="css/layui.css">-->
 
     <th:block th:replace="${scripts}"/>
     <!--/* Per-page placeholder for additional links */-->
     <th:block th:replace="${links}" />
+<style>
 
+</style>
 </head>
 <body>
 <!--footer-->
 <div th:fragment="common_footer">
-    Copyright@山东农业大学-英杰工作室
+  <center > Copyright@山东农业大学-英杰工作室</center>
 </div>
 
 <div th:fragment="common_left(items)">
-
-    <div class="item"><a href="/gotoModifyPwd">修改密码</a></div>
+<div class="layui-side-scroll">
+    <div class="item layui-nav-item"><a href="/gotoModifyPwd">修改密码</a></div>
 
     <th:block th:replace="${items}"></th:block>
+</div>
 </div>
 
 </body>

@@ -15,14 +15,18 @@
     min-height: 550px;
     width: 19.5%;
     float: left;
-    background-color: #f7e1b5;
+    background-color: gray;
+    top:0 !important;
+    position: static !important;
 }
 .right{
+    top:0 !important;
     overflow: scroll;
     min-height: 550px;
     float: right;
-    width: 80%;
-    background-color: #fabeca;
+   /* width: 80%;
+    background-color: #8D8D8D;*/
+
 }
 .body{
     min-width: 1240px;
@@ -30,4 +34,30 @@
     margin-top: 5px;
     margin-bottom: 5px;
     min-height: 550px;
+
+
+    line-height: 24px;
+    font: 14px Helvetica Neue,Helvetica,PingFang SC,微软雅黑,Tahoma,Arial,sans-serif;
+    font-weight: normal;
+    line-height: normal;
+}
+.layui-input, .layui-select, .layui-textarea {
+    border-radius: 8px;
+    line-height: 2.0;
+}
+.layui-form-select .layui-input {
+    padding-right: 0px;
+}
+.layui-body
+{
+    padding-left: 10px;
+}
+.layui-form-checkbox[lay-skin="primary"] span {
+    float: right;
+    padding-right: 15px;
+    line-height: 28px;
+}
+.layui-layout-admin .layui-logo
+{
+    font-size: 26px;
 }
