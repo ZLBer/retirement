@@ -3,60 +3,83 @@
 <head th:include="base :: common_header(~{::title},~{::link},~{::script})">
     <title>Login</title>
     <link rel="stylesheet" href="/css/main.css">
-    <style>
-    </style>
 </head>
-<body class="layui-bg-black">
-
-<div style="height:28px;width: 100%;" class="layui-bg-black" >
-    <div style="position: absolute; right: 60px; top: 8px;">
-        <i class="" style="font-size: 27px; color:#F6F6F6; ">
-            离退休人员查询系统
-        </i>
+<body class="layui-bg-gray">
+<style>
+    .header{
+        width: 100%;
+        position: absolute;
+        top: 0;
+        height: 55px;
+    }
+    .footer{
+        text-align: center;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        height: 75px;
+    }
+    .login-form{
+        width: 350px;
+        margin:0 auto;
+    }
+    .title{
+        float: left;
+        margin-left: 80px;
+        font-size: 35px;
+        font-family: "微软雅黑 Light";
+    }
+    .copyright{
+        position: relative;
+        margin-top: 5px;
+        font-size: 14px;
+    }
+</style>
+    <div class="layui-bg-black header">
+        <span class="title">离退休人员查询系统</span>
     </div>
-</div>
-<br><br>
-<div class="layui-container layui-bg-gray" style="width: 100%; height: 430px;">
-
-    <div class="layui-row "></div>
-    <br><br><br>
-    <div class="layui-row layui-col-space30 ">
-        <div class="layui-col-md4  layui-col-md-offset4 layui-bg-gray" style=" border-color:#e2e2e2 ">
+    <div style="padding-top: 8%;">
+        <div class="login-form" style=" border-color:#e2e2e2 ">
             <div class="layui-icon" style="text-align: center;font-size: 23px; color: #5FB878; "><i class="layui-icon" style="color: #5FB878; font-size: 23px">&#xe612; </i>账户登录</div>
-            <hr>
+            <br><br><br>
+            <br>
             <form action="validate" method="post" class="layui-form">
-                    <div class="layui-form-item"><br>
-                          <label class="layui-form-label">用户名：</label>
-                             <div class="layui-input-inline">
-                              <input type="text" name="username" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
-                             </div>
-                     </div>
-                    <div class="layui-form-item">
-                         <label class="layui-form-label">密码：</label>
-                            <div class="layui-input-inline">
-                                <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
-                                <div class="layui-anim layui-anim-up" th:text="${#strings.isEmpty(errMsg)?'':errMsg}" style="color: darkred ;font-size: 15px; width: 100px;" >错误信息</div>
-                            </div>
-                              <!--<div class="layui-form-mid layui-word-aux">辅助文字</div>-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户名：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
                     </div>
-                     <div class="layui-form-item">
-                         <label class="layui-form-label">用户类型:</label>
-                             <div class="layui-input-block">
-                               <input type="radio" name="type" value="1" title="普通用户" checked="true">
-                                  <input type="radio" name="type" value="2" title="管理员">
-                              </div>
-                     </div>
-                     <div class="layui-input-block">
-                           <button class="layui-btn layui-btn-small " style="width: 100%; position: absolute; right: 50px" type="submit">登录</button>
-                     </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">密码：</label>
+                    <div class="layui-input-inline">
+                        <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        <div class="layui-anim layui-anim-up" th:text="${#strings.isEmpty(errMsg)?'':errMsg}"
+                             style="color: darkred ;font-size: 15px; width: 100px;">错误信息
+                        </div>
+                    </div>
+                    <!--<div class="layui-form-mid layui-word-aux">辅助文字</div>-->
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户类型:</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="type" value="1" title="普通用户" checked="true">
+                        <input type="radio" name="type" value="2" title="管理员">
+                    </div>
+                </div>
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-small " style="width: 100%; position: absolute; right: 50px"
+                            type="submit">登录
+                    </button>
+                </div>
             </form>
         </div>
-        <br>
     </div>
-</div>
-<div style="position: absolute; right: 50px;">Copyright@山东农业大学-英杰工作室</div>
+    <div class="layui-bg-black footer">
+        <span class="copyright">Copyright@山东农业大学-英杰工作室</span>
+    </div>
 <script>
-    layui.use('form',function () {
+    layui.use('form', function () {
         var form = layui.form;
     })
 </script>

@@ -9,7 +9,6 @@
             <a class="layui-btn layui-btn-mini" lay-event="detail">详细信息</a>
             <a class="layui-btn layui-btn-mini" lay-event="download">下载</a>
         </script>
-
         <div id="test">
             <!--<form action="/student/dotest" method="post">-->
             <div th:replace="student/datafilter::filter('基本信息',~{this::option[@field='1']},'basic','category')">
@@ -76,27 +75,24 @@
             <br>
             <button id="submit" class="layui-btn layui-btn-primary"><i class="layui-icon">查询&#xe615;</i></button>
             <button id="export-to-excel" class="layui-btn layui-btn-primary"><i class="layui-icon">导出当前数据&#xe601;</i></button>
+            <br><br><br>
             <!--</form>-->
         </div>
     <form class="layui-form">
         <div id="data">
             <div id="data-table-filter" class="layui-row">
-
             </div>
             <table id="dataTable" lay-filter="test" ></table>
-
         </div>
     </form>
 
-        <form class="layui-form">
-
+    <form class="layui-form">
         <div id="graphic">
-
             <div id="graphic-x" class="layui-row">
             </div>
             <div id="main" style="width: 600px;height:400px;"></div>
         </div>
-        </form>
+    </form>
         <script src="/js/JSONToExcel.js"></script>
         <script src="/js/test.js"></script>
     </div>

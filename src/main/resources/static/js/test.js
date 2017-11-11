@@ -4,7 +4,28 @@ var removeButtons;
 /**
  * 绑定事件
  */
+
 $(function () {
+    layui.use('form',function () {
+        form = layui.form;
+        form.on('checkbox(table-checkbox)', function(data){
+            updateTableOption()
+        });
+        form.on('select(field-name-select)', function(data){
+
+            // var name = $(element).prop("value");
+            var name = data.value;
+            var inputs = $(data.elem).parents(".selectors-and-inputs").find(".field-input");
+            $(inputs[0]).prop("name",name);
+            $(inputs[1]).prop("name",name+"2");
+            var selects = $(data.elem).parents(".selectors-and-inputs").find(".select2");
+            $(selects[0]).prop("name",name+"Type");
+            $(selects[1]).prop("name",name+"Type2");
+        });
+        form.on('radio(graphic-radio)', function(data){
+            updateGraphic()
+        });
+    });
     // initTableOptions();
     getSelectorsAndInputs();
     bindOnAddAndRemoveButtion();
@@ -43,7 +64,8 @@ function bindOnAddAndRemoveButtion() {
 function add(element) {
     for (var i=0;i<addButtons.length;i++){
         if (addButtons[i]===element){
-            $(addButtons[i]).parent().append(selectorAndInputs[i].clone());
+            $(addButtons[i]).parents('.data-filter').append(selectorAndInputs[i].clone());
+            form.render();
             return;
         }
     }
@@ -51,7 +73,7 @@ function add(element) {
 function removeS(element) {
     for (var i=0;i<removeButtons.length;i++){
         if (removeButtons[i]===element){
-            $(element).siblings(".selectors-and-inputs:last").remove();
+            $(element).parent().siblings(".selectors-and-inputs:last").remove();
             return;
         }
     }
@@ -114,9 +136,9 @@ function generateExcelBody() {
 function addCheckBox(element,array,func) {
     var i;
     for (i=0;i<array.length;i++) {
-        element.append( "<div class='layui-col-md2'><input type='checkbox' title='"+array[i].title +"' lay-skin='primary' name='table-field-option' value='" + i + "' checked></div>")
+        element.append( "<div class='layui-col-md2'><input lay-filter='table-checkbox' type='checkbox' title='"+array[i].title +"' lay-skin='primary' name='table-field-option' value='" + i + "' checked></div>")
     }
-    var inputs = element.children("input");
+    var inputs = element.find("input");
     for (i=0;i<inputs.length;i++){
         $(inputs[i]).change(func);
     }
@@ -308,8 +330,8 @@ layui.use('table', function(){
 function getData(element,url) {
     var time = 1500;
     element.on("click",function () {
-        var inputs = element.parent().find("input");
-        var selectors = inputs.next();
+        var inputs = element.parent().find(".field-input");
+        var selectors = inputs.parent().next().children('select');
         var param = {};
         var input;
         var i;
@@ -339,9 +361,9 @@ function getData(element,url) {
 function addRadio(element,array,func) {
     var i;
     for (i=0;i<array.length;i++) {
-        element.append( "<div class='layui-col-md2'><input type='radio'  title='"+array[i].title +"' name='graphic-x-option' value='" + i + "'></div>")
+        element.append( "<div class='layui-col-md2'><input type='radio' lay-filter='graphic-radio' title='"+array[i].title +"' name='graphic-x-option' value='" + i + "'></div>")
     }
-    var inputs = element.children("input");
+    var inputs = element.find("input");
     for (i=0;i<inputs.length;i++){
         $(inputs[i]).change(func);
     }

@@ -1,6 +1,7 @@
 var layer;
 var element;
 var table;
+var form;
 $(function () {
     //调用layer模块
     layui.use('layer',function () {
@@ -10,7 +11,7 @@ $(function () {
         element = layui.element;
     })
     layui.use('form',function () {
-        var form = layui.form;
+        form = layui.form;
         form.render();
         form.on('submit(demo1)', function(data){
             layer.alert(JSON.stringify(data.field), {
@@ -31,15 +32,15 @@ $(function () {
             })
             return false;
         });
-           form.on('checkbox(selectAll1)', function(data){
-               console.log(data.elem)
-               var child = $(data.elem).parents('div').find(' input[name="informationBasic"]');
-               child.each(function(index, item){
-                   item.checked = data.elem.checked;
-               });
-               form.render('checkbox');
-               layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+       form.on('checkbox(selectAll1)', function(data){
+           console.log(data.elem)
+           var child = $(data.elem).parents('div').find(' input[name="informationBasic"]');
+           child.each(function(index, item){
+               item.checked = data.elem.checked;
            });
+           form.render('checkbox');
+           layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+       });
         form.on('checkbox(selectAll2)', function(data){
             console.log(data.elem)
             var child = $(data.elem).parents('div').find(' input[name="informationPolitics"]');
