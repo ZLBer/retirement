@@ -1,5 +1,6 @@
 package test.service.impl;
 
+import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.stereotype.Service;
 import test.domain.*;
 import test.mapper.*;
@@ -577,5 +578,99 @@ public class AdminService implements IAdminService {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public String saveByall(InformationAll informationAll) {
+        String idNumber = informationAll.getIdNumber();
+        InformationBasicExample example = new InformationBasicExample();
+        InformationBasicExample.Criteria criteria = example.createCriteria();
+        criteria.andIdNumberEqualTo(idNumber);
+        List<InformationBasic> informationBasic1 = informationBasicMapper.selectByExample(example);
+        if (informationBasic1.size() > 0) {
+            return "已存在该人员，请核对后再添加";
+        }
+        InformationBasic informationBasic = new InformationBasic();
+        InformationPolitics informationPolitics = new InformationPolitics();
+        InformationPresent informationPresent = new InformationPresent();
+        InformationOriginal informationOriginal = new InformationOriginal();
+        InformationSupplement informationSupplement = new InformationSupplement();
+        InformationContact informationContact = new InformationContact();
+
+
+
+        informationBasic.setBirthday(informationAll.getBirthday());
+        informationBasic.setCategory(informationAll.getCategory());
+        informationBasic.setIdNumber(informationAll.getIdNumber());
+        informationBasic.setName(informationAll.getName());
+        informationBasic.setNation(informationAll.getNation());
+        informationBasic.setNativePlace(informationAll.getNativePlace());
+        informationBasic.setSex(informationAll.getSex());
+        informationBasicMapper.insert(informationBasic);
+        informationBasic1 = informationBasicMapper.selectByExample(example);
+       int id= informationBasic1.get(0).getId();
+        informationPolitics.setId(id);
+        informationPolitics.setPoliticsStatus(informationAll.getPoliticsStatus());
+        informationPolitics.setConversionTime(informationAll.getConversionTime());
+        informationPolitics.setJoinpartyTime(informationAll.getJoinpartyTime());
+
+        informationOriginal.setId(id);
+        informationOriginal.setEducationLevel(informationAll.getEducationLevel());
+        informationOriginal.setIdentity(informationAll.getIdentity());
+        informationOriginal.setOrginDutiesLevel(informationAll.getOrginDutiesLevel());
+        informationOriginal.setOriginDuties(informationAll.getOriginDuties());
+        informationOriginal.setOriginProfessional(informationAll.getOriginProfessional());
+        informationOriginal.setOriginWorkplace(informationAll.getOriginWorkplace());
+        informationOriginal.setTimeRetirement(informationAll.getTimeRetirement());
+        informationOriginal.setTimeWork(informationAll.getTimeWork());
+        informationOriginal.setTreatment(informationAll.getTreatment());
+        informationOriginal.setOriginProfessionalLevel(informationAll.getOriginProfessionalLevel());
+
+        informationPresent.setId(id);
+                informationPresent.setPartyBranch(informationAll.getPartyBranch());
+        informationPresent.setAdministration(informationAll.getAdministration());
+                informationPresent.setBasicpartyDuties(informationAll.getAdministrationDuties());
+        informationPresent.setEndtimeBasicparty(informationAll.getEndtimeBasicparty());
+                informationPresent.setTimeBasicparty(informationAll.getTimeBasicparty());
+        informationPresent.setAdministrationDuties(informationAll.getPoliticsStatus());
+                informationPresent.setEndtimeAdministration(informationAll.getEndtimeAdministration());
+        informationPresent.setTimeAdministration(informationAll.getTimeAdministration());
+                informationPresent.setCommitteeDuties(informationAll.getCommitteeDuties());
+        informationPresent.setTimeCommittee(informationAll.getTimeCommittee());
+                informationPresent.setEndtimeCommittee(informationAll.getEndtimeCommittee());
+        informationPresent.setSteeringMember(informationAll.getSteeringMember());
+                informationPresent.setTimeSteering(informationAll.getTimeSteering());
+        informationPresent.setEndtimeSteering(informationAll.getEndtimeSteering());
+                informationPresent.setOrganizationMember(informationAll.getOrganizationMember());
+        informationPresent.setTimeOrganization(informationAll.getTimeOrganization());
+                informationPresent.setEndtimeOrganization(informationAll.getEndtimeOrganization());
+        informationPresent.setCorporationDuties(informationAll.getCorporationDuties());
+                informationPresent.setTimeCorporation(informationAll.getTimeCorporation());
+        informationPresent.setEndtimeCorporation(informationAll.getEndtimeCorporation());
+
+        informationContact.setId(id);
+        informationContact.setEmail(informationAll.getEmail());
+        informationContact.setHomeAddress(informationAll.getHomeAddress());
+                informationContact.setPhoneChildren(informationAll.getPhoneChildren());
+                informationContact.setPhoneHome(informationAll.getPhoneHome());
+        informationContact.setPhoneOwn(informationAll.getPhoneOwn());
+                informationContact.setPhoneOther(informationAll.getPhoneOther());
+        informationContact.setWechat(informationAll.getWechat());
+        informationContact.setWechat(informationAll.getWechat());
+        informationContact.setQq(informationAll.getQq());
+
+        informationSupplement.setId(id);
+        informationSupplement.setLivingCondition(informationAll.getLivingCondition());
+                informationSupplement.setSpouse(informationAll.getSpouse());
+        informationSupplement.setStatusChildren(informationAll.getStatusChildren());
+                informationSupplement.setStatusOther(informationAll.getStatusOther());
+
+    informationSupplementMapper.insert(informationSupplement);
+    informationContactMapper.insert(informationContact);
+    informationPresentMapper.insert(informationPresent);
+    informationOriginalMapper.insert(informationOriginal);
+    informationPoliticsMapper.insert(informationPolitics);
+
+        return "人员信息添加成功！";
     }
 }

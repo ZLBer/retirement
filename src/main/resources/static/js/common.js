@@ -14,9 +14,10 @@ $(function () {
         form = layui.form;
         form.render();
         form.on('submit(demo1)', function(data){
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
+            var time = 1500;
+            // layer.alert(JSON.stringify(data.field), {
+            //     title: '最终的提交信息'
+            // })
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
@@ -24,10 +25,10 @@ $(function () {
                 contentType:'application/json',
                 data:JSON.stringify(data.field) ,
                 success: function(data){
-                    layer.msg('添加成功',{icon:1,time:time})
+                    layer.msg(data.msg,{icon:1,time:time})
                 },
                 error: function(xhr, type){
-                    layer.msg('添加失败',{icon:1,time:time})
+                    layer.msg('添加失败,请核对数据格式。',{icon:1,time:time})
                 }
             })
             return false;

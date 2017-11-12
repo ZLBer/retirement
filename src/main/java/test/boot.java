@@ -23,7 +23,7 @@ public class boot {
 
     //DataSource配置
     @Bean
-    @ConfigurationProperties("jdbc")
+    @ConfigurationProperties("spring.datasource.tomcat")
     public DataSource dataSource() {
         return new org.apache.tomcat.jdbc.pool.DataSource();
     }

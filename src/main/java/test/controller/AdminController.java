@@ -147,7 +147,13 @@ public class AdminController {
     public Result addPerson(@RequestBody InformationAll informationAll){
         System.out.println(informationAll.getName());
         System.out.println(informationAll.getEmail());
-        Result result = new Result(1, "", "添加成功");
+        String r=adminService.saveByall(informationAll);
+        Result result = new Result(1, "", r);
         return  result;
+    }
+    @RequestMapping(path = "/gomodifyPersonInfo")
+    public String gomodify(Model model){
+        model.addAttribute("bodyRightContent", "admin/modifyPersonInfo");
+        return "main";
     }
 }
