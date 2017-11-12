@@ -5,94 +5,95 @@
 </head>
 <body>
     <div th:fragment="mainContent" class="layui-fluid">
-        <script type="text/html" id="barDemo">
-            <a class="layui-btn layui-btn-mini" lay-event="detail">详细信息</a>
-            <a class="layui-btn layui-btn-mini" lay-event="download">下载</a>
-        </script>
-        <div id="test">
-            <!--<form action="/student/dotest" method="post">-->
-            <div th:replace="student/datafilter::filter('基本信息',~{this::option[@field='1']},'basic','category')">
-                <option field="1" value="category">人员类别</option>
-                <option field="1" value="name">姓名</option>
-                <option field="1" value="sex">性别</option>
-                <option field="1" value="nation">民族</option>
-                <option field="1" value="nativePlace">籍贯</option>
-                <option field="1" value="birthday">出生年月</option>
-                <option field="1" value="idNumber">身份证号</option>
+        <div th:fragment="table">
+            <script type="text/html" id="barDemo">
+                <a class="layui-btn layui-btn-mini" lay-event="detail">详细信息</a>
+                <a class="layui-btn layui-btn-mini" lay-event="download">下载</a>
+            </script>
+            <div id="test">
+                <!--<form action="/student/dotest" method="post">-->
+                <div th:replace="student/datafilter::filter('基本信息',~{this::option[@field='1']},'basic','category')">
+                    <option field="1" value="category">人员类别</option>
+                    <option field="1" value="name">姓名</option>
+                    <option field="1" value="sex">性别</option>
+                    <option field="1" value="nation">民族</option>
+                    <option field="1" value="nativePlace">籍贯</option>
+                    <option field="1" value="birthday">出生年月</option>
+                    <option field="1" value="idNumber">身份证号</option>
+                </div>
+                <div th:replace="student/datafilter::filter('政治面貌信息',~{this::option[@field='2']},'politics','politicsStatus')">
+                    <option field="2" value="politicsStatus">政治面貌</option>
+                    <option field="2" value="joinpartTime">入党时间</option>
+                    <option field="2" value="conversionTime">转正时间</option>
+                </div>
+                <div th:replace="student/datafilter::filter('原工作信息',~{this::option[@field='3']},'original','identity')">
+                    <option field="3" value="identity">身份</option>
+                    <option field="3" value="educationLevel">文化程度</option>
+                    <option field="3" value="originWorkplace">原单位</option>
+                    <option field="3" value="originDuties">原职务</option>
+                    <option field="3" value="originDutiesLevel">原职务级别</option>
+                    <option field="3" value="originProfessional">原职称</option>
+                    <option field="3" value="originProfessionalLevel">原职称级别</option>
+                    <option field="3" value="treatment">享受待遇</option>
+                    <option field="3" value="timeWork">参加工作时间</option>
+                    <option field="3" value="timeRetirement">离退休时间</option>
+                </div>
+                <div th:replace="student/datafilter::filter('现工作信息',~{this::option[@field='4']},'present','partyBranch')">
+                    <option field="4" value="partyBranch">党支部名称</option>
+                    <option field="4" value="administration">行政组</option>
+                    <option field="4" value="basicpartyDuties">基层党组织职务</option>
+                    <option field="4" value="timeBasicparty">基层党组织职务开始时间</option>
+                    <option field="4" value="endtimeBasicparty">基层党组织职务结束时间</option>
+                    <option field="4" value="administrationDuties">行政组职务</option>
+                    <option field="4" value="timeAdministration">行政组职务开始时间</option>
+                    <option field="4" value="endtimeAdministraion">行政组职务结束时间</option>
+                    <option field="4" value="committeeDuties">关工委工作职务</option>
+                    <option field="4" value="timeCommittee">关工委工作职务开始时间</option>
+                    <option field="4" value="endtimeCommittee">关工委工作职务结束时间</option>
+                    <option field="4" value="steeringMember">督导组成员</option>
+                    <option field="4" value="timeSteering">督导组成员开始时间</option>
+                    <option field="4" value="endtimeSteering">督导组成员结束时间</option>
+                    <option field="4" value="organizationMember">特邀党建组织成员</option>
+                    <option field="4" value="timeOrganization">特邀党建组织成员开始时间</option>
+                    <option field="4" value="endtimeOrganization">特邀党建组织成员结束时间</option>
+                    <option field="4" value="corporationDuties">老年文化社团职务</option>
+                    <option field="4" value="timeCorporation">老年文化社团职务开始时间</option>
+                    <option field="4" value="endtimeCorporation">老年文化社团职务结束时间</option>
+                </div>
+                <div th:replace="student/datafilter::filter('联系信息',~{this::option[@field='5']},'contact','homeAddress')">
+                    <option field="5" value="homeAddress">家庭住址</option>
+                    <option field="5" value="phoneHome">家庭电话</option>
+                    <option field="5" value="phoneOwn">手机号码</option>
+                    <option field="5" value="phoneChildren">子女电话</option>
+                    <option field="5" value="phoneOther">其他联系电话</option>
+                </div>
+                <div th:replace="~{student/datafilter::filter('备注信息',~{this::option[@field='6']},'supplement','spouse')}">
+                    <option field="6" value="spouse">配偶情况</option>
+                    <option field="6" value="statusChildren">子女情况</option>
+                    <option field="6" value="timeDeath">去世时间</option>
+                    <option field="6" value="statusOther">其他情况</option>
+                </div>
+                <br>
+                <button id="submit" class="layui-btn layui-btn-primary"><i class="layui-icon">查询&#xe615;</i></button>
+                <button id="export-to-excel" class="layui-btn layui-btn-primary"><i class="layui-icon">导出当前数据&#xe601;</i></button>
+                <br><br><br>
+                <!--</form>-->
             </div>
-            <div th:replace="student/datafilter::filter('政治面貌信息',~{this::option[@field='2']},'politics','politicsStatus')">
-                <option field="2" value="politicsStatus">政治面貌</option>
-                <option field="2" value="joinpartTime">入党时间</option>
-                <option field="2" value="conversionTime">转正时间</option>
-            </div>
-            <div th:replace="student/datafilter::filter('原工作信息',~{this::option[@field='3']},'original','identity')">
-                <option field="3" value="identity">身份</option>
-                <option field="3" value="educationLevel">文化程度</option>
-                <option field="3" value="originWorkplace">原单位</option>
-                <option field="3" value="originDuties">原职务</option>
-                <option field="3" value="originDutiesLevel">原职务级别</option>
-                <option field="3" value="originProfessional">原职称</option>
-                <option field="3" value="originProfessionalLevel">原职称级别</option>
-                <option field="3" value="treatment">享受待遇</option>
-                <option field="3" value="timeWork">参加工作时间</option>
-                <option field="3" value="timeRetirement">离退休时间</option>
-            </div>
-            <div th:replace="student/datafilter::filter('现工作信息',~{this::option[@field='4']},'present','partyBranch')">
-                <option field="4" value="partyBranch">党支部名称</option>
-                <option field="4" value="administration">行政组</option>
-                <option field="4" value="basicpartyDuties">基层党组织职务</option>
-                <option field="4" value="timeBasicparty">基层党组织职务开始时间</option>
-                <option field="4" value="endtimeBasicparty">基层党组织职务结束时间</option>
-                <option field="4" value="administrationDuties">行政组职务</option>
-                <option field="4" value="timeAdministration">行政组职务开始时间</option>
-                <option field="4" value="endtimeAdministraion">行政组职务结束时间</option>
-                <option field="4" value="committeeDuties">关工委工作职务</option>
-                <option field="4" value="timeCommittee">关工委工作职务开始时间</option>
-                <option field="4" value="endtimeCommittee">关工委工作职务结束时间</option>
-                <option field="4" value="steeringMember">督导组成员</option>
-                <option field="4" value="timeSteering">督导组成员开始时间</option>
-                <option field="4" value="endtimeSteering">督导组成员结束时间</option>
-                <option field="4" value="organizationMember">特邀党建组织成员</option>
-                <option field="4" value="timeOrganization">特邀党建组织成员开始时间</option>
-                <option field="4" value="endtimeOrganization">特邀党建组织成员结束时间</option>
-                <option field="4" value="corporationDuties">老年文化社团职务</option>
-                <option field="4" value="timeCorporation">老年文化社团职务开始时间</option>
-                <option field="4" value="endtimeCorporation">老年文化社团职务结束时间</option>
-            </div>
-            <div th:replace="student/datafilter::filter('联系信息',~{this::option[@field='5']},'contact','homeAddress')">
-                <option field="5" value="homeAddress">家庭住址</option>
-                <option field="5" value="phoneHome">家庭电话</option>
-                <option field="5" value="phoneOwn">手机号码</option>
-                <option field="5" value="phoneChildren">子女电话</option>
-                <option field="5" value="phoneOther">其他联系电话</option>
-            </div>
-            <div th:replace="~{student/datafilter::filter('备注信息',~{this::option[@field='6']},'supplement','spouse')}">
-                <option field="6" value="spouse">配偶情况</option>
-                <option field="6" value="statusChildren">子女情况</option>
-                <option field="6" value="timeDeath">去世时间</option>
-                <option field="6" value="statusOther">其他情况</option>
-            </div>
-            <br>
-            <button id="submit" class="layui-btn layui-btn-primary"><i class="layui-icon">查询&#xe615;</i></button>
-            <button id="export-to-excel" class="layui-btn layui-btn-primary"><i class="layui-icon">导出当前数据&#xe601;</i></button>
-            <br><br><br>
-            <!--</form>-->
+            <form class="layui-form">
+                <div id="data">
+                    <div id="data-table-filter" class="layui-row">
+                    </div>
+                    <table id="dataTable" lay-filter="test" ></table>
+                </div>
+            </form>
         </div>
-    <form class="layui-form">
-        <div id="data">
-            <div id="data-table-filter" class="layui-row">
+        <form class="layui-form">
+            <div id="graphic">
+                <div id="graphic-x" class="layui-row">
+                </div>
+                <div id="main" style="width: 600px;height:400px;"></div>
             </div>
-            <table id="dataTable" lay-filter="test" ></table>
-        </div>
-    </form>
-
-    <form class="layui-form">
-        <div id="graphic">
-            <div id="graphic-x" class="layui-row">
-            </div>
-            <div id="main" style="width: 600px;height:400px;"></div>
-        </div>
-    </form>
+        </form>
         <script src="/js/JSONToExcel.js"></script>
         <script src="/js/test.js"></script>
     </div>

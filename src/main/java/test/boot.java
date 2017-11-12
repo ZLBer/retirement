@@ -21,7 +21,7 @@ import javax.sql.DataSource;
 public class boot {
     private static Logger logger = Logger.getLogger(boot.class);
 
-    //DataSource配置
+//    DataSource配置
     @Bean
     @ConfigurationProperties("spring.datasource.tomcat")
     public DataSource dataSource() {

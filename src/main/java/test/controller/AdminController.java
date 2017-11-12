@@ -151,7 +151,7 @@ public class AdminController {
         Result result = new Result(1, "", r);
         return  result;
     }
-    @RequestMapping(path = "/gomodifyPersonInfo")
+    @RequestMapping(path = "/goModifyPersonInfo")
     public String gomodify(Model model){
         model.addAttribute("bodyRightContent", "admin/modifyPersonInfo");
         return "main";
