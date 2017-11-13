@@ -145,8 +145,6 @@ public class AdminController {
     @ResponseBody
     @RequestMapping(path = "/addPerson")
     public Result addPerson(@RequestBody InformationAll informationAll){
-        System.out.println(informationAll.getName());
-        System.out.println(informationAll.getEmail());
         String r=adminService.saveByall(informationAll);
         Result result = new Result(1, "", r);
         return  result;
@@ -155,5 +153,21 @@ public class AdminController {
     public String gomodify(Model model){
         model.addAttribute("bodyRightContent", "admin/modifyPersonInfo");
         return "main";
+    }
+
+    @RequestMapping(path = "/updatePerson")
+    @ResponseBody
+    public Result update(@RequestBody InformationAll informationAll){
+        String r=adminService.updateByall(informationAll);
+        Result result = new Result(1, "", r);
+        return  result;
+    }
+    @RequestMapping(path = "/deletePerson")
+    @ResponseBody
+    public Result delete(HttpServletRequest request){
+        String id=request.getParameter("id");
+        String r=adminService.deleteById(Integer.parseInt(id));
+        Result result = new Result(1, "", r);
+        return  result;
     }
 }

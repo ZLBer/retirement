@@ -673,4 +673,114 @@ public class AdminService implements IAdminService {
 
         return "人员信息添加成功！";
     }
+
+    @Override
+    public String updateByall(InformationAll informationAll) {
+        int id = informationAll.getId();
+
+        InformationBasic informationBasic = new InformationBasic();
+        InformationPolitics informationPolitics = new InformationPolitics();
+        InformationPresent informationPresent = new InformationPresent();
+        InformationOriginal informationOriginal = new InformationOriginal();
+        InformationSupplement informationSupplement = new InformationSupplement();
+        InformationContact informationContact = new InformationContact();
+
+
+         informationBasic.setId(informationAll.getId());
+        informationBasic.setBirthday(informationAll.getBirthday());
+        informationBasic.setCategory(informationAll.getCategory());
+        informationBasic.setIdNumber(informationAll.getIdNumber());
+        informationBasic.setName(informationAll.getName());
+        informationBasic.setNation(informationAll.getNation());
+        informationBasic.setNativePlace(informationAll.getNativePlace());
+        informationBasic.setSex(informationAll.getSex());
+
+        informationPolitics.setId(id);
+        informationPolitics.setPoliticsStatus(informationAll.getPoliticsStatus());
+        informationPolitics.setConversionTime(informationAll.getConversionTime());
+        informationPolitics.setJoinpartyTime(informationAll.getJoinpartyTime());
+
+        informationOriginal.setId(id);
+        informationOriginal.setEducationLevel(informationAll.getEducationLevel());
+        informationOriginal.setIdentity(informationAll.getIdentity());
+        informationOriginal.setOrginDutiesLevel(informationAll.getOrginDutiesLevel());
+        informationOriginal.setOriginDuties(informationAll.getOriginDuties());
+        informationOriginal.setOriginProfessional(informationAll.getOriginProfessional());
+        informationOriginal.setOriginWorkplace(informationAll.getOriginWorkplace());
+        informationOriginal.setTimeRetirement(informationAll.getTimeRetirement());
+        informationOriginal.setTimeWork(informationAll.getTimeWork());
+        informationOriginal.setTreatment(informationAll.getTreatment());
+        informationOriginal.setOriginProfessionalLevel(informationAll.getOriginProfessionalLevel());
+
+        informationPresent.setId(id);
+        informationPresent.setPartyBranch(informationAll.getPartyBranch());
+        informationPresent.setAdministration(informationAll.getAdministration());
+        informationPresent.setBasicpartyDuties(informationAll.getAdministrationDuties());
+        informationPresent.setEndtimeBasicparty(informationAll.getEndtimeBasicparty());
+        informationPresent.setTimeBasicparty(informationAll.getTimeBasicparty());
+        informationPresent.setAdministrationDuties(informationAll.getPoliticsStatus());
+        informationPresent.setEndtimeAdministration(informationAll.getEndtimeAdministration());
+        informationPresent.setTimeAdministration(informationAll.getTimeAdministration());
+        informationPresent.setCommitteeDuties(informationAll.getCommitteeDuties());
+        informationPresent.setTimeCommittee(informationAll.getTimeCommittee());
+        informationPresent.setEndtimeCommittee(informationAll.getEndtimeCommittee());
+        informationPresent.setSteeringMember(informationAll.getSteeringMember());
+        informationPresent.setTimeSteering(informationAll.getTimeSteering());
+        informationPresent.setEndtimeSteering(informationAll.getEndtimeSteering());
+        informationPresent.setOrganizationMember(informationAll.getOrganizationMember());
+        informationPresent.setTimeOrganization(informationAll.getTimeOrganization());
+        informationPresent.setEndtimeOrganization(informationAll.getEndtimeOrganization());
+        informationPresent.setCorporationDuties(informationAll.getCorporationDuties());
+        informationPresent.setTimeCorporation(informationAll.getTimeCorporation());
+        informationPresent.setEndtimeCorporation(informationAll.getEndtimeCorporation());
+
+        informationContact.setId(id);
+        informationContact.setEmail(informationAll.getEmail());
+        informationContact.setHomeAddress(informationAll.getHomeAddress());
+        informationContact.setPhoneChildren(informationAll.getPhoneChildren());
+        informationContact.setPhoneHome(informationAll.getPhoneHome());
+        informationContact.setPhoneOwn(informationAll.getPhoneOwn());
+        informationContact.setPhoneOther(informationAll.getPhoneOther());
+        informationContact.setWechat(informationAll.getWechat());
+        informationContact.setWechat(informationAll.getWechat());
+        informationContact.setQq(informationAll.getQq());
+
+        informationSupplement.setId(id);
+        informationSupplement.setLivingCondition(informationAll.getLivingCondition());
+        informationSupplement.setSpouse(informationAll.getSpouse());
+        informationSupplement.setStatusChildren(informationAll.getStatusChildren());
+        informationSupplement.setStatusOther(informationAll.getStatusOther());
+
+        informationBasicMapper.updateByPrimaryKey(informationBasic);
+        informationSupplementMapper.updateByPrimaryKey(informationSupplement);
+        informationContactMapper.updateByPrimaryKey(informationContact);
+        informationPresentMapper.updateByPrimaryKey(informationPresent);
+        informationOriginalMapper.updateByPrimaryKey(informationOriginal);
+        informationPoliticsMapper.updateByPrimaryKey(informationPolitics);
+
+        return "人员信息更新成功！";
+    }
+
+    @Override
+    public String deleteById(int id) {
+        if(informationBasicMapper.selectByPrimaryKey(id)!=null){
+            informationBasicMapper.deleteByPrimaryKey(id);
+        }
+       if(informationPoliticsMapper.selectByPrimaryKey(id)!=null){
+           informationPoliticsMapper.deleteByPrimaryKey(id);
+       }
+       if(informationOriginalMapper.selectByPrimaryKey(id)!=null){
+           informationOriginalMapper.deleteByPrimaryKey(id);
+       }
+       if(informationPresentMapper.selectByPrimaryKey(id)!=null){
+           informationPresentMapper.deleteByPrimaryKey(id);
+        }
+        if(informationContactMapper.selectByPrimaryKey(id)!=null){
+           informationContactMapper.deleteByPrimaryKey(id);
+        }
+        if(informationSupplementMapper.selectByPrimaryKey(id)!=null){
+            informationSupplementMapper.deleteByPrimaryKey(id);
+        }
+        return "删除成功！";
+    }
 }

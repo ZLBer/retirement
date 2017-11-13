@@ -16,4 +16,6 @@ public interface IAdminService {
      void updateSave( List<List<String>> titles,List<String> record);
      void insertOrUpdateSave( List<List<String>> titles,List<String> record);
      String saveByall(InformationAll informationAll);
+     String updateByall(InformationAll informationAll);
+     String deleteById(int id);
 }

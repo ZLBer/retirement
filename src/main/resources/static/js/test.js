@@ -319,6 +319,21 @@ layui.use('table', function(){
             });*/
             window.location.href="download/"+obj.data.id;
         }
+        else if(layEvent==='delete'){
+            var id =obj.data.id;
+            alert(id);
+            $.ajax({
+                type: 'GET',
+                url:'/admin/deletePerson',
+                data:{ id:id},
+                success: function(data){
+                    layer.msg(data.msg,{icon:1,time:1500})
+                },
+                error: function(xhr, type){
+                    layer.msg('删除失败,请核对数据格式。',{icon:1,time:1500})
+                }
+            })
+        }
     });
 });
 /**

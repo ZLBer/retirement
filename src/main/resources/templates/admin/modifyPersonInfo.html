@@ -5,6 +5,11 @@
 </head>
 <body>
 <div th:fragment="mainContent" class="layui-fluid">
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-mini" lay-event="detail">详细信息</a>
+        <a class="layui-btn layui-btn-mini" lay-event="download">下载</a>
+        <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="delete">删除</a>
+    </script>
     <div th:replace="/student/test::table"></div>
     <script src="/js/JSONToExcel.js"></script>
     <script src="/js/test.js" th:src="@{/js/test.js}"></script>

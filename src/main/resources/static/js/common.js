@@ -2,8 +2,11 @@ var layer;
 var element;
 var table;
 var form;
+
+
 $(function () {
     //调用layer模块
+
     layui.use('layer',function () {
         layer = layui.layer;
     })
@@ -40,7 +43,7 @@ $(function () {
                item.checked = data.elem.checked;
            });
            form.render('checkbox');
-           layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+           // layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
        });
         form.on('checkbox(selectAll2)', function(data){
             console.log(data.elem)
@@ -49,7 +52,7 @@ $(function () {
                 item.checked = data.elem.checked;
             });
             form.render('checkbox');
-            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+            // layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
         });
         form.on('checkbox(selectAll3)', function(data){
             console.log(data.elem)
@@ -58,7 +61,7 @@ $(function () {
                 item.checked = data.elem.checked;
             });
             form.render('checkbox');
-            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+            // layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
         });
         form.on('checkbox(selectAll4)', function(data){
             console.log(data.elem)
@@ -67,7 +70,7 @@ $(function () {
                 item.checked = data.elem.checked;
             });
             form.render('checkbox');
-            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+            // layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
         });
         form.on('checkbox(selectAll5)', function(data){
             console.log(data.elem)
@@ -76,7 +79,7 @@ $(function () {
                 item.checked = data.elem.checked;
             });
             form.render('checkbox');
-            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+            // layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
         });
         form.on('checkbox(selectAll6)', function(data){
             console.log(data.elem)
@@ -85,11 +88,30 @@ $(function () {
                 item.checked = data.elem.checked;
             });
             form.render('checkbox');
-            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+            // layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
         });
     })
     layui.use('table', function(){
         table = layui.table;
+        table.on('edit(test)', function(obj){
+            var value = obj.value //得到修改后的值
+                ,data = obj.data //得到所在行所有键值
+                ,field = obj.field; //得到字段
+            // layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url:'/admin/updatePerson',
+                contentType:'application/json',
+                data:JSON.stringify(data) ,
+                success: function(data){
+                    layer.msg(data.msg,{icon:1,time:1500})
+                },
+                error: function(xhr, type){
+                    layer.msg('修改失败,请核对数据格式。',{icon:1,time:1500})
+                }
+            })
+        });
     });
     layui.use('laydate', function(){
         var laydate = layui.laydate;

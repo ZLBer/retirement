@@ -5,11 +5,11 @@
 </head>
 <body>
     <div th:fragment="mainContent" class="layui-fluid">
+        <script type="text/html" id="barDemo">
+            <a class="layui-btn layui-btn-mini" lay-event="detail">详细信息</a>
+            <a class="layui-btn layui-btn-mini" lay-event="download">下载</a>
+        </script>
         <div th:fragment="table">
-            <script type="text/html" id="barDemo">
-                <a class="layui-btn layui-btn-mini" lay-event="detail">详细信息</a>
-                <a class="layui-btn layui-btn-mini" lay-event="download">下载</a>
-            </script>
             <div id="test">
                 <!--<form action="/student/dotest" method="post">-->
                 <div th:replace="student/datafilter::filter('基本信息',~{this::option[@field='1']},'basic','category')">
