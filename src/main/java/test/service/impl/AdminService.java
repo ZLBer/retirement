@@ -7,6 +7,7 @@ import test.mapper.*;
 import test.service.IAdminService;
 
 import javax.annotation.Resource;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.text.DateFormat;
@@ -51,6 +52,13 @@ public class AdminService implements IAdminService {
             titles.addAll(Arrays.asList(informationContact));
         if (informationSupplement != null)
             titles.addAll(Arrays.asList(informationSupplement));
+        for(int i=1;i<titles.size();i++){
+            try {
+                titles.set(i,new String(titles.get(i).getBytes("ISO-8859-1"),"UTF-8"));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
         return titles;
     }
 
