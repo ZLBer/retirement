@@ -218,6 +218,7 @@ function progressbar() {
     var time = 1500;
 
     $("#submitExcel").click( function(){
+        layer.msg('正在上传，请勿关闭页面，等待成功提示。',{icon:1,time:time})
         $.ajax({
             url: "/admin/uploadExcel",
             type: 'POST',
@@ -228,29 +229,32 @@ function progressbar() {
             dataType:"json",
             success : function(data) {
                 if (data.state == 1) {
-                    layer.msg('上传成功，正在处理数据',{icon:1,time:time})
-                    $("#percent").show();
-                  var  interval= window.setInterval(function(){
-                        $.ajax({
-                            url: "/admin/percent",
-                            type: 'GET',
-                            processData: false,
-                            contentType: false,
-                            dataType:"json",
-                            success : function(data) {
-                                if (data.state == 1) {
-
-                                    if(data.msg="100%")
-                                    clearInterval(interval);
-                                    element.progress('percentChildren',data.msg)
-                                }
-                                }
-                            })
-
-                    },1000);
+                    layer.msg('数据处理成功！',{icon:1,time:time})
+                  //   $("#percent").show();
+                  // var  interval= window.setInterval(function(){
+                  //       $.ajax({
+                  //           url: "/admin/percent",
+                  //           type: 'GET',
+                  //           processData: false,
+                  //           contentType: false,
+                  //           dataType:"json",
+                  //           success : function(data) {
+                  //               if (data.state == 1) {
+                  //
+                  //                   if(data.msg="100%")
+                  //                   clearInterval(interval);
+                  //                   element.progress('percentChildren',data.msg)
+                  //               }
+                  //               }
+                  //           })
+                  //
+                  //   },1000);
                 } else {
                     layer.msg('请求失败，请重试',{icon:2,time:time})
                 }
+            },
+            error: function(xhr, type){
+                layer.msg('上传失败,请核对上传列与所选列的并核对数据格式',{icon:2,time:time})
             }
         }).on(function () {
 

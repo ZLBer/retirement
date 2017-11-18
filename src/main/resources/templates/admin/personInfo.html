@@ -43,12 +43,21 @@
                 <input type="text" name="idNumber" lay-verify="required" placeholder="请输入" autocomplete="off"
                        class="layui-input">
             </div>
+
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">人员类别</label>
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="category" lay-verify="required" placeholder="请输入" autocomplete="off"-->
+                       <!--class="layui-input">-->
+            <!--</div>-->
             <div class="layui-input-inline">
-                <input type="text" name="category" lay-verify="required" placeholder="请输入" autocomplete="off"
-                       class="layui-input">
+                <select name="category" lay-verify="required">
+                    <option value=""></option>
+                    <option value="离休">离休</option>
+                    <option value="退休" >退休</option>
+                    <option value="家属">家属</option>
+                </select>
             </div>
         </div>
 
@@ -80,9 +89,20 @@
                        class="layui-input">
             </div>
             <label class="layui-form-label">文化水平</label>
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="educationLevel" placeholder="请输入" autocomplete="off"-->
+                       <!--class="layui-input">-->
+            <!--</div>-->
             <div class="layui-input-inline">
-                <input type="text" name="educationLevel" placeholder="请输入" autocomplete="off"
-                       class="layui-input">
+                <select name="educationLevel" >
+                    <option value=""></option>
+                    <option value="博士研究生">博士研究生</option>
+                    <option value="硕士研究生" >硕士研究生</option>
+                    <option value="大学本科">大学本科</option>
+                    <option value="大学本科">大学本科</option>
+                    <option value="大学本科">大学本科</option>
+                    <option value="高中及以下">高中及以下</option>
+                </select>
             </div>
             <label class="layui-form-label">原工作单位</label>
             <div class="layui-input-inline">
@@ -98,8 +118,18 @@
                        class="layui-input">
             </div>
             <label class="layui-form-label">原职务级别</label>
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="orginDutiesLevel"  placeholder="请输入" autocomplete="off"    class="layui-input">-->
+            <!--</div>-->
             <div class="layui-input-inline">
-                <input type="text" name="orginDutiesLevel"  placeholder="请输入" autocomplete="off"    class="layui-input">
+                <select name="educationLevel" >
+                    <option value=""></option>
+                    <option value="正厅">正厅</option>
+                    <option value="副厅" >副厅</option>
+                    <option value="正处">正处</option>
+                    <option value="副处">副处</option>
+                    <option value="科级及以下">科级及以下</option>
+                </select>
             </div>
             <label class="layui-form-label">原职称</label>
             <div class="layui-input-inline">
@@ -110,9 +140,18 @@
         <div class="layui-form-item">
 
             <label class="layui-form-label">原职称级别</label>
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="originProfessionalLevel"  placeholder="请输入"-->
+                       <!--autocomplete="off" class="layui-input">-->
+            <!--</div>-->
             <div class="layui-input-inline">
-                <input type="text" name="originProfessionalLevel"  placeholder="请输入"
-                       autocomplete="off" class="layui-input">
+                <select name="educationLevel" >
+                    <option value=""></option>
+                    <option value="正高">正高</option>
+                    <option value="副高" >副高</option>
+                    <option value="中级">中级</option>
+                    <option value="初级">初级</option>
+                </select>
             </div>
             <label class="layui-form-label">享受待遇</label>
             <div class="layui-input-inline">

@@ -33,7 +33,7 @@ import static test.service.impl.ExcelUtil.writeXlsx;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-    static double percent=0;
+//    static double percent=0;
     @Resource
     IAdminService adminService;
     @Resource
@@ -91,8 +91,8 @@ public class AdminController {
         String[] informationPresent = request.getParameterValues("informationPresent");
         String[] informationContact = request.getParameterValues("informationContact");
         String[] informationSupplement = request.getParameterValues("informationSupplement");
-        double columen=0;
-        percent=0;
+//        double columen=0;
+//        percent=0;
         String IType = request.getParameter("IType");
         for (MultipartFile myfile : myfiles) {
             if (myfile.isEmpty()) {
@@ -110,20 +110,20 @@ public class AdminController {
                 if (IType.equals("1")) {
                     for (List mm : m) {
                         adminService.addSave(s, mm);
-                        columen+=1;
-                        percent=columen/m.size()*100;
+//                        columen+=1;
+//                        percent=columen/m.size()*100;
                     }
                 } else if (IType.equals("2")) {
                     for (List mm : m) {
                         adminService.insertOrUpdateSave(s, mm);
-                        columen+=1;
-                        percent=columen/m.size()*100;
+//                        columen+=1;
+//                        percent=columen/m.size()*100;
                     }
                 } else {
                     for (List mm : m) {
                         adminService.coverSave(s, mm);
-                        columen+=1;
-                        percent=columen/m.size()*100;
+//                        columen+=1;
+//                        percent=columen/m.size()*100;
                     }
                 }
 
@@ -132,13 +132,13 @@ public class AdminController {
         }
         return result;
     }
-    @RequestMapping(path = "/percent")
-    @ResponseBody
-    public Result precent() throws IOException {
-
-        Result result = new Result(1, "", (int)percent+"%");
-        return  result;
-    }
+//    @RequestMapping(path = "/percent")
+//    @ResponseBody
+//    public Result precent() throws IOException {
+//
+//        Result result = new Result(1, "", (int)percent+"%");
+//        return  result;
+//    }
     @RequestMapping(path = "/goPersonInfo")
     public String goAdd(Model model){
         model.addAttribute("bodyRightContent", "admin/personInfo");
