@@ -31,11 +31,14 @@ $(function () {
             updateGraphic()
         });
     });
+    layui.use('element',function () {
+        var element = layui.element;
+    })
     getSelectorsAndInputs();
     bindOnAddAndRemoveButtion();
     getData($('#test').find('#submit'),'/student/dotest');
     addCheckBox($("#data-table-filter"),fields,updateTableOption);
-    addRadio($("#graphic-x"),fields,updateGraphic);
+    addRadio($("#graphic-x"),radioField,updateGraphic);
     $('#export-to-excel').click(function () {
         if (!verifiedData()){
             return;
@@ -140,7 +143,7 @@ function generateExcelBody() {
 function addCheckBox(element,array,func) {
     var i;
     for (i=0;i<array.length;i++) {
-        element.append( "<div class='layui-col-md2'><input lay-filter='table-checkbox' type='checkbox' title='"+array[i].title +"' lay-skin='primary' name='table-field-option' value='" + i + "' checked></div>")
+        element.append( "<div class='layui-col-md2 layui-col-xs2'><input lay-filter='table-checkbox' type='checkbox' title='"+array[i].title +"' lay-skin='primary' name='table-field-option' value='" + i + "' checked></div>")
     }
     var inputs = element.find("input");
     for (i=0;i<inputs.length;i++){
@@ -191,26 +194,26 @@ var fields = [
     {field:'timeWork',title:'参加工作时间',width:100,edit:editable},
     {field:'timeRetirement',title:'离退休时间',width:100,edit:editable},
     //现工作信息20
-    // {field:'partyBranch',title:'身份',width:100,edit:editable},
-    // {field:'administration',title:'行政组',width:100,edit:editable},
-    // {field:'basicpartyDuties',title:'基层党组织职务',width:100,edit:editable},
-    // {field:'timeBasicparty',title:'基层党组织职务起时间',width:100,edit:editable},
-    // {field:'endtimeBasicparty',title:'基层党组织职务止时间',width:100,edit:editable},
-    // {field:'administrationDuties',title:'行政组职务',width:100,edit:editable},
-    // {field:'timeAdministration',title:'行政组工作起时间',width:100,edit:editable},
-    // {field:'endtimeAdministration',title:'行政组工作止时间',width:100,edit:editable},
-    // {field:'committeeDuties',title:'关工委工作职务',width:100,edit:editable},
-    // {field:'timeCommittee',title:'关工委工作起时间',width:100,edit:editable},
-    // {field:'endtimeCommittee',title:'关工委工作起时间',width:100,edit:editable},
-    // {field:'steeringMember',title:'督导组成员',width:100,edit:editable},
-    // {field:'timeSteering',title:'导组督成员起时间',width:100,edit:editable},
-    // {field:'endtimeSteering',title:'导组督成员止时间',width:100,edit:editable},
-    // {field:'organizationMember',title:'特邀党建组织员',width:100,edit:editable},
-    // {field:'timeOrganization',title:'特邀党建组织起时间',width:100,edit:editable},
-    // {field:'endtimeOrganization',title:'特邀党建组织止时间',width:100,edit:editable},
-    // {field:'corporationDuties',title:'老年文体社团职务',width:100,edit:editable},
-    // {field:'timeCorporation',title:'老年文体社团职务起时间',width:100,edit:editable},
-    // {field:'endtimeCorporation',title:'老年文体社团职务止时间',width:100,edit:editable},
+    {field:'partyBranch',title:'身份',width:100,edit:editable},
+    {field:'administration',title:'行政组',width:100,edit:editable},
+    {field:'basicpartyDuties',title:'基层党组织职务',width:100,edit:editable},
+    {field:'timeBasicparty',title:'基层党组织职务起时间',width:100,edit:editable},
+    {field:'endtimeBasicparty',title:'基层党组织职务止时间',width:100,edit:editable},
+    {field:'administrationDuties',title:'行政组职务',width:100,edit:editable},
+    {field:'timeAdministration',title:'行政组工作起时间',width:100,edit:editable},
+    {field:'endtimeAdministration',title:'行政组工作止时间',width:100,edit:editable},
+    {field:'committeeDuties',title:'关工委工作职务',width:100,edit:editable},
+    {field:'timeCommittee',title:'关工委工作起时间',width:100,edit:editable},
+    {field:'endtimeCommittee',title:'关工委工作起时间',width:100,edit:editable},
+    {field:'steeringMember',title:'督导组成员',width:100,edit:editable},
+    {field:'timeSteering',title:'导组督成员起时间',width:100,edit:editable},
+    {field:'endtimeSteering',title:'导组督成员止时间',width:100,edit:editable},
+    {field:'organizationMember',title:'特邀党建组织员',width:100,edit:editable},
+    {field:'timeOrganization',title:'特邀党建组织起时间',width:100,edit:editable},
+    {field:'endtimeOrganization',title:'特邀党建组织止时间',width:100,edit:editable},
+    {field:'corporationDuties',title:'老年文体社团职务',width:100,edit:editable},
+    {field:'timeCorporation',title:'老年文体社团职务起时间',width:100,edit:editable},
+    {field:'endtimeCorporation',title:'老年文体社团职务止时间',width:100,edit:editable},
     //联系信息8
     {field:'homeAddress',title:'家庭住址',width:100,edit:editable},
     {field:'phoneHome',title:'家庭电话',width:100,edit:editable},
@@ -226,10 +229,26 @@ var fields = [
     {field:'livingCondition',title:'健在情况',width:100,edit:editable},
     {field:'statusOther',title:'其他情况',width:100,edit:editable}
 ];
+var radioField = [
+    {field:'sex',title:'性别',width:100,edit:editable},
+    {field:'nation',title:'民族',width:100,edit:editable},
+    {field:'nativePlace',title:'籍贯',width:100,edit:editable},
+    {field:'category',title:'人员类别',width:100,edit:editable},
+    {field:'politicsStatus',title:'政治面貌',width:100,edit:editable},
+    {field:'identity',title:'身份',width:100,edit:editable},
+    {field:'educationLevel',title:'文化水平',width:100,edit:editable},
+    {field:'originDuties',title:'原职务',width:100,edit:editable},
+    {field:'orginDutiesLevel',title:'原职务级别',width:100,edit:editable},
+    {field:'originProfessional',title:'原职称',width:100,edit:editable},
+    {field:'originProfessionalLevel',title:'原职务级别',width:100,edit:editable},
+    {field:'partyBranch',title:'党支部名称',width:100,edit:editable},
+    {field:'administration',title:'行政组',width:100,edit:editable},
+    {field:'livingCondition',title:'健在情况',width:100,edit:editable}
+];
 var table;
 var tableOptions = {
     elem:'#dataTable',
-    height:450,
+    height:600,
     cols:[[
         {checkbox:true},
         //基本信息字段7
@@ -242,7 +261,7 @@ var tableOptions = {
         {field:'category',title:'人员类别',width:100,edit:editable},
         //政治面貌信息3
         {field:'politicsStatus',title:'政治面貌',width:100,edit:editable},
-        {field:'joinpartyTime',title:'民族',width:100,edit:editable},
+        {field:'joinpartyTime',title:'入党时间',width:100,edit:editable},
         {field:'conversionTime',title:'转正时间',width:100,edit:editable},
         //原工作信息10
         {field:'identity',title:'身份',width:100,edit:editable},
@@ -251,31 +270,31 @@ var tableOptions = {
         {field:'originDuties',title:'原职务',width:100,edit:editable},
         {field:'orginDutiesLevel',title:'原职务级别',width:100,edit:editable},
         {field:'originProfessional',title:'原职称',width:100,edit:editable},
-        {field:'originProfessional_level',title:'原职务级别',width:100,edit:editable},
+        {field:'originProfessionalLevel',title:'原职称级别',width:100,edit:editable},
         {field:'treatment',title:'享受待遇',width:100,edit:editable},
         {field:'timeWork',title:'参加工作时间',width:100,edit:editable},
         {field:'timeRetirement',title:'离退休时间',width:100,edit:editable},
         //现工作信息20
-        // {field:'partyBranch',title:'身份',width:100,edit:editable},
-        // {field:'administration',title:'行政组',width:100,edit:editable},
-        // {field:'basicpartyDuties',title:'基层党组织职务',width:100,edit:editable},
-        // {field:'timeBasicparty',title:'基层党组织职务起时间',width:100,edit:editable},
-        // {field:'endtimeBasicparty',title:'基层党组织职务止时间',width:100,edit:editable},
-        // {field:'administrationDuties',title:'行政组职务',width:100,edit:editable},
-        // {field:'timeAdministration',title:'行政组工作起时间',width:100,edit:editable},
-        // {field:'endtimeAdministration',title:'行政组工作止时间',width:100,edit:editable},
-        // {field:'committeeDuties',title:'关工委工作职务',width:100,edit:editable},
-        // {field:'timeCommittee',title:'关工委工作起时间',width:100,edit:editable},
-        // {field:'endtimeCommittee',title:'关工委工作起时间',width:100,edit:editable},
-        // {field:'steeringMember',title:'督导组成员',width:100,edit:editable},
-        // {field:'timeSteering',title:'导组督成员起时间',width:100,edit:editable},
-        // {field:'endtimeSteering',title:'导组督成员止时间',width:100,edit:editable},
-        // {field:'organizationMember',title:'特邀党建组织员',width:100,edit:editable},
-        // {field:'timeOrganization',title:'特邀党建组织起时间',width:100,edit:editable},
-        // {field:'endtimeOrganization',title:'特邀党建组织止时间',width:100,edit:editable},
-        // {field:'corporationDuties',title:'老年文体社团职务',width:100,edit:editable},
-        // {field:'timeCorporation',title:'老年文体社团职务起时间',width:100,edit:editable},
-        // {field:'endtimeCorporation',title:'老年文体社团职务止时间',width:100,edit:editable},
+        {field:'partyBranch',title:'身份',width:100,edit:editable},
+        {field:'administration',title:'行政组',width:100,edit:editable},
+        {field:'basicpartyDuties',title:'基层党组织职务',width:100,edit:editable},
+        {field:'timeBasicparty',title:'基层党组织职务起时间',width:100,edit:editable},
+        {field:'endtimeBasicparty',title:'基层党组织职务止时间',width:100,edit:editable},
+        {field:'administrationDuties',title:'行政组职务',width:100,edit:editable},
+        {field:'timeAdministration',title:'行政组工作起时间',width:100,edit:editable},
+        {field:'endtimeAdministration',title:'行政组工作止时间',width:100,edit:editable},
+        {field:'committeeDuties',title:'关工委工作职务',width:100,edit:editable},
+        {field:'timeCommittee',title:'关工委工作起时间',width:100,edit:editable},
+        {field:'endtimeCommittee',title:'关工委工作起时间',width:100,edit:editable},
+        {field:'steeringMember',title:'督导组成员',width:100,edit:editable},
+        {field:'timeSteering',title:'导组督成员起时间',width:100,edit:editable},
+        {field:'endtimeSteering',title:'导组督成员止时间',width:100,edit:editable},
+        {field:'organizationMember',title:'特邀党建组织员',width:100,edit:editable},
+        {field:'timeOrganization',title:'特邀党建组织起时间',width:100,edit:editable},
+        {field:'endtimeOrganization',title:'特邀党建组织止时间',width:100,edit:editable},
+        {field:'corporationDuties',title:'老年文体社团职务',width:100,edit:editable},
+        {field:'timeCorporation',title:'老年文体社团职务起时间',width:100,edit:editable},
+        {field:'endtimeCorporation',title:'老年文体社团职务止时间',width:100,edit:editable},
         //联系信息5
         {field:'homeAddress',title:'家庭住址',width:100,edit:editable},
         {field:'phoneHome',title:'家庭电话',width:100,edit:editable},
@@ -290,10 +309,9 @@ var tableOptions = {
         {field:'statusChildren',title:'子女情况',width:100,edit:editable},
         {field:'livingCondition',title:'建在情况',width:100,edit:editable},
         {field:'statusOther',title:'其他情况',width:100,edit:editable},
-        {fixed: 'right', width:150, align:'center', toolbar: '#barDemo'}
+        {fixed: 'right', width:220, align:'center', toolbar: '#barDemo'}
     ]],
-    page:true,
-    width:1300
+    page:true
 };
 layui.use('table', function(){
     table = layui.table;
@@ -375,7 +393,7 @@ function getData(element,url) {
 function addRadio(element,array,func) {
     var i;
     for (i=0;i<array.length;i++) {
-        element.append( "<div class='layui-col-md2'><input type='radio' lay-filter='graphic-radio' title='"+array[i].title +"' name='graphic-x-option' value='" + i + "'></div>")
+        element.append( "<div class='layui-col-md6 layui-col-xs6'><input type='radio' lay-filter='graphic-radio' title='"+array[i].title +"' name='graphic-x-option' value='" + i + "'></div>")
     }
     var inputs = element.find("input");
     for (i=0;i<inputs.length;i++){
@@ -405,10 +423,10 @@ function updateGraphic() {
         return;
     }
     var a = $("input[name=graphic-x-option]:checked").val();
-    option.legend.data = new Array(fields[a].title);
-    var array = processData(fields[a].field);
+    option.legend.data = new Array(radioField[a].title);
+    var array = processData(radioField[a].field);
     option.xAxis.data = array[0];
-    option.series[0].name = fields[a].title;
+    option.series[0].name = radioField[a].title;
     option.series[0].data = array[1];
     myChart.setOption(option);
 }

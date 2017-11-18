@@ -10,6 +10,7 @@
     }
 </style>
 <body>
+<!--多字段选择输入模板-->
 <div th:fragment="filter(title,options,idValue,name)" class="data-filter" id="politics-info" th:attr="id=${idValue}">
     <!--/*@thymesVar id="title" type="java.lang.String"*/-->
 
@@ -20,39 +21,105 @@
         <button style="background: transparent; border: none" class="add-field layui-btn-small" onclick="add(this)"><i class="layui-icon">&#xe61f;</i><!--添加查询字段--></button>
         <button style="background: transparent; border: none" class="remove-field" onclick="removeS(this)"><i class="layui-icon">&#x1007;</i><!--删除查询字段--></button>
     </div>
-    <div class="selectors-and-inputs layui-form" >
+    <div class="selectors-and-inputs" >
         查询字段：
-       <div class="layui-inline">
-        <select lay-filter="field-name-select" onchange="bindInputNameWithSelectors(this)">
-            <th:block th:replace="${options}" />
-        </select>
-       </div>
         <div class="layui-inline">
-        <input class="layui-input field-input" style="width: 200px" type="text" th:attr="name=${name}">
+            <select lay-filter="field-name-select" onchange="bindInputNameWithSelectors(this)">
+                <th:block th:replace="${options}" />
+            </select>
+        </div>
+        <div class="layui-inline">
+            <input class="layui-input field-input" style="width: 200px" type="text" th:attr="name=${name}">
         </div>
         匹配方式:
         <div class="layui-inline">
-        <select class="select2" th:attr="name=(${name}+'Type')"lay-verify="">
-            <option value="0" >精准</option>
-            <option value="1">模糊</option>
-            <option value="2">大于</option>
-            <option value="3">小于</option>
-            <option value="4">之间</option>
-        </select>
+            <select class="select2" th:attr="name=(${name}+'Type')"lay-verify="">
+                <option value="0" >精准</option>
+                <option value="1">模糊</option>
+                <option value="2">大于</option>
+                <option value="3">小于</option>
+                <option value="4">之间</option>
+            </select>
         </div>
         <span>或者</span>
         <div class="layui-inline">
-        <input class="layui-input field-input" style="width: 200px" type="text" th:attr="name=(${name}+'2')">
+            <input class="layui-input field-input" style="width: 200px" type="text" th:attr="name=(${name}+'2')">
         </div>
         匹配方式:
         <div class="layui-inline">
-        <select class="select2" th:attr="name=(${name}+'Type2')">
-            <option value="0">精准</option>
-            <option value="1">模糊</option>
-            <option value="2">大于</option>
-            <option value="3">小于</option>
-            <option value="4">之间</option>
-        </select>
+            <select class="select2" th:attr="name=(${name}+'Type2')">
+                <option value="0">精准</option>
+                <option value="1">模糊</option>
+                <option value="2">大于</option>
+                <option value="3">小于</option>
+                <option value="4">之间</option>
+            </select>
+        </div>
+    </div>
+</div>
+<!--下拉框模板-->
+<div th:fragment="selectFilter(title,options,idValue,name)" class="data-filter layui-col-md3 layui-col-xs3" id="politics-info" th:attr="id=${idValue}">
+    <!--/*@thymesVar id="title" type="java.lang.String"*/-->
+    <div class="all-selectors layui-form-item">
+        <label class="layui-form-label" th:text="${title}">选择框</label>
+        <div class="layui-inline">
+            <select name="city" lay-verify="" th:name="${name}">
+                <option value="">请选择</option>
+                <th:block th:replace="${options}"></th:block>
+            </select>
+        </div>
+    </div>
+</div>
+<!--单行输入数据模板-->
+<div th:fragment="inputFilter(title,idValue,name)" class="data-filter" id="politics-info" th:attr="id=${idValue}">
+    <!--/*@thymesVar id="title" type="java.lang.String"*/-->
+    <div class="all-inputs layui-form-item" >
+        <label th:text="${title}">密码框</label>
+        <div class="layui-inline">
+            <input class="layui-input field-input" style="width: 200px" type="text" th:attr="name=${name}">
+        </div>
+        <label>匹配方式</label>
+        <div class="layui-inline">
+            <select class="select2" th:attr="name=(${name}+'Type')"lay-verify="">
+                <option value="0" >精准</option>
+                <option value="1">模糊</option>
+                <option value="2">大于</option>
+                <option value="3">小于</option>
+                <option value="4">之间</option>
+            </select>
+        </div>
+        <label>或者</label>
+        <div class="layui-inline">
+            <input class="layui-input field-input" style="width: 200px" type="text" th:attr="name=(${name}+'2')">
+        </div>
+        <label>匹配方式</label>
+        <div class="layui-inline">
+            <select class="select2" th:attr="name=(${name}+'Type2')">
+                <option value="0">精准</option>
+                <option value="1">模糊</option>
+                <option value="2">大于</option>
+                <option value="3">小于</option>
+                <option value="4">之间</option>
+            </select>
+        </div>
+    </div>
+</div>
+<!--单行输入数据模板 no or-->
+<div th:fragment="inputFilterNotOr(title,idValue,name)" class="data-filter layui-col-md6 layui-col-xs6" id="politics-info" th:attr="id=${idValue}">
+    <!--/*@thymesVar id="title" type="java.lang.String"*/-->
+    <div class="all-inputs layui-form-item" >
+        <label class="layui-form-label" th:text="${title}">密码框</label>
+        <div class="layui-input-inline">
+            <input class="layui-input field-input" style="width: 200px" type="text" th:attr="name=${name}">
+        </div>
+        <div class="layui-inline">
+            <select class="select2" th:attr="name=(${name}+'Type')"lay-verify="">
+                <option value="0" >精准</option>
+                <option value="1">模糊</option>
+                <option value="2">大于</option>
+                <option value="3">小于</option>
+                <option value="4">之间</option>
+            </select>
         </div>
     </div>
 </div>

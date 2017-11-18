@@ -9,10 +9,12 @@
             <a class="layui-btn layui-btn-mini" lay-event="detail">详细信息</a>
             <a class="layui-btn layui-btn-mini" lay-event="download">下载</a>
         </script>
-        <div th:fragment="table">
-            <div id="test">
+        <div class="layui-collapse" lay-accordion th:fragment="table">
+            <div class="layui-colla-item">
+                <h2 class="layui-colla-title">设置查询条件</h2>
+                <div class="layui-colla-content layui-show layui-form" id="test">
                 <!--<form action="/student/dotest" method="post">-->
-                <div th:replace="student/datafilter::filter('基本信息',~{this::option[@field='1']},'basic','category')">
+                <!--<div th:replace="student/datafilter::filter('基本信息',~{this::option[@field='1']},'basic','category')">
                     <option field="1" value="category">人员类别</option>
                     <option field="1" value="name">姓名</option>
                     <option field="1" value="sex">性别</option>
@@ -72,26 +74,198 @@
                     <option field="6" value="statusChildren">子女情况</option>
                     <option field="6" value="timeDeath">去世时间</option>
                     <option field="6" value="statusOther">其他情况</option>
-                </div>
-                <br>
-                <button id="submit" class="layui-btn layui-btn-primary"><i class="layui-icon">查询&#xe615;</i></button>
-                <button id="export-to-excel" class="layui-btn layui-btn-primary"><i class="layui-icon">导出当前数据&#xe601;</i></button>
-                <br><br><br>
-                <!--</form>-->
-            </div>
-            <form class="layui-form">
-                <div id="data">
-                    <div id="data-table-filter" class="layui-row">
+                </div>-->
+                    <div class="layui-tab layui-tab-card">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">基本信息</li>
+                            <li>单位、职务及待遇</li>
+                            <li>联系方式</li>
+                            <li>时间段</li>
+                            <li>选择</li>
+                        </ul>
+                        <div class="layui-tab-content" 、>
+                            <div class="layui-tab-item layui-show">
+                                <div class="layui-row">
+                                    <!--<div th:replace="student/datafilter::inputFilter('姓名','nameInput','name')"></div>
+                                    <div th:replace="student/datafilter::inputFilter('籍贯','nativePlaceInput','nativePlace')"></div>
+                                    <div th:replace="student/datafilter::inputFilter('民族','nationInput','nation')"></div>
+                                    <div th:replace="student/datafilter::inputFilter('出生时间','birthdayInput','birthday')"></div>
+                                    <div th:replace="student/datafilter::inputFilter('政治面貌','politicsStatusInput','politicsStatus')"></div>
+                                    <div th:replace="student/datafilter::inputFilter('入党时间','joinpartyTimeInput','joinpartyTime')"></div>
+                                    <div th:replace="student/datafilter::inputFilter('转正时间','conversionTimeInput','conversionTime')"></div>
+                                    <div th:replace="student/datafilter::inputFilter('原单位','originWorkplaceInput','originWorkplace')"></div>
+                                    <div th:replace="student/datafilter::inputFilter('原职务','originDutiesInput','originDuties')"></div>
+                                    <div th:replace="student/datafilter::inputFilter('原职称','originProfessionalInput','originProfessional')"></div>
+                                    <div th:replace="student/datafilter::inputFilter('享受待遇','treatmentInput','treatment')"></div>
+                                    <div th:replace="student/datafilter::inputFilter('工作时间','timeWorkInput','timeWork')"></div>
+                                    <div th:replace="student/datafilter::inputFilter('离退休时间','timeRetirementInput','timeRetirement')"></div>
+                                    <div th:replace="student/datafilter::inputFilter('所在党支部','partyBranchInput','partyBranch')"></div>
+                                    <div th:replace="student/datafilter::inputFilter('所在行政组','administrationInput','administration')"></div>
+                                    <div th:replace="student/datafilter::inputFilter('家庭电话','homeAddressInput','homeAddress')"></div>
+                                    <div th:replace="student/datafilter::inputFilter('手机号码','phoneOwnInput','phoneOwn')"></div>-->
+                                    <div th:replace="student/datafilter::inputFilterNotOr('姓名','nameInput','name')"></div>
+                                    <div th:replace="student/datafilter::inputFilterNotOr('籍贯','nativePlaceInput','nativePlace')"></div>
+                                    <div th:replace="student/datafilter::inputFilterNotOr('民族','nationInput','nation')"></div>
+                                    <div th:replace="student/datafilter::inputFilterNotOr('政治面貌','politicsStatusInput','politicsStatus')"></div>
+                                </div>
+                            </div>
+                            <div class="layui-tab-item">
+                                <div class="layui-row">
+                                    <div th:replace="student/datafilter::inputFilterNotOr('原职务','originDutiesInput','originDuties')"></div>
+                                    <div th:replace="student/datafilter::inputFilterNotOr('原职称','originProfessionalInput','originProfessional')"></div>
+                                    <div th:replace="student/datafilter::inputFilterNotOr('享受待遇','treatmentInput','treatment')"></div>
+                                    <div th:replace="student/datafilter::inputFilterNotOr('所在党支部','partyBranchInput','partyBranch')"></div>
+                                    <div th:replace="student/datafilter::inputFilterNotOr('所在行政组','administrationInput','administration')"></div>
+                                </div>
+                            </div>
+                            <div class="layui-tab-item">
+                                <div class="layui-row">
+                                    <div th:replace="student/datafilter::inputFilterNotOr('家庭电话','homeAddressInput','homeAddress')"></div>
+                                    <div th:replace="student/datafilter::inputFilterNotOr('手机号码','phoneOwnInput','phoneOwn')"></div>
+                                </div>
+                            </div>
+                            <div class="layui-tab-item">
+                                <div class="layui-row">
+                                    <div th:replace="student/datafilter::inputFilterNotOr('出生时间','birthdayInput','birthday')"></div>
+                                    <div th:replace="student/datafilter::inputFilterNotOr('工作时间','timeWorkInput','timeWork')"></div>
+                                    <div th:replace="student/datafilter::inputFilterNotOr('入党时间','joinpartyTimeInput','joinpartyTime')"></div>
+                                    <div th:replace="student/datafilter::inputFilterNotOr('转正时间','conversionTimeInput','conversionTime')"></div>
+                                    <div th:replace="student/datafilter::inputFilterNotOr('离退休时间','timeRetirementInput','timeRetirement')"></div>
+                                </div>
+                            </div>
+                            <div class="layui-tab-item">
+                                <div class="layui-row">
+                                    <div th:replace="student/datafilter::selectFilter('性别',~{this::option[@field='7']},'sexSelector','sex')">
+                                        <option field="7" value="男">男</option>
+                                        <option field="7" value="女">女</option>
+                                    </div>
+                                    <div th:replace="student/datafilter::selectFilter('人员类别',~{this::option[@field='8']},'categorySelector','category')">
+                                        <option  field="8" value="离休">离休</option>
+                                        <option  field="8" value="退休" >退休</option>
+                                        <option  field="8" value="家属">家属</option>
+                                    </div>
+                                    <div th:replace="student/datafilter::selectFilter('文化程度',~{this::option[@field='9']},'educationLevelSelector','educationLevel')">
+                                        <option  field="9" value="博士研究生">博士研究生</option>
+                                        <option field="9" value="硕士研究生" >硕士研究生</option>
+                                        <option field="9" value="大学本科">大学本科</option>
+                                        <option field="9" value="大学本科">大学本科</option>
+                                        <option field="9" value="大学本科">大学本科</option>
+                                        <option field="9" value="高中及以下">高中及以下</option>
+                                    </div>
+                                    <div th:replace="student/datafilter::selectFilter('原职务级别',~{this::option[@field='10']},'orginDutiesLevelSelector','orginDutiesLevel')">
+                                        <option  field="10" value="正厅">正厅</option>
+                                        <option field="10" value="副厅" >副厅</option>
+                                        <option field="10" value="正处">正处</option>
+                                        <option field="10" value="副处">副处</option>
+                                        <option field="10" value="科级及以下">科级及以下</option>
+                                    </div>
+                                    <div th:replace="student/datafilter::selectFilter('原职称级别',~{this::option[@field='11']},'originProfessionalLevelSelector','originProfessionalLevel')">
+                                        <option  field="11" value="正高">正高</option>
+                                        <option  field="11" value="副高" >副高</option>
+                                        <option  field="11" value="中级">中级</option>
+                                        <option  field="11" value="初级">初级</option>
+                                    </div>
+                                    <div th:replace="student/datafilter::selectFilter('健在情况',~{this::option[@field='12']},'livingConditionSelector','livingCondition')">
+                                        <option field="12" value="健在">健在</option>
+                                        <option field="12" value="去世">去世</option>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <table id="dataTable" lay-filter="test" ></table>
+                    <!--<div class="layui-row">
+                        &lt;!&ndash;<div th:replace="student/datafilter::inputFilter('姓名','nameInput','name')"></div>
+                        <div th:replace="student/datafilter::inputFilter('籍贯','nativePlaceInput','nativePlace')"></div>
+                        <div th:replace="student/datafilter::inputFilter('民族','nationInput','nation')"></div>
+                        <div th:replace="student/datafilter::inputFilter('出生时间','birthdayInput','birthday')"></div>
+                        <div th:replace="student/datafilter::inputFilter('政治面貌','politicsStatusInput','politicsStatus')"></div>
+                        <div th:replace="student/datafilter::inputFilter('入党时间','joinpartyTimeInput','joinpartyTime')"></div>
+                        <div th:replace="student/datafilter::inputFilter('转正时间','conversionTimeInput','conversionTime')"></div>
+                        <div th:replace="student/datafilter::inputFilter('原单位','originWorkplaceInput','originWorkplace')"></div>
+                        <div th:replace="student/datafilter::inputFilter('原职务','originDutiesInput','originDuties')"></div>
+                        <div th:replace="student/datafilter::inputFilter('原职称','originProfessionalInput','originProfessional')"></div>
+                        <div th:replace="student/datafilter::inputFilter('享受待遇','treatmentInput','treatment')"></div>
+                        <div th:replace="student/datafilter::inputFilter('工作时间','timeWorkInput','timeWork')"></div>
+                        <div th:replace="student/datafilter::inputFilter('离退休时间','timeRetirementInput','timeRetirement')"></div>
+                        <div th:replace="student/datafilter::inputFilter('所在党支部','partyBranchInput','partyBranch')"></div>
+                        <div th:replace="student/datafilter::inputFilter('所在行政组','administrationInput','administration')"></div>
+                        <div th:replace="student/datafilter::inputFilter('家庭电话','homeAddressInput','homeAddress')"></div>
+                        <div th:replace="student/datafilter::inputFilter('手机号码','phoneOwnInput','phoneOwn')"></div>&ndash;&gt;
+                        <div th:replace="student/datafilter::inputFilterNotOr('姓名','nameInput','name')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('籍贯','nativePlaceInput','nativePlace')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('民族','nationInput','nation')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('政治面貌','politicsStatusInput','politicsStatus')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('原单位','originWorkplaceInput','originWorkplace')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('原职务','originDutiesInput','originDuties')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('原职称','originProfessionalInput','originProfessional')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('享受待遇','treatmentInput','treatment')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('所在党支部','partyBranchInput','partyBranch')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('所在行政组','administrationInput','administration')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('家庭电话','homeAddressInput','homeAddress')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('手机号码','phoneOwnInput','phoneOwn')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('出生时间','birthdayInput','birthday')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('工作时间','timeWorkInput','timeWork')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('入党时间','joinpartyTimeInput','joinpartyTime')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('转正时间','conversionTimeInput','conversionTime')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('离退休时间','timeRetirementInput','timeRetirement')"></div>
+                    </div>
+                    <div class="layui-row">
+                        <div th:replace="student/datafilter::selectFilter('性别',~{this::option[@field='7']},'sexSelector','sex')">
+                            <option field="7" value="男">男</option>
+                            <option field="7" value="女">女</option>
+                        </div>
+                        <div th:replace="student/datafilter::selectFilter('人员类别',~{this::option[@field='8']},'categorySelector','category')">
+                            <option  field="8" value="离休">离休</option>
+                            <option  field="8" value="退休" >退休</option>
+                            <option  field="8" value="家属">家属</option>
+                        </div>
+                        <div th:replace="student/datafilter::selectFilter('文化程度',~{this::option[@field='9']},'educationLevelSelector','educationLevel')">
+                            <option  field="9" value="博士研究生">博士研究生</option>
+                            <option field="9" value="硕士研究生" >硕士研究生</option>
+                            <option field="9" value="大学本科">大学本科</option>
+                            <option field="9" value="大学本科">大学本科</option>
+                            <option field="9" value="大学本科">大学本科</option>
+                            <option field="9" value="高中及以下">高中及以下</option>
+                        </div>
+                        <div th:replace="student/datafilter::selectFilter('原职务级别',~{this::option[@field='10']},'orginDutiesLevelSelector','orginDutiesLevel')">
+                            <option  field="10" value="正厅">正厅</option>
+                            <option field="10" value="副厅" >副厅</option>
+                            <option field="10" value="正处">正处</option>
+                            <option field="10" value="副处">副处</option>
+                            <option field="10" value="科级及以下">科级及以下</option>
+                        </div>
+                        <div th:replace="student/datafilter::selectFilter('原职称级别',~{this::option[@field='11']},'originProfessionalLevelSelector','originProfessionalLevel')">
+                            <option  field="11" value="正高">正高</option>
+                            <option  field="11" value="副高" >副高</option>
+                            <option  field="11" value="中级">中级</option>
+                            <option  field="11" value="初级">初级</option>
+                        </div>
+                        <div th:replace="student/datafilter::selectFilter('健在情况',~{this::option[@field='12']},'livingConditionSelector','livingCondition')">
+                            <option field="12" value="健在">健在</option>
+                            <option field="12" value="去世">去世</option>
+                        </div>
+                    </div>-->
+                    <br>
+                    <button id="submit" class="layui-btn layui-btn-primary"><i class="layui-icon">查询&#xe615;</i></button>
+                    <button id="export-to-excel" class="layui-btn layui-btn-primary"><i class="layui-icon">导出当前数据&#xe601;</i></button>
+                    <br><br>
+                <!--</form>-->
                 </div>
-            </form>
+            </div>
+            <div id="data" class="layui-colla-item">
+                <h2 class="layui-colla-title">筛选显示数据</h2>
+                <div class="layui-colla-content">
+                    <form class="layui-form">
+                            <div id="data-table-filter" class="layui-row"></div>
+                    </form>
+                </div>
+            </div>
+            <table id="dataTable" lay-filter="test" ></table>
         </div>
         <form class="layui-form">
-            <div id="graphic">
-                <div id="graphic-x" class="layui-row">
-                </div>
-                <div id="main" style="width: 600px;height:400px;"></div>
+            <div id="graphic layui-row">
+                <div id="graphic-x" class="layui-col-md-offset1 layui-col-xs-offset1 layui-col-md4 layui-col-xs4"><br><br><br></div>
+                <div id="main" class="layui-col-md6 layui-col-xs6" style="height:350px;"></div>
             </div>
         </form>
         <script src="/js/JSONToExcel.js"></script>
