@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="mainContent" th:replace="base::common_nav(~{::.item})">
+    <div class="item layui-nav-item"><a href="/admin/goPersonInfo">新增单条数据</a></div>
+    <div class="item layui-nav-item"><a href="/admin/goModifyPersonInfo">修改人员信息</a></div>
+    <div class="item layui-nav-item"><a href="/admin/goDownload">excel表模板导出</a></div>
+    <div class="item layui-nav-item"><a href="/admin/goUpload">excel表导入</a></div>
+    <div class="item layui-nav-item"><a href="/admin/gUpload">错误测试</a></div>
+</div>
+</body>
+</html>
