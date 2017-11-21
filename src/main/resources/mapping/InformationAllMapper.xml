@@ -25,7 +25,7 @@
     <result column="time_retirement" jdbcType="DATE" property="timeRetirement" />
     <result column="party_branch" jdbcType="VARCHAR" property="partyBranch" />
     <result column="administration" jdbcType="VARCHAR" property="administration" />
-    <result column="basicparty_duties" jdbcType="DATE" property="basicpartyDuties" />
+    <result column="basicparty_duties" jdbcType="VARCHAR" property="basicpartyDuties" />
     <result column="time_basicparty" jdbcType="DATE" property="timeBasicparty" />
     <result column="endtime_basicparty" jdbcType="DATE" property="endtimeBasicparty" />
     <result column="administration_duties" jdbcType="VARCHAR" property="administrationDuties" />
@@ -90,23 +90,28 @@
     joinparty_time, conversion_time, identity, education_level, origin_workplace, origin_duties, 
     orgin_duties_level, origin_professional, origin_professional_level, treatment, time_work, 
     time_retirement,
-#     party_branch, administration, basicparty_duties, time_basicparty,
-#     endtime_basicparty, administration_duties, time_administration, endtime_administration,
-#     committee_duties, time_committee, endtime_committee, steering_member, time_steering,
-#     endtime_steering, organization_member, time_organization, endtime_organization, corporation_duties,
-#     time_corporation, endtime_corporation,
-    home_address, phone_home, phone_own, phone_children,qq, wechat, email
-    phone_other, spouse, status_children, living_condition, status_other
+     party_branch, administration, basicparty_duties, time_basicparty,
+     endtime_basicparty, administration_duties, time_administration, endtime_administration,
+     committee_duties, time_committee, endtime_committee, steering_member, time_steering,
+     endtime_steering, organization_member, time_organization, endtime_organization, corporation_duties,
+     time_corporation, endtime_corporation,
+    home_address, phone_home, phone_own, phone_children,phone_other,qq,wechat,email,
+    spouse,status_children,living_condition, status_other
   </sql>
   <sql id="Join_Table_List">
     information_basic AS a
     JOIN information_original AS b
     JOIN information_contact AS c
+    JOIN information_present AS d
     JOIN information_politics AS e
     JOIN information_supplement AS f
   </sql>
   <sql id="Join_On_Condition">
-    a.id=b.id AND a.id=c.id AND a.id=c.id AND a.id=e.id AND a.id=f.id
+    a.id=b.id
+    AND a.id=c.id
+    AND a.id=d.id
+    AND a.id=e.id
+    AND a.id=f.id
   </sql>
   <select id="selectByExample" parameterType="test.domain.InformationAllExample" resultMap="BaseResultMap">
     select

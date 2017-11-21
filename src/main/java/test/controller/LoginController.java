@@ -3,6 +3,7 @@ package test.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import test.GlobleVariance;
 import test.service.ILoginService;
 
 import javax.annotation.Resource;
@@ -47,6 +48,7 @@ public class LoginController {
             }else if ((user = processingValidation(servletRequest))!=null) {
                 model.addAttribute("user", user);
                 model.addAttribute("templateDir",templateDir);
+                model.addAttribute(GlobleVariance.BodyRightContent,"student/default");
                 return "main";
             } else {
                 model.addAttribute("errMsg", "用户名和密码错误");

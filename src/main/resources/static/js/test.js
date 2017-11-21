@@ -110,6 +110,11 @@ function verifiedData() {
  */
 //{"value":"ID", "type":"ROW_HEADER_HEADER", "datatype":"string"},
 function generateExcelTitle(){
+    JSON_DATA.title.push({
+        "value":"编号",
+        "type":"ROW_HEADER",
+        "datatype":"string"
+    });
     for (var i=0;i<fields.length;i++){
         var field = fields[i];
         var a = {
@@ -143,7 +148,7 @@ function generateExcelBody() {
 function addCheckBox(element,array,func) {
     var i;
     for (i=0;i<array.length;i++) {
-        element.append( "<div class='layui-col-md2 layui-col-xs2'><input lay-filter='table-checkbox' type='checkbox' title='"+array[i].title +"' lay-skin='primary' name='table-field-option' value='" + i + "' checked></div>")
+        element.append( "<div class='layui-col-md2 layui-col-xs2'><input lay-filter='table-checkbox' name='"+array[i].field+"' type='checkbox' title='"+array[i].title +"' lay-skin='primary' class='table-field-option' value='" + i + "'></div>")
     }
     var inputs = element.find("input");
     for (i=0;i<inputs.length;i++){
@@ -155,7 +160,7 @@ function addCheckBox(element,array,func) {
  * 依照复选框改变表格列选项0000
  */
 function updateTableOption() {
-    var a = $("input[name=table-field-option]");
+    var a = $("input[class=table-field-option]");
     var newCol = new Array({checkbox:true});
     for (var i=0;i<a.length;i++){
         if ($(a[i]).prop("checked")) {
@@ -364,17 +369,68 @@ function getData(element,url) {
     element.on("click",function () {
         var inputs = element.parent().find(".field-input");
         var selectors = inputs.parent().next().children('select');
+        var selectInput = element.parent().find(".select-input");
         var param = {};
+        var checked = [];
         var input;
         var i;
+        var s = function (str,name) {
+            if (str.trim() !== ""){
+                checked.push(name);
+            }
+        };
+        var selectAll = function () {
+            for (i = 0; i < fields.length; i++) {
+                var checkbox = $("#data-table-filter").find("input[name='" + fields[i].field + "']");
+                selectItem(checkbox);
+            }
+        }
+        var showSelect = function () {
+            if (checked.length===0){
+                selectAll();
+                return;
+            }
+            //先取消在选择
+            var checkbox;
+            var length = tableOptions.cols[0].length;
+            for (var i = 1; i < (length - 1); i++) {
+                checkbox = $("#data-table-filter").find("input[name='" + tableOptions.cols[0][i].field + "']");
+                unselectItem(checkbox);
+            }
+            for (var i = 0; i < checked.length; i++) {
+                checkbox = $("#data-table-filter").find("input[name='" + checked[i] + "']");
+                selectItem(checkbox);
+            }
+        };
+        var selectItem=function(checkbox){
+            if (!checkbox.next().hasClass("layui-form-checked")) {
+                checkbox.next().addClass("layui-form-checked");
+                checkbox.click();
+            }
+        };
+        var unselectItem = function (checkbox) {
+            if (checkbox.next().hasClass("layui-form-checked")){
+                checkbox.next().removeClass("layui-form-checked");
+                checkbox.click();
+            }
+        };
         for(i=0;i<inputs.length;i++){
             input = $(inputs[i]);
             param[input.attr("name")]=input.val();
+            s(input.val(),input.attr("name"));
         }
         for(i=0;i<selectors.length;i++){
             input = $(selectors[i]);
             param[input.attr("name")]=input.val();
         }
+        for(i=0;i<selectInput.length;i++){
+            input = $(selectInput[i]);
+            param[input.attr("name")]=input.val();
+            s(input.val(),input.attr("name"))
+            param[input.attr("name")+"Type"]=0;
+        }
+        console.log(checked);
+        showSelect();
         $.get(url,param,function (data,status,xhr) {
             if(status==="success") {
                 tableOptions.data = data;

@@ -49,7 +49,7 @@ public class InformationAll {
 
     private String administration;
 
-    private Date basicpartyDuties;
+    private String basicpartyDuties;
 
     private Date timeBasicparty;
 
@@ -293,11 +293,11 @@ public class InformationAll {
         this.administration = administration == null ? null : administration.trim();
     }
 
-    public Date getBasicpartyDuties() {
+    public String getBasicpartyDuties() {
         return basicpartyDuties;
     }
 
-    public void setBasicpartyDuties(Date basicpartyDuties) {
+    public void setBasicpartyDuties(String basicpartyDuties) {
         this.basicpartyDuties = basicpartyDuties;
     }
 

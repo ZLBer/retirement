@@ -63,7 +63,7 @@
     <div class="all-selectors layui-form-item">
         <label class="layui-form-label" th:text="${title}">选择框</label>
         <div class="layui-inline">
-            <select name="city" lay-verify="" th:name="${name}">
+            <select name="city" lay-verify="" th:name="${name}" class="select-input">
                 <option value="">请选择</option>
                 <th:block th:replace="${options}"></th:block>
             </select>
