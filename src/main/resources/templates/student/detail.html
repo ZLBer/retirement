@@ -14,7 +14,7 @@
             <th align="center" lay-data="{field:'sex',title:'性别' width:70}">性别</th>
             <td th:text="${all.sex}">男</td>
             <th align="center" lay-data="{field:'birthday',title:'出生年月' width:70}">出生年月</th>
-            <td th:text="${#dates.format(all.birthday,'yyyy年MM月dd日')}">1960/01/22</td>
+            <td th:text="${all.birthday==null?'':#dates.format(all.birthday,'yyyy年MM月dd日')}">1960/01/22</td>
             <th lay-data="{fixed: 'right', width: 160, align: 'center' fiele:'photo'}" width="50" rowspan="3"
                 colspan="2" th:text="暂无">图片
             </th>
@@ -31,9 +31,9 @@
             <th lay-data="{field:'politicsStatus',title:'政治面貌'}" width="100">政治面貌</th>
             <td width="100" th:text="${all.politicsStatus}">党员</td>
             <th lay-data="{field:'joinpartyTime',title:'入党时间'}" width="100">入党时间</th>
-            <td width="100" th:text="${#dates.format(all.joinpartyTime,'yyyy年MM月dd日')}">2000/01/09</td>
+            <td width="100" th:text="${all.joinpartyTime==null?'':#dates.format(all.joinpartyTime,'yyyy年MM月dd日')}">2000/01/09</td>
             <th lay-data="{field:'conversionTime',title:'转正时间'}" width="100">转正时间</th>
-            <td width="100" th:text="${#dates.format(all.conversionTime,'yyyy年MM月dd日')}">2010/01/09</td>
+            <td width="100" th:text="${all.conversionTime==null?'':#dates.format(all.conversionTime,'yyyy年MM月dd日')}">2010/01/09</td>
         </tr>
         </thead>
         <thead align="center">
@@ -60,9 +60,9 @@
         </tr>
         <tr>
             <th lay-data="{field:'timeWork',title:'参加工作时间',width:100}">参加工作时间</th>
-            <td colspan="3" width="200" th:text="${#dates.format(all.timeWork,'yyyy年MM月dd日')}">2010/09/01</td>
+            <td colspan="3" width="200" th:text="${all.timeWork==null?'':#dates.format(all.timeWork,'yyyy年MM月dd日')}">2010/09/01</td>
             <th lay-data="{field:'timeRetirement',title:'离退休时间',width:100}">离退休时间</th>
-            <td colspan="3" width="100" th:text="${#dates.format(all.timeRetirement,'yyyy年MM月dd日')}">2017/10/10</td>
+            <td colspan="3" width="100" th:text="${all.timeRetirement==null?'':#dates.format(all.timeRetirement,'yyyy年MM月dd日')}">2017/10/10</td>
         </tr>
         </thead>
         <thead align="center">
@@ -92,38 +92,38 @@
         </tr>
         <tr>
             <th>开始时间</th>
-            <th lay-data="{field:'timeBasicparty',title:'基层党组织职务开始时间',width:100}" th:text="${#dates.format(all.timeBasicparty,'yyyy年MM月dd日')}">无</th>
-            <th lay-data="{field:'timeAdministration',title:'行政组工作开始时间',width:100}" th:text="${#dates.format(all.timeAdministration,'yyyy年MM月dd日')}">无
+            <th lay-data="{field:'timeBasicparty',title:'基层党组织职务开始时间',width:100}" th:text="${all.timeBasicparty==null?'':#dates.format(all.timeBasicparty,'yyyy年MM月dd日')}">无</th>
+            <th lay-data="{field:'timeAdministration',title:'行政组工作开始时间',width:100}" th:text="${all.timeAdministration==null?'':#dates.format(all.timeAdministration,'yyyy年MM月dd日')}">无
             </th>
-            <th lay-data="{field:'timeCommittee',title:'关工委工作开始时间',width:100}" th:text="${#dates.format(all.timeCommittee,'yyyy年MM月dd日')}">2014/05/08
+            <th lay-data="{field:'timeCommittee',title:'关工委工作开始时间',width:100}" th:text="${all.timeCommittee==null?'':#dates.format(all.timeCommittee,'yyyy年MM月dd日')}">2014/05/08
             </th>
-            <th lay-data="{field:'timeSteering',title:'导组督成员开始时间',width:100}" colspan="2" th:text="${#dates.format(all.timeSteering,'yyyy年MM月dd日')}">
+            <th lay-data="{field:'timeSteering',title:'导组督成员开始时间',width:100}" colspan="2" th:text="${all.timeSteering==null?'':#dates.format(all.timeSteering,'yyyy年MM月dd日')}">
                 2015/06/08
             </th>
-            <th lay-data="{field:'timeOrganization',title:'特邀党建组织开始时间',width:100}" th:text="${#dates.format(all.timeOrganization,'yyyy年MM月dd日')}">
+            <th lay-data="{field:'timeOrganization',title:'特邀党建组织开始时间',width:100}" th:text="${all.timeOrganization==null?'':#dates.format(all.timeOrganization,'yyyy年MM月dd日')}">
                 2016/12/07
             </th>
-            <th lay-data="{field:'timeCorporation',title:'老年文体社团职务开始时间',width:100}" th:text="${#dates.format(all.timeCorporation,'yyyy年MM月dd日')}">
+            <th lay-data="{field:'timeCorporation',title:'老年文体社团职务开始时间',width:100}" th:text="${all.timeCorporation==null?'':#dates.format(all.timeCorporation,'yyyy年MM月dd日')}">
                 206/01/09
             </th>
         </tr>
         <tr>
             <th>终止时间</th>
-            <th lay-data="{field:'endtimeBasicparty',title:'基层党组织职务终止时间',width:100}" th:text="${#dates.format(all.endtimeBasicparty,'yyyy年MM月dd日')}">无
+            <th lay-data="{field:'endtimeBasicparty',title:'基层党组织职务终止时间',width:100}" th:text="${all.endtimeBasicparty==null?'':#dates.format(all.endtimeBasicparty,'yyyy年MM月dd日')}">无
             </th>
             <th lay-data="{field:'endtimeAdministration',title:'行政组工作终止时间',width:100}"
-                th:text="${#dates.format(all.endtimeAdministration,'yyyy年MM月dd日')}">无
+                th:text="${all.endtimeAdministration==null?'':#dates.format(all.endtimeAdministration,'yyyy年MM月dd日')}">无
             </th>
-            <th lay-data="{field:'endtimeCommittee',title:'关工委工作终止时间',width:100}" th:text="${#dates.format(all.endtimeCommittee,'yyyy年MM月dd日')}">
+            <th lay-data="{field:'endtimeCommittee',title:'关工委工作终止时间',width:100}" th:text="${all.endtimeCommittee==null?'':#dates.format(all.endtimeCommittee,'yyyy年MM月dd日')}">
                 2014/09/05
             </th>
             <th lay-data="{field:'endtimeSteering',title:'导组督成员终止时间',width:100}" colspan="2"
-                th:text="${#dates.format(all.endtimeSteering,'yyyy年MM月dd日')}">2016/08/07
+                th:text="${all.endtimeSteering==null?'':#dates.format(all.endtimeSteering,'yyyy年MM月dd日')}">2016/08/07
             </th>
-            <th lay-data="{field:'endtimeOrganization',title:'特邀党建组织终止时间',width:100}" th:text="${#dates.format(all.endtimeOrganization,'yyyy年MM月dd日')}">
+            <th lay-data="{field:'endtimeOrganization',title:'特邀党建组织终止时间',width:100}" th:text="${all.endtimeOrganization==null?'':#dates.format(all.endtimeOrganization,'yyyy年MM月dd日')}">
                 2016/12/23
             </th>
-            <th lay-data="{field:'endtimeCorporation',title:'老年文体社团职务终止时间',width:100}" th:text="${#dates.format(all.endtimeCorporation,'yyyy年MM月dd日')}">
+            <th lay-data="{field:'endtimeCorporation',title:'老年文体社团职务终止时间',width:100}" th:text="${all.endtimeCorporation==null?'':#dates.format(all.endtimeCorporation,'yyyy年MM月dd日')}">
                 2016/01/30
             </th>
         </tr>
@@ -156,8 +156,8 @@
             <td colspan="2" th:text="${all.statusChildren}"></td>
         </tr>
         <tr>
-            <th lay-data="{field:'timeDeath',title:'去世时间',width:100}" rowspan="3" colspan="2">去世时间</th>
-            <td colspan="2" rowspan="3" th:text="${#dates.format(all.livingCondition,'yyyy年MM月dd日')}"></td>
+            <th lay-data="{field:'timeDeath',title:'去世时间',width:100}" rowspan="3" colspan="2">健在情况</th>
+            <td colspan="2" rowspan="3" th:text="${all.livingCondition}"></td>
             <th lay-data="{field:'statusOther',title:'其他情况',width:100}" colspan="2" rowspan="3">其他情况</th>
             <td colspan="2" rowspan="3" th:text="${all.statusOther}"></td>
         </tr>

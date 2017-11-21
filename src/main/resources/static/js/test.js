@@ -167,7 +167,7 @@ function updateTableOption() {
             newCol.push(fields[i]);
         }
     }
-    newCol.push({fixed: 'right', width:150, align:'center', toolbar: '#barDemo'});
+    newCol.push({fixed: 'right', width:220, align:'center', toolbar: '#barDemo'});
     tableOptions.cols[0] = newCol;
     table.render(tableOptions);
 }
@@ -340,7 +340,7 @@ layui.use('table', function(){
                     content: str //注意，如果str是object，那么需要字符拼接。
                 });
             });*/
-            window.location.href="download/"+obj.data.id;
+            window.location.href="/student/download/"+obj.data.id;
         }
         else if(layEvent==='delete'){
             var id =obj.data.id;
@@ -392,9 +392,10 @@ function getData(element,url) {
             }
             //先取消在选择
             var checkbox;
-            var length = tableOptions.cols[0].length;
-            for (var i = 1; i < (length - 1); i++) {
-                checkbox = $("#data-table-filter").find("input[name='" + tableOptions.cols[0][i].field + "']");
+            var length = fields.length;
+            console.log(length);
+            for (var i = 0; i < (length); i++) {
+                checkbox = $("#data-table-filter").find("input[name='" + fields[i].field + "']");
                 unselectItem(checkbox);
             }
             for (var i = 0; i < checked.length; i++) {
