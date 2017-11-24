@@ -13,8 +13,8 @@
             <div class="layui-colla-item">
                 <h2 class="layui-colla-title">设置查询条件</h2>
                 <div class="layui-colla-content layui-show layui-form" id="test">
-                <!--<form action="/student/dotest" method="post">-->
-                <!--<div th:replace="student/datafilter::filter('基本信息',~{this::option[@field='1']},'basic','category')">
+                    <!--<form action="/student/dotest" method="post">-->
+                    <!--<div th:replace="student/datafilter::filter('基本信息',~{this::option[@field='1']},'basic','category')">
                     <option field="1" value="category">人员类别</option>
                     <option field="1" value="name">姓名</option>
                     <option field="1" value="sex">性别</option>
@@ -75,7 +75,7 @@
                     <option field="6" value="timeDeath">去世时间</option>
                     <option field="6" value="statusOther">其他情况</option>
                 </div>-->
-                    <div class="layui-tab layui-tab-card">
+                    <!--<div class="layui-tab layui-tab-card">
                         <ul class="layui-tab-title">
                             <li class="layui-this">基本信息</li>
                             <li>单位、职务及待遇</li>
@@ -86,7 +86,7 @@
                         <div class="layui-tab-content" 、>
                             <div class="layui-tab-item layui-show">
                                 <div class="layui-row">
-                                    <!--<div th:replace="student/datafilter::inputFilter('姓名','nameInput','name')"></div>
+                                    &lt;!&ndash;<div th:replace="student/datafilter::inputFilter('姓名','nameInput','name')"></div>
                                     <div th:replace="student/datafilter::inputFilter('籍贯','nativePlaceInput','nativePlace')"></div>
                                     <div th:replace="student/datafilter::inputFilter('民族','nationInput','nation')"></div>
                                     <div th:replace="student/datafilter::inputFilter('出生时间','birthdayInput','birthday')"></div>
@@ -102,7 +102,7 @@
                                     <div th:replace="student/datafilter::inputFilter('所在党支部','partyBranchInput','partyBranch')"></div>
                                     <div th:replace="student/datafilter::inputFilter('所在行政组','administrationInput','administration')"></div>
                                     <div th:replace="student/datafilter::inputFilter('家庭电话','homeAddressInput','homeAddress')"></div>
-                                    <div th:replace="student/datafilter::inputFilter('手机号码','phoneOwnInput','phoneOwn')"></div>-->
+                                    <div th:replace="student/datafilter::inputFilter('手机号码','phoneOwnInput','phoneOwn')"></div>&ndash;&gt;
                                     <div th:replace="student/datafilter::inputFilterNotOr('姓名','nameInput','name')"></div>
                                     <div th:replace="student/datafilter::inputFilterNotOr('籍贯','nativePlaceInput','nativePlace')"></div>
                                     <div th:replace="student/datafilter::inputFilterNotOr('民族','nationInput','nation')"></div>
@@ -172,9 +172,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--<div class="layui-row">
-                        &lt;!&ndash;<div th:replace="student/datafilter::inputFilter('姓名','nameInput','name')"></div>
+                    </div>-->
+                    <div class="layui-row">
+                        <!--<div th:replace="student/datafilter::inputFilter('姓名','nameInput','name')"></div>
                         <div th:replace="student/datafilter::inputFilter('籍贯','nativePlaceInput','nativePlace')"></div>
                         <div th:replace="student/datafilter::inputFilter('民族','nationInput','nation')"></div>
                         <div th:replace="student/datafilter::inputFilter('出生时间','birthdayInput','birthday')"></div>
@@ -190,19 +190,19 @@
                         <div th:replace="student/datafilter::inputFilter('所在党支部','partyBranchInput','partyBranch')"></div>
                         <div th:replace="student/datafilter::inputFilter('所在行政组','administrationInput','administration')"></div>
                         <div th:replace="student/datafilter::inputFilter('家庭电话','homeAddressInput','homeAddress')"></div>
-                        <div th:replace="student/datafilter::inputFilter('手机号码','phoneOwnInput','phoneOwn')"></div>&ndash;&gt;
-                        <div th:replace="student/datafilter::inputFilterNotOr('姓名','nameInput','name')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('籍贯','nativePlaceInput','nativePlace')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('民族','nationInput','nation')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('政治面貌','politicsStatusInput','politicsStatus')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('原单位','originWorkplaceInput','originWorkplace')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('原职务','originDutiesInput','originDuties')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('原职称','originProfessionalInput','originProfessional')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('享受待遇','treatmentInput','treatment')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('所在党支部','partyBranchInput','partyBranch')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('所在行政组','administrationInput','administration')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('家庭电话','homeAddressInput','homeAddress')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('手机号码','phoneOwnInput','phoneOwn')"></div>
+                        <div th:replace="student/datafilter::inputFilter('手机号码','phoneOwnInput','phoneOwn')"></div>-->
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('姓名','nameInput','name')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('籍贯','nativePlaceInput','nativePlace')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('民族','nationInput','nation')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('政治面貌','politicsStatusInput','politicsStatus')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('原单位','originWorkplaceInput','originWorkplace')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('原职务','originDutiesInput','originDuties')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('原职称','originProfessionalInput','originProfessional')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('享受待遇','treatmentInput','treatment')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('所在党支部','partyBranchInput','partyBranch')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('所在行政组','administrationInput','administration')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('家庭电话','homeAddressInput','homeAddress')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('手机号码','phoneOwnInput','phoneOwn')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOr('出生时间','birthdayInput','birthday')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOr('工作时间','timeWorkInput','timeWork')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOr('入党时间','joinpartyTimeInput','joinpartyTime')"></div>
@@ -244,7 +244,7 @@
                             <option field="12" value="健在">健在</option>
                             <option field="12" value="去世">去世</option>
                         </div>
-                    </div>-->
+                    </div>
                     <br>
                     <button id="submit" class="layui-btn layui-btn-primary"><i class="layui-icon">查询&#xe615;</i></button>
                     <button id="export-to-excel" class="layui-btn layui-btn-primary"><i class="layui-icon">导出当前数据&#xe601;</i></button>
