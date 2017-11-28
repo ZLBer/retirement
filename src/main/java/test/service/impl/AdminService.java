@@ -637,6 +637,7 @@ public class AdminService implements IAdminService {
         informationPresent.setId(id);
                 informationPresent.setPartyBranch(informationAll.getPartyBranch());
         informationPresent.setAdministration(informationAll.getAdministration());
+        informationPresent.setPresentDuties(informationAll.getPresentDuties());
                 informationPresent.setBasicpartyDuties(informationAll.getAdministrationDuties());
         informationPresent.setEndtimeBasicparty(informationAll.getEndtimeBasicparty());
                 informationPresent.setTimeBasicparty(informationAll.getTimeBasicparty());

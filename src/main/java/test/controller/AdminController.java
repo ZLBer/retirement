@@ -51,9 +51,6 @@ public class AdminController {
 
 
         String[] informationBasic = request.getParameterValues("informationBasic");
-        for(String t:informationBasic){
-            System.out.println(t);
-        }
         String[] informationPolitics = request.getParameterValues("informationPolitics");
         String[] informationOriginal = request.getParameterValues("informationOriginal");
         String[] informationPresent = request.getParameterValues("informationPresent");
