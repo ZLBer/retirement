@@ -105,14 +105,14 @@
     </div>
 </div>
 <!--单行输入数据模板 no or-->
-<div th:fragment="inputFilterNotOr(title,idValue,name)" class="data-filter layui-col-md6 layui-col-xs6" id="politics-info" th:attr="id=${idValue}">
+<div th:fragment="inputFilterNotOr(title,idValue,name)" class="data-filter layui-col-md4 layui-col-xs4" id="politics-info" th:attr="id=${idValue}">
     <!--/*@thymesVar id="title" type="java.lang.String"*/-->
     <div class="all-inputs layui-form-item" >
         <label class="layui-form-label" th:text="${title}">密码框</label>
         <div class="layui-input-inline">
             <input class="layui-input field-input" style="width: 200px" type="text" th:attr="name=${name}">
         </div>
-        <div class="layui-inline">
+        <div class="layui-inline match">
             <select class="select2" th:attr="name=(${name}+'Type')"lay-verify="">
                 <option value="0" >精准</option>
                 <option value="1">模糊</option>
@@ -124,7 +124,7 @@
     </div>
 </div>
 <!--单行输入 no or 默认模糊-->
-<div th:fragment="inputFilterNotOrDefault(title,idValue,name)" class="data-filter layui-col-md6 layui-col-xs6" id="politics-info" th:attr="id=${idValue}">
+<div th:fragment="inputFilterNotOrDefault(title,idValue,name)" class="data-filter layui-col-md3 layui-col-xs3" id="politics-info" th:attr="id=${idValue}">
     <!--/*@thymesVar id="title" type="java.lang.String"*/-->
     <div class="all-inputs layui-form-item" >
         <label class="layui-form-label" th:text="${title}">密码框</label>

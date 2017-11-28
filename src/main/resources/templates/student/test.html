@@ -173,7 +173,7 @@
                             </div>
                         </div>
                     </div>-->
-                    <div class="layui-row">
+                    <div class="layui-row condition">
                         <!--<div th:replace="student/datafilter::inputFilter('姓名','nameInput','name')"></div>
                         <div th:replace="student/datafilter::inputFilter('籍贯','nativePlaceInput','nativePlace')"></div>
                         <div th:replace="student/datafilter::inputFilter('民族','nationInput','nation')"></div>
@@ -203,13 +203,8 @@
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('所在行政组','administrationInput','administration')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('家庭电话','homeAddressInput','homeAddress')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('手机号码','phoneOwnInput','phoneOwn')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('出生时间','birthdayInput','birthday')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('工作时间','timeWorkInput','timeWork')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('入党时间','joinpartyTimeInput','joinpartyTime')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('转正时间','conversionTimeInput','conversionTime')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('离退休时间','timeRetirementInput','timeRetirement')"></div>
                     </div>
-                    <div class="layui-row">
+                    <div class="layui-row condition">
                         <div th:replace="student/datafilter::selectFilter('性别',~{this::option[@field='7']},'sexSelector','sex')">
                             <option field="7" value="男">男</option>
                             <option field="7" value="女">女</option>
@@ -244,6 +239,13 @@
                             <option field="12" value="健在">健在</option>
                             <option field="12" value="去世">去世</option>
                         </div>
+                    </div>
+                    <div class="layui-row condition">
+                        <div th:replace="student/datafilter::inputFilterNotOr('出生时间','birthdayInput','birthday')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('工作时间','timeWorkInput','timeWork')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('入党时间','joinpartyTimeInput','joinpartyTime')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('转正时间','conversionTimeInput','conversionTime')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOr('离退休时间','timeRetirementInput','timeRetirement')"></div>
                     </div>
                     <br>
                     <button id="submit" class="layui-btn layui-btn-primary"><i class="layui-icon">查询&#xe615;</i></button>

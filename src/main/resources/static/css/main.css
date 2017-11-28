@@ -96,3 +96,15 @@
     font-weight: 900;
 
 }
+
+.match input{
+    width: 80px!important;
+}
+.all-selectors input{
+    width:200px!important;
+}
+.condition{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: rgba(39, 39, 39, 0.6) 1px solid;
+}
