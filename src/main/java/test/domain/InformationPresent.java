@@ -45,6 +45,8 @@ public class InformationPresent {
 
     private Date endtimeCorporation;
 
+    private String presentDuties;
+
     public Integer getId() {
         return id;
     }
@@ -211,5 +213,13 @@ public class InformationPresent {
 
     public void setEndtimeCorporation(Date endtimeCorporation) {
         this.endtimeCorporation = endtimeCorporation;
+    }
+
+    public String getPresentDuties() {
+        return presentDuties;
+    }
+
+    public void setPresentDuties(String presentDuties) {
+        this.presentDuties = presentDuties == null ? null : presentDuties.trim();
     }
 }

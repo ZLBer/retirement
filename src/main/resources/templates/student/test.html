@@ -201,8 +201,7 @@
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('享受待遇','treatmentInput','treatment')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('所在党支部','partyBranchInput','partyBranch')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('所在行政组','administrationInput','administration')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOrDefault('家庭电话','homeAddressInput','homeAddress')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOrDefault('手机号码','phoneOwnInput','phoneOwn')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('现任职务','homeAddressInput','homeAddress')"></div>
                     </div>
                     <div class="layui-row condition">
                         <div th:replace="student/datafilter::selectFilter('性别',~{this::option[@field='7']},'sexSelector','sex')">
@@ -222,22 +221,13 @@
                             <option field="9" value="大学本科">大学本科</option>
                             <option field="9" value="高中及以下">高中及以下</option>
                         </div>
-                        <div th:replace="student/datafilter::selectFilter('原职务级别',~{this::option[@field='10']},'orginDutiesLevelSelector','orginDutiesLevel')">
-                            <option  field="10" value="正厅">正厅</option>
-                            <option field="10" value="副厅" >副厅</option>
-                            <option field="10" value="正处">正处</option>
-                            <option field="10" value="副处">副处</option>
-                            <option field="10" value="科级及以下">科级及以下</option>
-                        </div>
-                        <div th:replace="student/datafilter::selectFilter('原职称级别',~{this::option[@field='11']},'originProfessionalLevelSelector','originProfessionalLevel')">
-                            <option  field="11" value="正高">正高</option>
-                            <option  field="11" value="副高" >副高</option>
-                            <option  field="11" value="中级">中级</option>
-                            <option  field="11" value="初级">初级</option>
-                        </div>
                         <div th:replace="student/datafilter::selectFilter('健在情况',~{this::option[@field='12']},'livingConditionSelector','livingCondition')">
                             <option field="12" value="健在">健在</option>
                             <option field="12" value="去世">去世</option>
+                        </div>
+                        <div th:replace="student/datafilter::selectFilter('身份',~{this::option[@field='13']},'identitySelector','identity')">
+                            <option field="13" value="工人">工人</option>
+                            <option field="13" value="干部">干部</option>
                         </div>
                     </div>
                     <div class="layui-row condition">

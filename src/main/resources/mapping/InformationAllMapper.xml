@@ -55,6 +55,7 @@
     <result column="qq" jdbcType="VARCHAR" property="qq" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="wechat" jdbcType="VARCHAR" property="wechat" />
+    <result column="present_duties" jdbcType="VARCHAR" property="presentDuties" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -94,7 +95,7 @@
      endtime_basicparty, administration_duties, time_administration, endtime_administration,
      committee_duties, time_committee, endtime_committee, steering_member, time_steering,
      endtime_steering, organization_member, time_organization, endtime_organization, corporation_duties,
-     time_corporation, endtime_corporation,
+     time_corporation, endtime_corporation,present_duties,
     home_address, phone_home, phone_own, phone_children,phone_other,qq,wechat,email,
     spouse,status_children,living_condition, status_other
   </sql>

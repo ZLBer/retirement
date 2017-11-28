@@ -109,6 +109,8 @@ public class InformationAll {
 
     private String wechat;
 
+    private String presentDuties;
+
     public Integer getId() {
         return id;
     }
@@ -298,7 +300,7 @@ public class InformationAll {
     }
 
     public void setBasicpartyDuties(String basicpartyDuties) {
-        this.basicpartyDuties = basicpartyDuties;
+        this.basicpartyDuties = basicpartyDuties == null ? null : basicpartyDuties.trim();
     }
 
     public Date getTimeBasicparty() {
@@ -531,5 +533,13 @@ public class InformationAll {
 
     public void setWechat(String wechat) {
         this.wechat = wechat == null ? null : wechat.trim();
+    }
+
+    public String getPresentDuties() {
+        return presentDuties;
+    }
+
+    public void setPresentDuties(String presentDuties) {
+        this.presentDuties = presentDuties == null ? null : presentDuties.trim();
     }
 }

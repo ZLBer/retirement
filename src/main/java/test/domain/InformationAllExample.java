@@ -3651,6 +3651,76 @@ public class InformationAllExample {
             addCriterion("wechat not between", value1, value2, "wechat");
             return (Criteria) this;
         }
+
+        public Criteria andPresentDutiesIsNull() {
+            addCriterion("present_duties is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPresentDutiesIsNotNull() {
+            addCriterion("present_duties is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPresentDutiesEqualTo(String value) {
+            addCriterion("present_duties =", value, "presentDuties");
+            return (Criteria) this;
+        }
+
+        public Criteria andPresentDutiesNotEqualTo(String value) {
+            addCriterion("present_duties <>", value, "presentDuties");
+            return (Criteria) this;
+        }
+
+        public Criteria andPresentDutiesGreaterThan(String value) {
+            addCriterion("present_duties >", value, "presentDuties");
+            return (Criteria) this;
+        }
+
+        public Criteria andPresentDutiesGreaterThanOrEqualTo(String value) {
+            addCriterion("present_duties >=", value, "presentDuties");
+            return (Criteria) this;
+        }
+
+        public Criteria andPresentDutiesLessThan(String value) {
+            addCriterion("present_duties <", value, "presentDuties");
+            return (Criteria) this;
+        }
+
+        public Criteria andPresentDutiesLessThanOrEqualTo(String value) {
+            addCriterion("present_duties <=", value, "presentDuties");
+            return (Criteria) this;
+        }
+
+        public Criteria andPresentDutiesLike(String value) {
+            addCriterion("present_duties like", value, "presentDuties");
+            return (Criteria) this;
+        }
+
+        public Criteria andPresentDutiesNotLike(String value) {
+            addCriterion("present_duties not like", value, "presentDuties");
+            return (Criteria) this;
+        }
+
+        public Criteria andPresentDutiesIn(List<String> values) {
+            addCriterion("present_duties in", values, "presentDuties");
+            return (Criteria) this;
+        }
+
+        public Criteria andPresentDutiesNotIn(List<String> values) {
+            addCriterion("present_duties not in", values, "presentDuties");
+            return (Criteria) this;
+        }
+
+        public Criteria andPresentDutiesBetween(String value1, String value2) {
+            addCriterion("present_duties between", value1, value2, "presentDuties");
+            return (Criteria) this;
+        }
+
+        public Criteria andPresentDutiesNotBetween(String value1, String value2) {
+            addCriterion("present_duties not between", value1, value2, "presentDuties");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

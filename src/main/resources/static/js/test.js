@@ -219,6 +219,7 @@ var fields = [
     {field:'corporationDuties',title:'老年文体社团职务',width:150,edit:editable},
     {field:'timeCorporation',title:'老年文体社团职务起时间',width:150,edit:editable},
     {field:'endtimeCorporation',title:'老年文体社团职务止时间',width:150,edit:editable},
+    {field:'presentDuties',title:'现任职务',width:150,edit:editable},
     //联系信息8
     {field:'homeAddress',title:'家庭住址',width:150,edit:editable},
     {field:'phoneHome',title:'家庭电话',width:150,edit:editable},
@@ -300,6 +301,7 @@ var tableOptions = {
         {field:'corporationDuties',title:'老年文体社团职务',width:150,edit:editable},
         {field:'timeCorporation',title:'老年文体社团职务起时间',width:150,edit:editable},
         {field:'endtimeCorporation',title:'老年文体社团职务止时间',width:150,edit:editable},
+        {field:'presentDuties',title:'现任职务',width:150,edit:editable},
         //联系信息5
         {field:'homeAddress',title:'家庭住址',width:150,edit:editable},
         {field:'phoneHome',title:'家庭电话',width:150,edit:editable},
