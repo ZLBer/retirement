@@ -96,13 +96,21 @@
     font-weight: 900;
 
 }
-
+.condition input{
+    width: 120px !important;
+}
+.condition .layui-input-inline{
+    width: 120px !important;
+}
+.condition label{
+    font-size:16px !important;
+}
 .match input{
     width: 80px!important;
 }
-.all-selectors input{
+/*.all-selectors input{
     width:200px!important;
-}
+}*/
 .condition{
     padding-top: 10px;
     padding-bottom: 10px;
