@@ -24,6 +24,7 @@
     <result column="time_corporation" jdbcType="DATE" property="timeCorporation" />
     <result column="endtime_corporation" jdbcType="DATE" property="endtimeCorporation" />
     <result column="present_duties" jdbcType="VARCHAR" property="presentDuties" />
+    <result column="alld" jdbcType="VARCHAR" property="alld" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -88,7 +89,7 @@
     administration_duties, time_administration, endtime_administration, committee_duties, 
     time_committee, endtime_committee, steering_member, time_steering, endtime_steering, 
     organization_member, time_organization, endtime_organization, corporation_duties, 
-    time_corporation, endtime_corporation, present_duties
+    time_corporation, endtime_corporation, present_duties, alld
   </sql>
   <select id="selectByExample" parameterType="test.domain.InformationPresentExample" resultMap="BaseResultMap">
     select
@@ -128,7 +129,8 @@
       endtime_committee, steering_member, time_steering, 
       endtime_steering, organization_member, time_organization, 
       endtime_organization, corporation_duties, time_corporation, 
-      endtime_corporation, present_duties)
+      endtime_corporation, present_duties, alld
+      )
     values (#{id,jdbcType=INTEGER}, #{partyBranch,jdbcType=VARCHAR}, #{administration,jdbcType=VARCHAR}, 
       #{basicpartyDuties,jdbcType=VARCHAR}, #{timeBasicparty,jdbcType=DATE}, #{endtimeBasicparty,jdbcType=DATE}, 
       #{administrationDuties,jdbcType=VARCHAR}, #{timeAdministration,jdbcType=DATE}, 
@@ -136,7 +138,8 @@
       #{endtimeCommittee,jdbcType=DATE}, #{steeringMember,jdbcType=VARCHAR}, #{timeSteering,jdbcType=DATE}, 
       #{endtimeSteering,jdbcType=DATE}, #{organizationMember,jdbcType=VARCHAR}, #{timeOrganization,jdbcType=DATE}, 
       #{endtimeOrganization,jdbcType=DATE}, #{corporationDuties,jdbcType=VARCHAR}, #{timeCorporation,jdbcType=DATE}, 
-      #{endtimeCorporation,jdbcType=DATE}, #{presentDuties,jdbcType=VARCHAR})
+      #{endtimeCorporation,jdbcType=DATE}, #{presentDuties,jdbcType=VARCHAR}, #{alld,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="test.domain.InformationPresent">
     insert into information_present
@@ -207,6 +210,9 @@
       <if test="presentDuties != null">
         present_duties,
       </if>
+      <if test="alld != null">
+        alld,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -274,6 +280,9 @@
       </if>
       <if test="presentDuties != null">
         #{presentDuties,jdbcType=VARCHAR},
+      </if>
+      <if test="alld != null">
+        #{alld,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -352,6 +361,9 @@
       <if test="record.presentDuties != null">
         present_duties = #{record.presentDuties,jdbcType=VARCHAR},
       </if>
+      <if test="record.alld != null">
+        alld = #{record.alld,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -380,7 +392,8 @@
       corporation_duties = #{record.corporationDuties,jdbcType=VARCHAR},
       time_corporation = #{record.timeCorporation,jdbcType=DATE},
       endtime_corporation = #{record.endtimeCorporation,jdbcType=DATE},
-      present_duties = #{record.presentDuties,jdbcType=VARCHAR}
+      present_duties = #{record.presentDuties,jdbcType=VARCHAR},
+      alld = #{record.alld,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -451,6 +464,9 @@
       <if test="presentDuties != null">
         present_duties = #{presentDuties,jdbcType=VARCHAR},
       </if>
+      <if test="alld != null">
+        alld = #{alld,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -476,7 +492,8 @@
       corporation_duties = #{corporationDuties,jdbcType=VARCHAR},
       time_corporation = #{timeCorporation,jdbcType=DATE},
       endtime_corporation = #{endtimeCorporation,jdbcType=DATE},
-      present_duties = #{presentDuties,jdbcType=VARCHAR}
+      present_duties = #{presentDuties,jdbcType=VARCHAR},
+      alld = #{alld,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

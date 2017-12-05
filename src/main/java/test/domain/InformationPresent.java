@@ -47,6 +47,8 @@ public class InformationPresent {
 
     private String presentDuties;
 
+    private String alld;
+
     public Integer getId() {
         return id;
     }
@@ -221,5 +223,13 @@ public class InformationPresent {
 
     public void setPresentDuties(String presentDuties) {
         this.presentDuties = presentDuties == null ? null : presentDuties.trim();
+    }
+
+    public String getAlld() {
+        return alld;
+    }
+
+    public void setAlld(String alld) {
+        this.alld = alld == null ? null : alld.trim();
     }
 }

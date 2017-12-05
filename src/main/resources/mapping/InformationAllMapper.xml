@@ -56,6 +56,8 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="wechat" jdbcType="VARCHAR" property="wechat" />
     <result column="present_duties" jdbcType="VARCHAR" property="presentDuties" />
+    <result column="birth_place" jdbcType="VARCHAR" property="birthPlace" />
+    <result column="degree" jdbcType="VARCHAR" property="degree" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -97,7 +99,8 @@
      endtime_steering, organization_member, time_organization, endtime_organization, corporation_duties,
      time_corporation, endtime_corporation,present_duties,
     home_address, phone_home, phone_own, phone_children,phone_other,qq,wechat,email,
-    spouse,status_children,living_condition, status_other
+    spouse,status_children,living_condition, status_other,
+    birth_place,degree
   </sql>
   <sql id="Join_Table_List">
     information_basic AS a

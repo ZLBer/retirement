@@ -111,6 +111,12 @@ public class InformationAll {
 
     private String presentDuties;
 
+    private String birthPlace;
+
+    private String degree;
+
+    private String alld;
+
     public Integer getId() {
         return id;
     }
@@ -541,5 +547,29 @@ public class InformationAll {
 
     public void setPresentDuties(String presentDuties) {
         this.presentDuties = presentDuties == null ? null : presentDuties.trim();
+    }
+
+    public String getBirthPlace() {
+        return birthPlace;
+    }
+
+    public void setBirthPlace(String birthPlace) {
+        this.birthPlace = birthPlace == null ? null : birthPlace.trim();
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree == null ? null : degree.trim();
+    }
+
+    public String getAlld() {
+        return alld;
+    }
+
+    public void setAlld(String alld) {
+        this.alld = alld == null ? null : alld.trim();
     }
 }

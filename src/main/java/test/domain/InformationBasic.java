@@ -19,6 +19,10 @@ public class InformationBasic {
 
     private String category;
 
+    private String birthPlace;
+
+    private String degree;
+
     public Integer getId() {
         return id;
     }
@@ -81,5 +85,21 @@ public class InformationBasic {
 
     public void setCategory(String category) {
         this.category = category == null ? null : category.trim();
+    }
+
+    public String getBirthPlace() {
+        return birthPlace;
+    }
+
+    public void setBirthPlace(String birthPlace) {
+        this.birthPlace = birthPlace == null ? null : birthPlace.trim();
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree == null ? null : degree.trim();
     }
 }

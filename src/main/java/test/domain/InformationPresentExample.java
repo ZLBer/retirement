@@ -1541,6 +1541,76 @@ public class InformationPresentExample {
             addCriterion("present_duties not between", value1, value2, "presentDuties");
             return (Criteria) this;
         }
+
+        public Criteria andAlldIsNull() {
+            addCriterion("alld is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlldIsNotNull() {
+            addCriterion("alld is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlldEqualTo(String value) {
+            addCriterion("alld =", value, "alld");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlldNotEqualTo(String value) {
+            addCriterion("alld <>", value, "alld");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlldGreaterThan(String value) {
+            addCriterion("alld >", value, "alld");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlldGreaterThanOrEqualTo(String value) {
+            addCriterion("alld >=", value, "alld");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlldLessThan(String value) {
+            addCriterion("alld <", value, "alld");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlldLessThanOrEqualTo(String value) {
+            addCriterion("alld <=", value, "alld");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlldLike(String value) {
+            addCriterion("alld like", value, "alld");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlldNotLike(String value) {
+            addCriterion("alld not like", value, "alld");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlldIn(List<String> values) {
+            addCriterion("alld in", values, "alld");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlldNotIn(List<String> values) {
+            addCriterion("alld not in", values, "alld");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlldBetween(String value1, String value2) {
+            addCriterion("alld between", value1, value2, "alld");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlldNotBetween(String value1, String value2) {
+            addCriterion("alld not between", value1, value2, "alld");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

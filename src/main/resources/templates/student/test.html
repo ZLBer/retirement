@@ -192,6 +192,7 @@
                         <div th:replace="student/datafilter::inputFilter('家庭电话','homeAddressInput','homeAddress')"></div>
                         <div th:replace="student/datafilter::inputFilter('手机号码','phoneOwnInput','phoneOwn')"></div>-->
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('姓名','nameInput','name')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('性别','sexInput','sex')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('籍贯','nativePlaceInput','nativePlace')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('民族','nationInput','nation')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('政治面貌','politicsStatusInput','politicsStatus')"></div>
@@ -201,13 +202,9 @@
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('享受待遇','treatmentInput','treatment')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('所在党支部','partyBranchInput','partyBranch')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('所在行政组','administrationInput','administration')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOrDefault('现任职务','homeAddressInput','homeAddress')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('现任职务','alldInput','alld')"></div>
                     </div>
                     <div class="layui-row condition">
-                        <div th:replace="student/datafilter::selectFilter('性别',~{this::option[@field='7']},'sexSelector','sex')">
-                            <option field="7" value="男">男</option>
-                            <option field="7" value="女">女</option>
-                        </div>
                         <div th:replace="student/datafilter::selectFilter('人员类别',~{this::option[@field='8']},'categorySelector','category')">
                             <option  field="8" value="离休">离休</option>
                             <option  field="8" value="退休" >退休</option>
