@@ -27,4 +27,5 @@ public interface InformationPresentMapper {
     int updateByPrimaryKeySelective(InformationPresent record);
 
     int updateByPrimaryKey(InformationPresent record);
+    void  updateAlld();
 }

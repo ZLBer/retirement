@@ -18,4 +18,5 @@ public interface IAdminService {
      String saveByall(InformationAll informationAll);
      String updateByall(InformationAll informationAll);
      String deleteById(int id);
+     void updateAlld();
 }

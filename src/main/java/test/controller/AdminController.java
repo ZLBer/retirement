@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import test.domain.*;
+import test.mapper.InformationPresentMapper;
 import test.service.IAdminService;
 import test.service.impl.AdminService;
 
@@ -38,10 +39,13 @@ public class AdminController {
     IAdminService adminService;
     @Resource
     StandardServletMultipartResolver multipartResolver;
+    @Resource
+    InformationPresentMapper informationPresentMapper;
 
     @RequestMapping(path = "/goDownload")
     public String goDownload(Model model) {
         model.addAttribute("bodyRightContent", "admin/download");
+
         return "main";
     }
 
@@ -110,18 +114,21 @@ public class AdminController {
 //                        columen+=1;
 //                        percent=columen/m.size()*100;
                     }
+                    informationPresentMapper.updateAlld();
                 } else if (IType.equals("2")) {
                     for (List mm : m) {
                         adminService.insertOrUpdateSave(s, mm);
 //                        columen+=1;
 //                        percent=columen/m.size()*100;
                     }
+                    informationPresentMapper.updateAlld();
                 } else {
                     for (List mm : m) {
                         adminService.coverSave(s, mm);
 //                        columen+=1;
 //                        percent=columen/m.size()*100;
                     }
+                    informationPresentMapper.updateAlld();
                 }
 
 
@@ -158,6 +165,7 @@ public class AdminController {
     @ResponseBody
     public Result update(@RequestBody InformationAll informationAll){
         String r=adminService.updateByall(informationAll);
+        informationPresentMapper.updateAlld();
         Result result = new Result(1, "", r);
         return  result;
     }
@@ -169,4 +177,5 @@ public class AdminController {
         Result result = new Result(1, "", r);
         return  result;
     }
+
 }

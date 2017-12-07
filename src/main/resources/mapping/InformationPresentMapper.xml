@@ -496,4 +496,8 @@
       alld = #{alld,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="updateAlld">
+    update information_present
+     set alld=CONCAT(ifNULL(party_branch,""),ifNULL(administration,""),ifNULL(basicparty_duties,""),ifNULL(administration_duties,""),ifNULL(committee_duties,""),ifNULL(organization_member,""),ifNULL(corporation_duties,""),ifNULL(corporation_duties,""),ifNULL(steering_member,""));
+  </update>
 </mapper>

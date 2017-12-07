@@ -52,9 +52,9 @@ public class AdminService implements IAdminService {
             titles.addAll(Arrays.asList(informationContact));
         if (informationSupplement != null)
             titles.addAll(Arrays.asList(informationSupplement));
-        for(int i=1;i<titles.size();i++){
+        for (int i = 1; i < titles.size(); i++) {
             try {
-                titles.set(i,new String(titles.get(i).getBytes("ISO-8859-1"),"UTF-8"));
+                titles.set(i, new String(titles.get(i).getBytes("ISO-8859-1"), "UTF-8"));
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
@@ -606,7 +606,6 @@ public class AdminService implements IAdminService {
         InformationContact informationContact = new InformationContact();
 
 
-
         informationBasic.setBirthday(informationAll.getBirthday());
         informationBasic.setCategory(informationAll.getCategory());
         informationBasic.setIdNumber(informationAll.getIdNumber());
@@ -616,7 +615,7 @@ public class AdminService implements IAdminService {
         informationBasic.setSex(informationAll.getSex());
         informationBasicMapper.insert(informationBasic);
         informationBasic1 = informationBasicMapper.selectByExample(example);
-       int id= informationBasic1.get(0).getId();
+        int id = informationBasic1.get(0).getId();
         informationPolitics.setId(id);
         informationPolitics.setPoliticsStatus(informationAll.getPoliticsStatus());
         informationPolitics.setConversionTime(informationAll.getConversionTime());
@@ -635,50 +634,51 @@ public class AdminService implements IAdminService {
         informationOriginal.setOriginProfessionalLevel(informationAll.getOriginProfessionalLevel());
 
         informationPresent.setId(id);
-                informationPresent.setPartyBranch(informationAll.getPartyBranch());
+        informationPresent.setPartyBranch(informationAll.getPartyBranch());
         informationPresent.setAdministration(informationAll.getAdministration());
         informationPresent.setPresentDuties(informationAll.getPresentDuties());
-                informationPresent.setBasicpartyDuties(informationAll.getAdministrationDuties());
+        informationPresent.setBasicpartyDuties(informationAll.getBasicpartyDuties());
         informationPresent.setEndtimeBasicparty(informationAll.getEndtimeBasicparty());
-                informationPresent.setTimeBasicparty(informationAll.getTimeBasicparty());
-        informationPresent.setAdministrationDuties(informationAll.getPoliticsStatus());
-                informationPresent.setEndtimeAdministration(informationAll.getEndtimeAdministration());
+        informationPresent.setTimeBasicparty(informationAll.getTimeBasicparty());
+        informationPresent.setAdministrationDuties(informationAll.getAdministrationDuties());
+        informationPresent.setEndtimeAdministration(informationAll.getEndtimeAdministration());
         informationPresent.setTimeAdministration(informationAll.getTimeAdministration());
-                informationPresent.setCommitteeDuties(informationAll.getCommitteeDuties());
+        informationPresent.setCommitteeDuties(informationAll.getCommitteeDuties());
         informationPresent.setTimeCommittee(informationAll.getTimeCommittee());
-                informationPresent.setEndtimeCommittee(informationAll.getEndtimeCommittee());
+        informationPresent.setEndtimeCommittee(informationAll.getEndtimeCommittee());
         informationPresent.setSteeringMember(informationAll.getSteeringMember());
-                informationPresent.setTimeSteering(informationAll.getTimeSteering());
+        informationPresent.setTimeSteering(informationAll.getTimeSteering());
         informationPresent.setEndtimeSteering(informationAll.getEndtimeSteering());
-                informationPresent.setOrganizationMember(informationAll.getOrganizationMember());
+        informationPresent.setOrganizationMember(informationAll.getOrganizationMember());
         informationPresent.setTimeOrganization(informationAll.getTimeOrganization());
-                informationPresent.setEndtimeOrganization(informationAll.getEndtimeOrganization());
+        informationPresent.setEndtimeOrganization(informationAll.getEndtimeOrganization());
         informationPresent.setCorporationDuties(informationAll.getCorporationDuties());
-                informationPresent.setTimeCorporation(informationAll.getTimeCorporation());
+        informationPresent.setTimeCorporation(informationAll.getTimeCorporation());
         informationPresent.setEndtimeCorporation(informationAll.getEndtimeCorporation());
+        informationPresent.setAlld(informationAll.getPartyBranch()+informationAll.getAdministration()+informationAll.getBasicpartyDuties()+informationAll.getAdministrationDuties()+informationAll.getCommitteeDuties()+informationAll.getOrganizationMember()+informationAll.getCorporationDuties()+informationAll.getSteeringMember());
 
         informationContact.setId(id);
         informationContact.setEmail(informationAll.getEmail());
         informationContact.setHomeAddress(informationAll.getHomeAddress());
-                informationContact.setPhoneChildren(informationAll.getPhoneChildren());
-                informationContact.setPhoneHome(informationAll.getPhoneHome());
+        informationContact.setPhoneChildren(informationAll.getPhoneChildren());
+        informationContact.setPhoneHome(informationAll.getPhoneHome());
         informationContact.setPhoneOwn(informationAll.getPhoneOwn());
-                informationContact.setPhoneOther(informationAll.getPhoneOther());
+        informationContact.setPhoneOther(informationAll.getPhoneOther());
         informationContact.setWechat(informationAll.getWechat());
         informationContact.setWechat(informationAll.getWechat());
         informationContact.setQq(informationAll.getQq());
 
         informationSupplement.setId(id);
         informationSupplement.setLivingCondition(informationAll.getLivingCondition());
-                informationSupplement.setSpouse(informationAll.getSpouse());
+        informationSupplement.setSpouse(informationAll.getSpouse());
         informationSupplement.setStatusChildren(informationAll.getStatusChildren());
-                informationSupplement.setStatusOther(informationAll.getStatusOther());
+        informationSupplement.setStatusOther(informationAll.getStatusOther());
 
-    informationSupplementMapper.insert(informationSupplement);
-    informationContactMapper.insert(informationContact);
-    informationPresentMapper.insert(informationPresent);
-    informationOriginalMapper.insert(informationOriginal);
-    informationPoliticsMapper.insert(informationPolitics);
+        informationSupplementMapper.insert(informationSupplement);
+        informationContactMapper.insert(informationContact);
+        informationPresentMapper.insert(informationPresent);
+        informationOriginalMapper.insert(informationOriginal);
+        informationPoliticsMapper.insert(informationPolitics);
 
         return "人员信息添加成功！";
     }
@@ -695,7 +695,7 @@ public class AdminService implements IAdminService {
         InformationContact informationContact = new InformationContact();
 
 
-         informationBasic.setId(informationAll.getId());
+        informationBasic.setId(informationAll.getId());
         informationBasic.setBirthday(informationAll.getBirthday());
         informationBasic.setCategory(informationAll.getCategory());
         informationBasic.setIdNumber(informationAll.getIdNumber());
@@ -772,24 +772,29 @@ public class AdminService implements IAdminService {
 
     @Override
     public String deleteById(int id) {
-        if(informationBasicMapper.selectByPrimaryKey(id)!=null){
+        if (informationBasicMapper.selectByPrimaryKey(id) != null) {
             informationBasicMapper.deleteByPrimaryKey(id);
         }
-       if(informationPoliticsMapper.selectByPrimaryKey(id)!=null){
-           informationPoliticsMapper.deleteByPrimaryKey(id);
-       }
-       if(informationOriginalMapper.selectByPrimaryKey(id)!=null){
-           informationOriginalMapper.deleteByPrimaryKey(id);
-       }
-       if(informationPresentMapper.selectByPrimaryKey(id)!=null){
-           informationPresentMapper.deleteByPrimaryKey(id);
+        if (informationPoliticsMapper.selectByPrimaryKey(id) != null) {
+            informationPoliticsMapper.deleteByPrimaryKey(id);
         }
-        if(informationContactMapper.selectByPrimaryKey(id)!=null){
-           informationContactMapper.deleteByPrimaryKey(id);
+        if (informationOriginalMapper.selectByPrimaryKey(id) != null) {
+            informationOriginalMapper.deleteByPrimaryKey(id);
         }
-        if(informationSupplementMapper.selectByPrimaryKey(id)!=null){
+        if (informationPresentMapper.selectByPrimaryKey(id) != null) {
+            informationPresentMapper.deleteByPrimaryKey(id);
+        }
+        if (informationContactMapper.selectByPrimaryKey(id) != null) {
+            informationContactMapper.deleteByPrimaryKey(id);
+        }
+        if (informationSupplementMapper.selectByPrimaryKey(id) != null) {
             informationSupplementMapper.deleteByPrimaryKey(id);
         }
         return "删除成功！";
+    }
+
+    @Override
+    public void updateAlld() {
+
     }
 }
