@@ -115,3 +115,10 @@
     padding-bottom: 10px;
     border: rgba(39, 39, 39, 0.6) 1px solid;
 }
+.tips{
+    background-color: rgba(255, 189, 102, 1);
+    padding: 9px 120px;
+    font-size: 15px;
+    line-height: 28px;
+    border: rgba(39, 39, 39, 0.6) 1px solid;
+}

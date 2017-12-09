@@ -165,10 +165,14 @@ public class MyTestInterceptor implements HandlerInterceptor {
                 Logger.getLogger(MyTestInterceptor.class).info(paramRow[startIndex]);
                 if (paramRow[startIndex + 1].equals("4")) {
                     String[] strArgu = paramRow[startIndex].split(" ");
+                    if (strArgu.length==1){
+                        strArgu = new String[]{strArgu[0], (Integer.parseInt(strArgu[0])+1)+""};
+                    }
+                    strArgu = new String[]{strArgu[0]+"-00-00", strArgu[1]+"-00-00"};
                     Date[] intArgu = {dateFormat.parse(strArgu[0]), dateFormat.parse(strArgu[1])};
                     method = clazz.getDeclaredMethod(methodName, new Class[]{fieldType, fieldType});
                     method.invoke(criteria, intArgu[startIndex], intArgu[startIndex + 1]);
-                } else {
+                }else {
                     method = clazz.getDeclaredMethod(methodName, new Class[]{fieldType});
                     method.invoke(criteria, dateFormat.parse(paramRow[startIndex]));
                 }
