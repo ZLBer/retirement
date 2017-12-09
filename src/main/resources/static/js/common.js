@@ -108,7 +108,7 @@ $(function () {
                     layer.msg(data.msg,{icon:1,time:1500})
                 },
                 error: function(xhr, type){
-                    layer.msg('修改失败,请核对数据格式。',{icon:1,time:1500})
+                    layer.msg('修改失败,请核对数据格式。',{icon:2,time:1500})
                 }
             })
         });
@@ -229,7 +229,10 @@ function progressbar() {
             dataType:"json",
             success : function(data) {
                 if (data.state == 1) {
-                    layer.msg('数据处理成功！',{icon:1,time:time})
+                    layer.alert("数据处理成功！", {
+                        icon: 1,
+                        skin: 'layer-ext-moon' //该皮肤由layer.seaning.com友情扩展。关于皮肤的扩展规则，去这里查阅
+                    })
                   //   $("#percent").show();
                   // var  interval= window.setInterval(function(){
                   //       $.ajax({
@@ -250,11 +253,18 @@ function progressbar() {
                   //
                   //   },1000);
                 } else {
-                    layer.msg('请求失败，请重试',{icon:2,time:time})
+                    layer.alert("上传失败，请核对数据格式", {
+                        icon: 2,
+                        skin: 'layer-ext-moon' //该皮肤由layer.seaning.com友情扩展。关于皮肤的扩展规则，去这里查阅
+                    })
                 }
             },
             error: function(xhr, type){
-                layer.msg('上传失败,请核对上传列与所选列的并核对数据格式',{icon:2,time:time})
+             //   layer.msg('上传失败,请核对上传列与所选列的并核对数据格式',{icon:2,time:time})
+                layer.alert("上传失败,请核对上传列与所选列的并核对数据格式", {
+                    icon: 2,
+                    skin: 'layer-ext-moon' //该皮肤由layer.seaning.com友情扩展。关于皮肤的扩展规则，去这里查阅
+                })
             }
         }).on(function () {
 

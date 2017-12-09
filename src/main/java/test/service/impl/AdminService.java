@@ -613,6 +613,8 @@ public class AdminService implements IAdminService {
         informationBasic.setNation(informationAll.getNation());
         informationBasic.setNativePlace(informationAll.getNativePlace());
         informationBasic.setSex(informationAll.getSex());
+        informationBasic.setBirthPlace(informationAll.getBirthPlace());
+        informationBasic.setDegree(informationAll.getDegree());
         informationBasicMapper.insert(informationBasic);
         informationBasic1 = informationBasicMapper.selectByExample(example);
         int id = informationBasic1.get(0).getId();
@@ -634,6 +636,7 @@ public class AdminService implements IAdminService {
         informationOriginal.setOriginProfessionalLevel(informationAll.getOriginProfessionalLevel());
 
         informationPresent.setId(id);
+        informationPresent.setPresentDuties(informationAll.getPresentDuties());
         informationPresent.setPartyBranch(informationAll.getPartyBranch());
         informationPresent.setAdministration(informationAll.getAdministration());
         informationPresent.setPresentDuties(informationAll.getPresentDuties());
