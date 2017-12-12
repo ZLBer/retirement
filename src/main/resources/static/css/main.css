@@ -59,6 +59,7 @@
 }
 .layui-layout-admin .layui-logo
 {
+    width: 460px;
     font-size: 26px;
     color: #ffffff !important;
 }
@@ -117,8 +118,12 @@
 }
 .tips{
     background-color: rgba(255, 189, 102, 1);
-    padding: 9px 120px;
-    font-size: 15px;
+    padding: 9px 38px;
+    font-size: 18px;
     line-height: 28px;
     border: rgba(39, 39, 39, 0.6) 1px solid;
 }
+.layui-layout-left {
+    left: 430px !important;
+}
+
