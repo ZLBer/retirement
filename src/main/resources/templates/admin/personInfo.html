@@ -70,7 +70,24 @@
                        class="layui-input">
             </div>
         </div>
-
+        <div class="layui-form-item">
+        <label class="layui-form-label">最高学历</label>
+        <!--<div class="layui-input-inline">-->
+        <!--<input type="text" name="educationLevel" placeholder="请输入" autocomplete="off"-->
+        <!--class="layui-input">-->
+        <!--</div>-->
+        <div class="layui-input-inline">
+            <select name="educationLevel" >
+                <option value=""></option>
+                <option value="博士研究生">博士研究生</option>
+                <option value="硕士研究生" >硕士研究生</option>
+                <option value="大学本科">大学本科</option>
+                <option value="大学本科">大学本科</option>
+                <option value="大学本科">大学本科</option>
+                <option value="高中及以下">高中及以下</option>
+            </select>
+        </div>
+        </div>
         <blockquote class="layui-elem-quote">政治面貌信息</blockquote>
         <div class="layui-form-item">
 
@@ -98,26 +115,31 @@
                 <input type="text" name="identity"  placeholder="请输入" autocomplete="off"
                        class="layui-input">
             </div>
-            <label class="layui-form-label">文化水平</label>
+            <!--<label class="layui-form-label">最高学历</label>-->
+            <!--&lt;!&ndash;<div class="layui-input-inline">&ndash;&gt;-->
+                <!--&lt;!&ndash;<input type="text" name="educationLevel" placeholder="请输入" autocomplete="off"&ndash;&gt;-->
+                       <!--&lt;!&ndash;class="layui-input">&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
             <!--<div class="layui-input-inline">-->
-                <!--<input type="text" name="educationLevel" placeholder="请输入" autocomplete="off"-->
-                       <!--class="layui-input">-->
+                <!--<select name="educationLevel" >-->
+                    <!--<option value=""></option>-->
+                    <!--<option value="博士研究生">博士研究生</option>-->
+                    <!--<option value="硕士研究生" >硕士研究生</option>-->
+                    <!--<option value="大学本科">大学本科</option>-->
+                    <!--<option value="大学本科">大学本科</option>-->
+                    <!--<option value="大学本科">大学本科</option>-->
+                    <!--<option value="高中及以下">高中及以下</option>-->
+                <!--</select>-->
             <!--</div>-->
-            <div class="layui-input-inline">
-                <select name="educationLevel" >
-                    <option value=""></option>
-                    <option value="博士研究生">博士研究生</option>
-                    <option value="硕士研究生" >硕士研究生</option>
-                    <option value="大学本科">大学本科</option>
-                    <option value="大学本科">大学本科</option>
-                    <option value="大学本科">大学本科</option>
-                    <option value="高中及以下">高中及以下</option>
-                </select>
-            </div>
             <label class="layui-form-label">原工作单位</label>
             <div class="layui-input-inline">
                 <input type="text" name="originWorkplace"  placeholder="请输入" autocomplete="off"
                        class="layui-input">
+            </div>
+            <label class="layui-form-label">离退休时间</label>
+            <div class="layui-input-inline">
+                <input type="text" name="timeRetirement" id="timeRetirement"  placeholder="yyyy-MM-dd"
+                       autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -174,124 +196,48 @@
                        autocomplete="off" class="layui-input">
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">离退休时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="timeRetirement" id="timeRetirement"  placeholder="yyyy-MM-dd"
-                       autocomplete="off" class="layui-input">
-            </div>
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">离退休时间</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="timeRetirement" id="timeRetirement"  placeholder="yyyy-MM-dd"-->
+                       <!--autocomplete="off" class="layui-input">-->
+            <!--</div>-->
 
-        </div>
+        <!--</div>-->
         <blockquote class="layui-elem-quote">现工作信息</blockquote>
         <div class="layui-form-item">
-
-            <label class="layui-form-label">党支部名称</label>
+            <label class="layui-form-label">所在党支部</label>
             <div class="layui-input-inline">
                 <input type="text" name="partyBranch"  placeholder="请输入" autocomplete="off"
                        class="layui-input">
             </div>
-            <label class="layui-form-label">行政组</label>
+            <label class="layui-form-label">所在行政组</label>
             <div class="layui-input-inline">
                 <input type="text" name="administration"  placeholder="请输入" autocomplete="off"
                        class="layui-input">
             </div>
-            <label class="layui-form-label">现职务</label>
-            <div class="layui-input-inline">
-                <input type="text" name="presentDuties"  placeholder="请输入" autocomplete="off"
-                       class="layui-input">
-            </div>
-
-        </div>
-        <div class="layui-form-item">
             <label class="layui-form-label">基层党组织职务</label>
             <div class="layui-input-inline">
                 <input type="text" name="basicpartyDuties"  placeholder="请输入" autocomplete="off"
                        class="layui-input">
             </div>
-            <label class="layui-form-label">基层党组织职务起时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="timeBasicparty" id="timeBasicparty"  placeholder="yyyy-MM-dd"
-                       autocomplete="off" class="layui-input">
-            </div>
-            <label class="layui-form-label">基层党组织职务止时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="endtimeBasicparty" id="endtimeBasicparty"
-                       placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-            </div>
-
-
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">行政组职务</label>
+            <label class="layui-form-label">行政组</label>
             <div class="layui-input-inline">
-                <input type="text" name="administrationDuties"  placeholder="请输入"
-                       autocomplete="off" class="layui-input">
+                <input type="text" name="administration"  placeholder="请输入" autocomplete="off"
+                       class="layui-input">
             </div>
-            <label class="layui-form-label">行政组工作起时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="timeAdministration" id="timeAdministration"
-                       placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-            </div>
-            <label class="layui-form-label">行政组工作止时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="endtimeAdministration" id="endtimeAdministration"
-                       placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-            </div>
-
-        </div>
-        <div class="layui-form-item">
             <label class="layui-form-label">关工委工作职务</label>
             <div class="layui-input-inline">
                 <input type="text" name="committeeDuties"  placeholder="请输入" autocomplete="off"
                        class="layui-input">
             </div>
-            <label class="layui-form-label">关工委工作起时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="timeCommittee" id="timeCommittee"  placeholder="yyyy-MM-dd"
-                       autocomplete="off" class="layui-input">
-            </div>
-            <label class="layui-form-label">关工委工作起时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="endtimeCommittee" id="endtimeCommittee"
-                       placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-            </div>
-
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">督导组成员</label>
-            <div class="layui-input-inline">
-                <input type="text" name="steeringMember"  placeholder="请输入" autocomplete="off"
-                       class="layui-input">
-            </div>
-            <label class="layui-form-label">导组督成员起时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="timeSteering" id="timeSteering"  placeholder="yyyy-MM-dd"
-                       autocomplete="off" class="layui-input">
-            </div>
-            <label class="layui-form-label">导组督成员止时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="endtimeSteering" id="endtimeSteering"
-                       placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-            </div>
-
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">特邀党建组织员</label>
-            <div class="layui-input-inline">
-                <input type="text" name="organizationMember"  placeholder="请输入" autocomplete="off"
-                       class="layui-input">
-            </div>
-            <label class="layui-form-label">特邀党建组织起时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="timeOrganization" id="timeOrganization"
-                       placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-            </div>
-            <label class="layui-form-label">特邀党建组织止时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="endtimeOrganization" id="endtimeOrganization"
-                       placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-            </div>
-
+                <label class="layui-form-label">特邀党建组织员</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="organizationMember"  placeholder="请输入" autocomplete="off"
+                           class="layui-input">
+                </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">老年文体社团职务</label>
@@ -299,17 +245,159 @@
                 <input type="text" name="corporationDuties"  placeholder="请输入" autocomplete="off"
                        class="layui-input">
             </div>
-            <label class="layui-form-label">老年文体社团职务起时间</label>
+            <label class="layui-form-label">教学督导组</label>
             <div class="layui-input-inline">
-                <input type="text" name="timeCorporation" id="timeCorporation"
-                       placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <input type="text" name="steeringMember"  placeholder="请输入" autocomplete="off"
+                       class="layui-input">
             </div>
-            <label class="layui-form-label">老年文体社团职务止时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="endtimeCorporation" id="endtimeCorporation"
-                       placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-            </div>
+
         </div>
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">党支部名称</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="partyBranch"  placeholder="请输入" autocomplete="off"-->
+                       <!--class="layui-input">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<label class="layui-form-label">行政组</label>-->
+        <!--<div class="layui-input-inline">-->
+            <!--<input type="text" name="administration"  placeholder="请输入" autocomplete="off"-->
+                   <!--class="layui-input">-->
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">基层党组织职务</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="basicpartyDuties"  placeholder="请输入" autocomplete="off"-->
+                       <!--class="layui-input">-->
+            <!--</div>-->
+
+        <!--<div class="layui-form-item">-->
+
+            <!--<label class="layui-form-label">党支部名称</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="partyBranch"  placeholder="请输入" autocomplete="off"-->
+                       <!--class="layui-input">-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">行政组</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="administration"  placeholder="请输入" autocomplete="off"-->
+                       <!--class="layui-input">-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">现职务</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="presentDuties"  placeholder="请输入" autocomplete="off"-->
+                       <!--class="layui-input">-->
+            <!--</div>-->
+
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">基层党组织职务</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="basicpartyDuties"  placeholder="请输入" autocomplete="off"-->
+                       <!--class="layui-input">-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">基层党组织职务起时间</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="timeBasicparty" id="timeBasicparty"  placeholder="yyyy-MM-dd"-->
+                       <!--autocomplete="off" class="layui-input">-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">基层党组织职务止时间</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="endtimeBasicparty" id="endtimeBasicparty"-->
+                       <!--placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">-->
+            <!--</div>-->
+
+
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">行政组职务</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="administrationDuties"  placeholder="请输入"-->
+                       <!--autocomplete="off" class="layui-input">-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">行政组工作起时间</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="timeAdministration" id="timeAdministration"-->
+                       <!--placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">行政组工作止时间</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="endtimeAdministration" id="endtimeAdministration"-->
+                       <!--placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">-->
+            <!--</div>-->
+
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">关工委工作职务</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="committeeDuties"  placeholder="请输入" autocomplete="off"-->
+                       <!--class="layui-input">-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">关工委工作起时间</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="timeCommittee" id="timeCommittee"  placeholder="yyyy-MM-dd"-->
+                       <!--autocomplete="off" class="layui-input">-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">关工委工作起时间</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="endtimeCommittee" id="endtimeCommittee"-->
+                       <!--placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">-->
+            <!--</div>-->
+
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">督导组成员</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="steeringMember"  placeholder="请输入" autocomplete="off"-->
+                       <!--class="layui-input">-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">导组督成员起时间</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="timeSteering" id="timeSteering"  placeholder="yyyy-MM-dd"-->
+                       <!--autocomplete="off" class="layui-input">-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">导组督成员止时间</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="endtimeSteering" id="endtimeSteering"-->
+                       <!--placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">-->
+            <!--</div>-->
+
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">特邀党建组织员</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="organizationMember"  placeholder="请输入" autocomplete="off"-->
+                       <!--class="layui-input">-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">特邀党建组织起时间</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="timeOrganization" id="timeOrganization"-->
+                       <!--placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">特邀党建组织止时间</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="endtimeOrganization" id="endtimeOrganization"-->
+                       <!--placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">-->
+            <!--</div>-->
+
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">老年文体社团职务</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="corporationDuties"  placeholder="请输入" autocomplete="off"-->
+                       <!--class="layui-input">-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">老年文体社团职务起时间</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="timeCorporation" id="timeCorporation"-->
+                       <!--placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">老年文体社团职务止时间</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" name="endtimeCorporation" id="endtimeCorporation"-->
+                       <!--placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">-->
+            <!--</div>-->
+        <!--</div>-->
         <blockquote class="layui-elem-quote">联系信息</blockquote>
         <div class="layui-form-item">
             <label class="layui-form-label">家庭住址</label>
@@ -350,6 +438,11 @@
             <label class="layui-form-label">邮箱</label>
             <div class="layui-input-inline">
                 <input type="text" name="email"  placeholder="请输入" autocomplete="off"
+                       class="layui-input">
+            </div>
+            <label class="layui-form-label">QQ号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="qq"  placeholder="请输入" autocomplete="off"
                        class="layui-input">
             </div>
         </div>

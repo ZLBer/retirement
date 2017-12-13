@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="mainContent">
+<div class="layui-upload">
+    <div class="layui-row tips">温馨提示：照片上传格式为jpg，命名格式为身份证号。上传后自动保存到服务器，可在详细信息中查看。</div>
+    <button type="button" class="layui-btn" id="test1">上传图片</button>
+    <div class="layui-upload-list">
+        <img  style="width:300px;height: 450px" class="layui-upload-img" id="demo1">
+        <p id="demoText"></p>
+    </div>
+</div>
+</div>
+</body>
+</html>

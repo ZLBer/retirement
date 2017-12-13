@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -24,6 +25,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
+import java.util.regex.Pattern;
 
 import static test.service.impl.ExcelUtil.read2007Excel;
 import static test.service.impl.ExcelUtil.writeXlsx;
@@ -178,4 +180,44 @@ public class AdminController {
         return  result;
     }
 
+    @GetMapping("/goUploadPhoto")
+    public  String  goUploadPhoto(Model model){
+        model.addAttribute("bodyRightContent", "admin/uploadPhoto");
+        return "main";
+    }
+@ResponseBody
+    @RequestMapping("/uploadPhoto")
+    public  Result uploadPhoto(MultipartFile file) throws Exception{
+ // 获取项目根目录
+    File path = new File(ResourceUtils.getURL("classpath:").getPath());
+    if(!path.exists()) path = new File("");
+    System.out.println("path:"+path.getAbsolutePath());
+//如果上传目录为/static/photos/，则可以如下获取：
+    File upload = new File(path.getAbsolutePath(),"static/photos");
+    if(!upload.exists()) upload.mkdirs();
+    System.out.println("upload url:"+upload.getAbsolutePath());
+
+        if (file.isEmpty()) {
+            System.out.println("文件未上传");
+            return new Result(0,"","上传失败");
+        } else {
+            System.out.println("文件长度: " + file.getSize());
+            System.out.println("文件类型: " + file.getContentType());
+            System.out.println("文件名称: " + file.getName());
+            System.out.println("文件原名: " + file.getOriginalFilename());
+            System.out.println("========================================");
+        }
+        //判断命名格式
+    String []fileNames=file.getOriginalFilename().split("\\.");
+    if(!isIDCard(fileNames[0]))
+    return new Result(0,"","命名不规范，请用身份证号命名");
+    //file.transferTo(new File("  D:\\cf"+"\\"+file.getOriginalFilename()));
+        file.transferTo(new File(String.valueOf(upload)+"\\"+file.getOriginalFilename()));
+        return new Result(1,"","上传成功");
+
+    }
+    public boolean isIDCard(String idCard) {
+        String REGEX_ID_CARD = "(^\\d{18}$)|(^\\d{15}$)";
+        return Pattern.matches(REGEX_ID_CARD, idCard);
+    }
 }
