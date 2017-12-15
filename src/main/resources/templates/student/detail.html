@@ -13,10 +13,10 @@
             <th align="center" lay-data="{field:'basicInfo',title:'基本信息' } " width="25" height="280" rowspan=6>基本信息</th>
             <th align="center" lay-data="{field:'name',title:'姓名' align:'center'}" width="130">姓名</th>
             <td colspan="2" th:text="${all.name}">张三</td>
-            <th align="center" lay-data="{field:'sex',title:'性别'}">性别</th>
-            <td colspan="2" th:text="${all.sex}" width="250">男</td>
+            <th align="center" lay-data="{field:'sex',title:'性别'}" width="130">性别</th>
+            <td colspan="2" th:text="${all.sex}"  >男</td>
             <th lay-data="{fixed: 'right', width: 160, align: 'center' fiele:'photo'}"  rowspan="5"
-                colspan="2"><img src="${classPath+all.idNumber+'.jpg'}" th:src="${'/photos/'+all.idNumber+'.jpg'}" style="width: 160px;height: 200px">
+               width="150"><img src="#" th:src="${'/photos/'+all.idNumber+'.jpg'}" style="width: 160px;height: 200px">
             </th>
         </tr>
         <tr>
@@ -54,8 +54,8 @@
         </thead>
         <thead align="center">
         <tr>
-            <th lay-data="{field:'originalWorkInfo',title:'原先工作信息'}" width="25" height="180" rowspan="3">原先工作信息</th>
-            <th lay-data="{field:'identity',title:'身份'}" width="60">身份</th>
+            <th lay-data="{field:'originalWorkInfo',title:'原先工作信息'}" width="25" height="150" rowspan="3">原先工作信息</th>
+            <th lay-data="{field:'identity',title:'身份'}" width="60" height="50">身份</th>
             <td width="80" th:text="${all.identity}">干部</td>
            	<th lay-data="{field:'originWorkplace',title:'原工作单位'}">原工作单位</th>
             <td width="100" th:text="${all.originWorkplace}">白马河学院</td>
@@ -65,7 +65,7 @@
             
         </tr>
         <tr>
-        	<th lay-data="{field:'orginDutiesLevel',title:'原职务级别',width:100}">原职务级别</th>
+        	<th lay-data="{field:'orginDutiesLevel',title:'原职务级别'}" height="50">原职务级别</th>
             <td width="100" th:text="${all.orginDutiesLevel}">正处</td>
             <th lay-data="{field:'originProfessional',title:'原职称',width:100}">原职称</th>
             <td width="100" th:text="${all.originProfessional}">教授</td>
@@ -73,11 +73,11 @@
             <td  colspan="3" th:text="${all.originProfessionalLevel}">正高</td>
         </tr>
         <tr>
-        	<th lay-data="{field:'treatment',title:'享受待遇',width:100}">享受待遇</th>
+        	<th lay-data="{field:'treatment',title:'享受待遇'}" height="50">享受待遇</th>
             <td width="100" th:text="${all.treatment}">正高</td>
             <th lay-data="{field:'timeWork',title:'工作时间',width:100}">工作时间</th>
-            <td colspan="3" width="200" th:text="${all.timeWork==null?'':#dates.format(all.timeWork,'yyyy年MM月dd日')}">1987-12-12</td>
-            <th lay-data="{field:'timeRetirement',title:'离退休时间',width:100}">离退休时间</th>
+            <td th:text="${all.timeWork==null?'':#dates.format(all.timeWork,'yyyy年MM月dd日')}">1987-12-12</td>
+            <th lay-data="{field:'timeRetirement',title:'离退休时间',width:100}" >离退休时间</th>
             <td colspan="3" width="100" th:text="${all.timeRetirement==null?'':#dates.format(all.timeRetirement,'yyyy年MM月dd日')}">2017-12-12</td>
         </tr>
         </thead>
@@ -105,18 +105,18 @@
         <tr>
         	<th colspan="2" lay-data="{field:'corporationDuties',title:'老年文体社团职务'}">老年文体社团</th>
         	<td colspan="2" th:text="${all.corporationDuties}">老年模特亮彩队队长</td>
-            <th colspan="2" lay-data="{field:'steeringMember',title:'督导组成员'}">教学督导组</th>
+            <th   lay-data="{field:'steeringMember',title:'督导组成员'}">教学督导组</th>
             <td colspan="2" th:text="${all.steeringMember}">组长</td>
         </tr>
         </thead>
         <thead align="center">
         <tr>
-            <th lay-data="{field:'contactInfo'}" rowspan="3">联系方式</th>
+            <th lay-data="{field:'contactInfo'}" rowspan="3" height="150">联系方式</th>
             <th lay-data="{field:'phoneHome',title:'家庭电话',width:100}">家庭电话</th>
             <td th:text="${all.phoneHome}">0538-8241234</td>
             <th>QQ号*</th>
             <td>1234567890</td>
-            <th lay-data="{field:'phoneChildren',title:'子女电话',width:100}" colspan="2">子女电话</th>
+            <th lay-data="{field:'phoneChildren',title:'子女电话',width:100}" >子女电话</th>
             <td colspan="2" th:text="${all.phoneChildren}">0538-8241234</td> 
         </tr>
         <tr>
@@ -130,24 +130,24 @@
         <tr>
         	<th lay-data="{field:'homeAddress',title:'家庭住址',width:100}">家庭住址</th>
             <td colspan="3" th:text="${all.homeAddress}">山东省泰安市泰山区镇政府家属院</td>
-            <th lay-data="{field:'phoneOther',title:'其他联系电话',width:100}" colspan="2">其他联系电话</th>
+            <th lay-data="{field:'phoneOther',title:'其他联系电话',width:100}" >其他联系电话</th>
             <td colspan="5" th:text="${all.phoneOther}">无</td>
         </tr>
         </thead>
         <thead align="center">
         <tr>
-            <th lay-data="{field:'remark'}" rowspan="2">备注</th>
-            <th lay-data="{field:'timeDeath',title:'去世时间',width:100}"  colspan="2">健在情况</th>
+            <th lay-data="{field:'remark'}" rowspan="2" height="100">备注</th>
+            <th lay-data="{field:'timeDeath',title:'去世时间',width:100}"   >健在情况</th>
             <td colspan="2" th:text="${all.livingCondition}">是</td>
             
-            <th lay-data="{field:'statusChildren',title:'子女情况',width:100}" colspan="2">子女情况</th>
-            <td colspan="2" th:text="${all.statusChildren}">2个儿子，1个女儿，均不在泰安居住</td>
+            <th lay-data="{field:'statusChildren',title:'子女情况',width:100}" >子女情况</th>
+            <td colspan="3" th:text="${all.statusChildren}">2个儿子，1个女儿，均不在泰安居住</td>
         </tr>
         <tr>
-            <th lay-data="{field:'spouse',title:'配偶',width:100}" colspan="2">配偶情况</th>
+            <th lay-data="{field:'spouse',title:'配偶',width:100}" >配偶情况</th>
             <td colspan="2" th:text="${all.spouse}">李四五，健在</td>
-            <th lay-data="{field:'statusOther',title:'其他情况',width:100}" colspan="2" rowspan="3">其他情况</th>
-            <td colspan="2" rowspan="3" th:text="${all.statusOther}">长期卧床不起，有保姆</td>
+            <th lay-data="{field:'statusOther',title:'其他情况',width:100}" >其他情况</th>
+            <td colspan="3"   th:text="${all.statusOther}">长期卧床不起，有保姆</td>
         </tr>
         </thead>
     </table>
