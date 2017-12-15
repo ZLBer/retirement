@@ -74,7 +74,7 @@
 }
 .layui-nav .layui-nav-item a {
     display: block;
-    padding: 0 20px;
+    padding: 0 10px;
     /* color: #fff; */
    /* color: rgb(206, 23, 23);*/
     transition: all .3s;
@@ -117,7 +117,8 @@
     border: rgba(39, 39, 39, 0.6) 1px solid;
 }
 .tips{
-    background-color: rgba(255, 189, 102, 1);
+    color: white;
+    background-color: rgba(0, 148, 133, 0.7);
     padding: 9px 38px;
     font-size: 18px;
     line-height: 28px;

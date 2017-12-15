@@ -208,11 +208,12 @@ public class AdminController {
             System.out.println("========================================");
         }
         //判断命名格式
-    String []fileNames=file.getOriginalFilename().split("\\.");
+    String[] fileName = file.getOriginalFilename().split("\\\\");
+    String[] fileNames=fileName[fileName.length-1].split("\\.");
     if(!isIDCard(fileNames[0]))
     return new Result(0,"","命名不规范，请用身份证号命名");
     //file.transferTo(new File("  D:\\cf"+"\\"+file.getOriginalFilename()));
-        file.transferTo(new File(String.valueOf(upload)+"\\"+file.getOriginalFilename()));
+        file.transferTo(new File(String.valueOf(upload)+"\\"+fileName[fileName.length-1]));
         return new Result(1,"","上传成功");
 
     }

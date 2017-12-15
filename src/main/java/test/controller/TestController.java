@@ -4,6 +4,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,8 +46,10 @@ public class TestController {
         String json = request.getParameter("rowData");
         ObjectMapper mapper = new ObjectMapper();
         try {
+            String classPath = ResourceUtils.getURL("classpath:").toString();
             InformationAll all = mapper.readValue(json,InformationAll.class);
             model.addAttribute("all",all);
+            model.addAttribute("classPath",classPath.substring(6,classPath.length())+"static/photos/");
         } catch (IOException e) {
             e.printStackTrace();
         }

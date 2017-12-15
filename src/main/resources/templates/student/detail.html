@@ -16,7 +16,7 @@
             <th align="center" lay-data="{field:'sex',title:'性别'}">性别</th>
             <td colspan="2" th:text="${all.sex}" width="250">男</td>
             <th lay-data="{fixed: 'right', width: 160, align: 'center' fiele:'photo'}"  rowspan="5"
-                colspan="2" th:text="暂无">图片
+                colspan="2"><img src="${classPath+all.idNumber+'.jpg'}" th:src="${'/photos/'+all.idNumber+'.jpg'}" style="width: 160px;height: 200px">
             </th>
         </tr>
         <tr>
