@@ -104,11 +104,11 @@
   </sql>
   <sql id="Join_Table_List">
     information_basic AS a
-    JOIN information_original AS b
-    JOIN information_contact AS c
-    JOIN information_present AS d
-    JOIN information_politics AS e
-    JOIN information_supplement AS f
+    LEFT JOIN information_original AS b ON a.id = b.id
+    LEFT JOIN information_contact AS c ON a.id = c.id
+    LEFT JOIN information_present AS d ON a.id = d.id
+    LEFT JOIN information_politics AS e ON a.id = e.id
+    LEFT JOIN information_supplement AS f ON a.id = f.id
   </sql>
   <sql id="Join_On_Condition">
     a.id=b.id
@@ -125,8 +125,6 @@
     <include refid="Base_Column_List" />
     from 
     <include refid="Join_Table_List"/>
-    on
-    <include refid="Join_On_Condition"/>
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -139,15 +137,11 @@
     <include refid="Base_Column_List" />
     from
     <include refid="Join_Table_List"/>
-    on
-    <include refid="Join_On_Condition"/>
     where a.id = #{id,jdbcType=INTEGER}
   </select>
   <select id="countByExample" parameterType="test.domain.InformationAllExample" resultType="java.lang.Long">
     select count(*) from
   <include refid="Join_Table_List"/>
-  on
-  <include refid="Join_On_Condition"/>
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
