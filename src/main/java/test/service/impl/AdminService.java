@@ -103,6 +103,11 @@ public class AdminService implements IAdminService {
         return titles;
     }
 
+    /**
+     *添加导入方法
+     * @param titles  字段名
+     * @param record   相对应的记录值
+     */
     @Override
     public void addSave(List<List<String>> titles, List<String> record) {
         int index = 0;
@@ -211,6 +216,11 @@ public class AdminService implements IAdminService {
         }
     }
 
+    /**
+     *覆盖导入方法
+     * @param titles  字段名
+     * @param record   相对应的记录值
+     */
     @Override
     public void coverSave(List<List<String>> titles, List<String> record) {
         //方法记录
@@ -443,7 +453,11 @@ public class AdminService implements IAdminService {
             }
         }
     }
-
+    /**
+     *更新导入方法
+     * @param titles  字段名
+     * @param record   相对应的记录值
+     */
     @Override
     public void insertOrUpdateSave(List<List<String>> titles, List<String> record) {
         //方法记录

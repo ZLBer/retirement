@@ -8,6 +8,7 @@
 <body>
 <div th:fragment="mainContent"  id="upload">
     <blockquote class="layui-elem-quote">*请按照之前选择的模板进行导入</blockquote>
++
 
     <form action="/admin/uploadExcel" id="infoLogoForm" enctype="multipart/form-data" method="post" class="layui-form ">
         <div class="layui-form-item">
@@ -15,15 +16,15 @@
             <div class="layui-input-block">
                 <input lay-filter="selectAll1" type="checkbox" name="nformationBasic"value="begin" title="全选" lay-skin="primary">
                 <input type="hidden" name="informationBasic"   value="idNumber">
-                <input  type="checkbox" name="informationBasic"  value="category" title="人员类别" lay-skin="primary">
                 <input  type="checkbox" name="informationBasic" value="name" title="姓名" lay-skin="primary">
                 <input type="checkbox" name="informationBasic" value="sex" title="性别" lay-skin="primary">
                 <input  type="checkbox" name="informationBasic" value="nation" title="民族" lay-skin="primary">
                 <input id="nativePlace" type="checkbox" name="informationBasic" value="nativePlace" title="籍贯" lay-skin="primary">
-                <input type="checkbox" name="informationBasic" value="birthday" title="出生年月" lay-skin="primary">
                 <input  type="checkbox" name="informationBasic" value="birthPlace" title="出生地" lay-skin="primary">
-                <input  type="checkbox" name="informationBasic" value="degree" title="最高学位" lay-skin="primary">
+                <input  type="checkbox" name="informationBasic"  value="category" title="人员类别" lay-skin="primary">
                 <input  type="checkbox" name="informationOriginal" value="educationLevel" title="最高学历" lay-skin="primary">
+                <input type="checkbox" name="informationBasic" value="birthday" title="出生年月" lay-skin="primary">
+                <input  type="checkbox" name="informationBasic" value="degree" title="最高学位" lay-skin="primary">
             </div>
         </div>
         <div class="layui-form-item">
@@ -40,7 +41,6 @@
             <div class="layui-input-block">
                 <input lay-filter="selectAll3" type="checkbox" name="nformationOriginal" value="begin" title="全选" lay-skin="primary">
                 <input  type="checkbox" name="informationOriginal" value="identity" title="身份" lay-skin="primary">
-
                 <input  type="checkbox" name="informationOriginal" value="originWorkplace" title="原单位" lay-skin="primary">
                 <input  type="checkbox" name="informationOriginal" value="originDuties" title="原职务" lay-skin="primary">
                 <input  type="checkbox" name="informationOriginal" value="orginDutiesLevel" title="原职务级别" lay-skin="primary">
@@ -65,17 +65,17 @@
                 <!--<input  type="checkbox" name="informationPresent"  value="timeAdministration" title="行政组开始时间" lay-skin="primary">-->
                 <!--<input  type="checkbox" name="informationPresent"  value="endtimeAdministration" title="行政组结束时间" lay-skin="primary">-->
                 <input  type="checkbox" name="informationPresent"  value="committeeDuties" title="关工委工作职务" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="organizationMember" title="特邀党建组织员" lay-skin="primary">
                 <!--<input  type="checkbox" name="informationPresent"  value="timeCommittee" title="关工委工作职务开始时间" lay-skin="primary"><br>-->
                 <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
                 <!--<input  type="checkbox" name="informationPresent"  value="endtimeCommittee" title="关工委工作职务结束时间" lay-skin="primary">-->
-                <input  type="checkbox" name="informationPresent"  value="steeringMember" title="教学督导组" lay-skin="primary">
                 <!--<input  type="checkbox" name="informationPresent"  value="timeSteering" title="督导组成员开始时间" lay-skin="primary">-->
                 <!--<input  type="checkbox" name="informationPresent"  value="endtimeSteering" title="督导组成员结束时间" lay-skin="primary">-->
-                <input  type="checkbox" name="informationPresent"  value="organizationMember" title="特邀党建组织员" lay-skin="primary">
                 <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
                 <!--<input  type="checkbox" name="informationPresent"  value="timeOrganization" title="特邀党建组织员开始时间" lay-skin="primary">-->
                 <!--<input  type="checkbox" name="informationPresent"  value="endtimeOrganization" title="特邀党建组织员结束时间" lay-skin="primary">-->
                 <input  type="checkbox" name="informationPresent"  value="corporationDuties" title="老年文体社团职务" lay-skin="primary">
+                <input  type="checkbox" name="informationPresent"  value="steeringMember" title="教学督导组" lay-skin="primary">
                 <!--<input  type="checkbox" name="informationPresent"  value="timeCorporation" title="老年文体社团职务开始时间" lay-skin="primary">-->
                 <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
                 <!--<input  type="checkbox" name="informationPresent"  value="endtimeCorporation" title="老年文体社团职务结束时间" lay-skin="primary">-->
@@ -85,23 +85,23 @@
             <label class="layui-form-label " style="width: 140px"> 5.联系信息板块:</label>
             <div class="layui-input-block">
                 <input lay-filter="selectAll5" type="checkbox" name="nformationContact"  value="begin" title="全选" lay-skin="primary">
-                <input  type="checkbox" name="informationContact"  value="homeAddress" title="家庭住址" lay-skin="primary">
                 <input  type="checkbox" name="informationContact"  value="phoneHome" title="家庭电话" lay-skin="primary">
-                <input  type="checkbox" name="informationContact"  value="phoneOwn" title="手机号码" lay-skin="primary">
-                <input  type="checkbox" name="informationContact"  value="phoneChildren" title="子女电话" lay-skin="primary">
-                <input  type="checkbox" name="informationContact"  value="phoneOther" title="其他联系电话" lay-skin="primary">
-                <input  type="checkbox" name="informationContact"  value="email" title="电子邮件" lay-skin="primary">
                 <input  type="checkbox" name="informationContact"  value="qq" title="QQ" lay-skin="primary">
+                <input  type="checkbox" name="informationContact"  value="phoneChildren" title="子女电话" lay-skin="primary">
+                <input  type="checkbox" name="informationContact"  value="phoneOwn" title="手机号码" lay-skin="primary">
                 <input  type="checkbox" name="informationContact"  value="wechat" title="微信" lay-skin="primary">
+                <input  type="checkbox" name="informationContact"  value="email" title="电子邮件" lay-skin="primary">
+                <input  type="checkbox" name="informationContact"  value="homeAddress" title="家庭住址" lay-skin="primary">
+                <input  type="checkbox" name="informationContact"  value="phoneOther" title="其他联系电话" lay-skin="primary">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label " style="width: 140px"> 6.备注：</label>
             <div class="layui-input-block">
                 <input lay-filter="selectAll6" type="checkbox" name="nformationSupplement"  value="begin" title="全选" lay-skin="primary">
-                <input  type="checkbox" name="informationSupplement"  value="spouse" title="配偶情况" lay-skin="primary">
-                <input  type="checkbox" name="informationSupplement"  value="statusChildren" title="子女情况" lay-skin="primary">
                 <input  type="checkbox" name="informationSupplement"  value="livingCondition" title="健在情况" lay-skin="primary">
+                <input  type="checkbox" name="informationSupplement"  value="statusChildren" title="子女情况" lay-skin="primary">
+                <input  type="checkbox" name="informationSupplement"  value="spouse" title="配偶情况" lay-skin="primary">
                 <input  type="checkbox" name="informationSupplement"  value="statusOther" title="其他情况" lay-skin="primary">
             </div>
         </div>
