@@ -92,18 +92,22 @@ public class LoginController {
            types[1]="离休";
            types[2]="家属";
            session.setAttribute("types",types);
+           session.setAttribute("type",0);
        }else if(TUIXIU.equals(type)){
            String []types=new String[1];
            types[0]="退休";
            session.setAttribute("types",types);
+           session.setAttribute("type",2);
       }else if(LIXIU.equals(type)){
            String []types=new String[1];
            types[0]="离休";
            session.setAttribute("types",types);
+           session.setAttribute("type",3);
        }else {
            String []types=new String[1];
            types[0]="家属";
            session.setAttribute("types",types);
+           session.setAttribute("type",4);
        }
         } else {
             String []types=new String[3];
@@ -111,6 +115,7 @@ public class LoginController {
             types[1]="离休";
             types[2]="家属";
             session.setAttribute("types",types);
+            session.setAttribute("type",1);
         }
 
     }
