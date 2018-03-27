@@ -64,8 +64,17 @@
         <label class="layui-form-label" th:text="${title}">选择框</label>
         <div class="layui-input-inline">
             <select name="city" lay-verify="" th:name="${name}" class="select-input">
-                <option value="">请选择</option>
-                <th:block th:replace="${options}"></th:block>
+                <th:block th:if="${session.type>1 && #strings.equals(name, 'category')}">
+                    <option  value="家属" th:value="${session.types[0]}" th:text="${session.types[0]}">家属</option>
+                </th:block>
+                <th:block th:if="${session.type<2 && #strings.equals(name, 'category')}">
+                    <option value="">请选择</option>
+                    <th:block th:replace="${options}"></th:block>
+                </th:block>
+                <th:block th:if="${not #strings.equals(name, 'category')}">
+                    <option value="">请选择</option>
+                    <th:block th:replace="${options}"></th:block>
+                </th:block>
             </select>
         </div>
     </div>

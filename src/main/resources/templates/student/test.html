@@ -9,6 +9,7 @@
             <a class="layui-btn layui-btn-mini" lay-event="detail">详细信息</a>
             <a class="layui-btn layui-btn-mini" lay-event="download">下载</a>
         </script>
+        <p>Hello, [[${session.type}]]!</p>
         <div class="layui-collapse" lay-accordion th:fragment="table">
             <div class="layui-colla-item">
                 <h2 class="layui-colla-title">设置查询条件</h2>
@@ -59,8 +60,8 @@
                             <option  field="9" value="博士研究生">博士研究生</option>
                             <option field="9" value="硕士研究生" >硕士研究生</option>
                             <option field="9" value="大学本科">大学本科</option>
-                            <option field="9" value="大学本科">大学本科</option>
-                            <option field="9" value="大学本科">大学本科</option>
+                            <option field="9" value="大学专科">大学专科</option>
+                            <option field="9" value="中专">中专</option>
                             <option field="9" value="高中及以下">高中及以下</option>
                         </div>
                         <div th:replace="student/datafilter::selectFilter('健在情况',~{this::option[@field='12']},'livingConditionSelector','livingCondition')">
@@ -75,8 +76,8 @@
                         <div th:replace="student/datafilter::inputFilterNotOr('转正时间','conversionTimeInput','conversionTime')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOr('离退休时间','timeRetirementInput','timeRetirement')"></div>
                     </div>
-                    <div class="layui-row tips">注意：查询时间只需要输入年份即可，例如当以"模糊"方式查询时输入1996则会匹配1996年1月1日至1997年1月1日的数据；
-                        若选择“之间”方式则要求在两年份值之间加1个空格，例如：查询1996-01-01到1998-01-01的数据则应该输入“1996 1998”。</div>
+                    <div class="layui-row tips">注意：查询时间只需要输入年份即可，例如当以"模糊"方式查询时输入1996则会匹配1996年1月1日(包括)至1996年12月31日(包括)的数据；
+                        若选择“之间”方式则要求在两年份值之间加1个空格，例如：查询1996-01-01(包括)到1998-12-31(包括)的数据则应该输入“1996 1998”。</div>
                     <br>
                     <button id="submit" class="layui-btn layui-btn-primary"><i class="layui-icon">查询&#xe615;</i></button>
                     <button id="export-to-excel" class="layui-btn layui-btn-primary"><i class="layui-icon">导出当前数据&#xe601;</i></button>
