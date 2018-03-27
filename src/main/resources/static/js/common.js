@@ -216,6 +216,7 @@ function bindAjaxSubmitTo(element,url) {
         var inputs = element.siblings("input");
         var selectors = element.siblings("select");
         var param = {};
+        console.log(inputs.length);
         for(var i=0;i<inputs.length;i++){
             var input = $(inputs[i]);
             param[input.attr("name")]=input.val();
