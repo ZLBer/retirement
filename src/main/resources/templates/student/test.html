@@ -34,16 +34,18 @@
                         <div th:replace="student/datafilter::inputFilter('手机号码','phoneOwnInput','phoneOwn')"></div>-->
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('姓名','nameInput','name')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('性别','sexInput','sex')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOrDefault('籍贯','nativePlaceInput','nativePlace')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('身份证号','idNumberInput','idNumber')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('民族','nationInput','nation')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOrDefault('政治面貌','politicsStatusInput','politicsStatus')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('籍贯','nativePlaceInput','nativePlace')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('出生地','birthPlace','birthPlace')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('所在行政组','administrationInput','administration')"></div>
+                        <div th:replace="student/datafilter::inputFilterNotOrDefault('现任职务','alldInput','alld')"></div>
+                        <!--<div th:replace="student/datafilter::inputFilterNotOrDefault('政治面貌','politicsStatusInput','politicsStatus')"></div>-->
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('原单位','originWorkplaceInput','originWorkplace')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('原职务','originDutiesInput','originDuties')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('原职称','originProfessionalInput','originProfessional')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOrDefault('享受待遇','treatmentInput','treatment')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOrDefault('所在党支部','partyBranchInput','partyBranch')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOrDefault('所在行政组','administrationInput','administration')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOrDefault('现任职务','alldInput','alld')"></div>
+                        <!--<div th:replace="student/datafilter::inputFilterNotOrDefault('所在党支部','partyBranchInput','partyBranch')"></div>-->
                     </div>
                     <div class="layui-row condition">
                         <div th:replace="student/datafilter::selectFilter('人员类别',~{this::option[@field='8']},'categorySelector','category')">
@@ -71,8 +73,8 @@
                     <div class="layui-row condition">
                         <div th:replace="student/datafilter::inputFilterNotOr('出生时间','birthdayInput','birthday')"></div>
                         <div th:replace="student/datafilter::inputFilterNotOr('工作时间','timeWorkInput','timeWork')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('入党时间','joinpartyTimeInput','joinpartyTime')"></div>
-                        <div th:replace="student/datafilter::inputFilterNotOr('转正时间','conversionTimeInput','conversionTime')"></div>
+                        <!--<div th:replace="student/datafilter::inputFilterNotOr('入党时间','joinpartyTimeInput','joinpartyTime')"></div>-->
+                        <!--<div th:replace="student/datafilter::inputFilterNotOr('转正时间','conversionTimeInput','conversionTime')"></div>-->
                         <div th:replace="student/datafilter::inputFilterNotOr('离退休时间','timeRetirementInput','timeRetirement')"></div>
                     </div>
                     <div class="layui-row tips">注意：查询时间只需要输入年份即可，例如当以"模糊"方式查询时输入1996则会匹配1996年1月1日(包括)至1996年12月31日(包括)的数据；

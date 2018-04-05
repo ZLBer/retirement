@@ -59,8 +59,9 @@
 }
 .layui-layout-admin .layui-logo
 {
-    width: 460px;
-    font-size: 26px;
+    width: 440px;
+    font-size: 23px;
+    line-height: 23px;
     color: #ffffff !important;
 }
 .layui-body,.layui-layout-admin .layui-footer{

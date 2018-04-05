@@ -6,10 +6,8 @@ var editable = patter.test(window.location.pathname);
 /**
  * 绑定事件
  */
-
 $(function () {
     //判断用户类型
-
     initTableOptions();
     layui.use('form',function () {
         form = layui.form;
@@ -155,7 +153,6 @@ function addCheckBox(element,array,func) {
         $(inputs[i]).change(func);
     }
 }
-
 /**
  * 依照复选框改变表格列选项0000
  */
@@ -184,9 +181,9 @@ var fields = [
     {field:'idNumber',title:'身份证号',width:150,edit:editable},
     {field:'category',title:'人员类别',width:150,edit:editable},
     //政治面貌信息3
-    {field:'politicsStatus',title:'政治面貌',width:150,edit:editable},
-    {field:'joinpartyTime',title:'民族',width:150,edit:editable},
-    {field:'conversionTime',title:'转正时间',width:150,edit:editable},
+    // {field:'politicsStatus',title:'政治面貌',width:150,edit:editable},
+    // {field:'joinpartyTime',title:'入党时间',width:150,edit:editable},
+    // {field:'conversionTime',title:'转正时间',width:150,edit:editable},
     //原工作信息10
     {field:'identity',title:'身份',width:150,edit:editable},
     {field:'educationLevel',title:'最高学历',width:150,edit:editable},
@@ -200,14 +197,14 @@ var fields = [
     {field:'timeWork',title:'工作时间',width:150,edit:editable},
     {field:'timeRetirement',title:'离退休时间',width:150,edit:editable},
     //现工作信息20
-    {field:'partyBranch',title:'所在党支部',width:150,edit:editable},
+    // {field:'partyBranch',title:'所在党支部',width:150,edit:editable},
     {field:'administration',title:'所在行政组',width:150,edit:editable},
-    {field:'basicpartyDuties',title:'基层党组织',width:150,edit:editable},
+    // {field:'basicpartyDuties',title:'基层党组织',width:150,edit:editable},
     {field:'presentDuties',title:'现任职务',width:150,edit:editable},
     {field:'administrationDuties',title:'行政组职务',width:150,edit:editable},
     {field:'committeeDuties',title:'关工委',width:150,edit:editable},
     {field:'steeringMember',title:'教学督导组',width:150,edit:editable},
-    {field:'organizationMember',title:'特邀党建组织员',width:150,edit:editable},
+    // {field:'organizationMember',title:'特邀党建组织员',width:150,edit:editable},
     {field:'corporationDuties',title:'老年文体社团',width:150,edit:editable},
     //联系信息8
     {field:'homeAddress',title:'家庭住址',width:150,edit:editable},
@@ -229,14 +226,14 @@ var radioField = [
     {field:'nation',title:'民族',width:150,edit:editable},
     {field:'nativePlace',title:'籍贯',width:150,edit:editable},
     {field:'category',title:'人员类别',width:150,edit:editable},
-    {field:'politicsStatus',title:'政治面貌',width:150,edit:editable},
+    // {field:'politicsStatus',title:'政治面貌',width:150,edit:editable},
     {field:'identity',title:'身份',width:150,edit:editable},
     {field:'educationLevel',title:'最高学历',width:150,edit:editable},
     {field:'originDuties',title:'原职务',width:150,edit:editable},
     {field:'orginDutiesLevel',title:'原职务级别',width:150,edit:editable},
     {field:'originProfessional',title:'原职称',width:150,edit:editable},
     {field:'originProfessionalLevel',title:'原职务级别',width:150,edit:editable},
-    {field:'partyBranch',title:'所在党支部',width:150,edit:editable},
+    // {field:'partyBranch',title:'所在党支部',width:150,edit:editable},
     {field:'administration',title:'所在行政组',width:150,edit:editable},
     {field:'livingCondition',title:'健在情况',width:150,edit:editable}
 ];
@@ -255,9 +252,9 @@ var tableOptions = {
         {field:'idNumber',title:'身份证号',width:150,edit:editable},
         {field:'category',title:'人员类别',width:150,edit:editable},
         //政治面貌信息3
-        {field:'politicsStatus',title:'政治面貌',width:150,edit:editable},
-        {field:'joinpartyTime',title:'民族',width:150,edit:editable},
-        {field:'conversionTime',title:'转正时间',width:150,edit:editable},
+        // {field:'politicsStatus',title:'政治面貌',width:150,edit:editable},
+        // {field:'joinpartyTime',title:'入党时间',width:150,edit:editable},
+        // {field:'conversionTime',title:'转正时间',width:150,edit:editable},
         //原工作信息10
         {field:'identity',title:'身份',width:150,edit:editable},
         {field:'educationLevel',title:'最高学历',width:150,edit:editable},
@@ -271,14 +268,14 @@ var tableOptions = {
         {field:'timeWork',title:'工作时间',width:150,edit:editable},
         {field:'timeRetirement',title:'离退休时间',width:150,edit:editable},
         //现工作信息20
-        {field:'partyBranch',title:'所在党支部',width:150,edit:editable},
+        // {field:'partyBranch',title:'所在党支部',width:150,edit:editable},
         {field:'administration',title:'所在行政组',width:150,edit:editable},
-        {field:'basicpartyDuties',title:'基层党组织',width:150,edit:editable},
+        // {field:'basicpartyDuties',title:'基层党组织',width:150,edit:editable},
         {field:'presentDuties',title:'现任职务',width:150,edit:editable},
         {field:'administrationDuties',title:'行政组职务',width:150,edit:editable},
         {field:'committeeDuties',title:'关工委',width:150,edit:editable},
         {field:'steeringMember',title:'教学督导组',width:150,edit:editable},
-        {field:'organizationMember',title:'特邀党建组织员',width:150,edit:editable},
+        // {field:'organizationMember',title:'特邀党建组织员',width:150,edit:editable},
         {field:'corporationDuties',title:'老年文体社团',width:150,edit:editable},
         //联系信息8
         {field:'homeAddress',title:'家庭住址',width:150,edit:editable},

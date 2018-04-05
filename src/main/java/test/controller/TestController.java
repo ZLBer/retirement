@@ -18,6 +18,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Controller
@@ -61,7 +62,11 @@ public class TestController {
         InformationAll all = informationAllMapper.selectByPrimaryKey(id);
         model.addAttribute("all",all);
         response.setHeader("content-Type", "application/msword");
-        response.setHeader("Content-Disposition", "attachment;filename="+all.getName()+".doc");
+        try {
+            response.setHeader("Content-Disposition", "attachment;filename="+java.net.URLEncoder.encode(all.getName(),"utf-8")+".doc");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         return "student/info.xml";
     }
 
