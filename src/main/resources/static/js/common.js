@@ -203,7 +203,7 @@ $(function () {
             }
         });
     })
-    bindAjaxSubmitTo($("#modifyPwd>#submit"),"/modifyPwd");
+    aloneModifyPwd($("#modifyPwd>#submit"),"/modifyPwd");
     bindAjaxSubmitTo($("#personalInfo>#submit"),"/student/perfectPersonalInfo");
     bindAjaxSubmitTo($("#addSubject>#submit"),"/teacher/saveSubject");
     progressbar();
@@ -214,6 +214,34 @@ function bindAjaxSubmitTo(element,url) {
     var time = 1500;
     element.on("click",function () {
         var inputs = element.siblings("input");
+        var selectors = element.siblings("select");
+        var param = {};
+        console.log(inputs.length);
+        for(var i=0;i<inputs.length;i++){
+            var input = $(inputs[i]);
+            param[input.attr("name")]=input.val();
+        }
+        for(var i=0;i<selectors.length;i++){
+            var input = $(selectors[i]);
+            param[input.attr("name")]=input.val();
+        }
+        $.post(url,param,function (data,status) {
+            if(status==="success") {
+                if (data.state == 1) {
+                    layer.msg(data.msg, {icon: 1, time:time})
+                }else{
+                    layer.msg(data.msg, {icon: 2, time: time})
+                }
+            }else{
+                layer.msg('请求失败，请重试',{icon:2,time:time})
+            }
+        })
+    })
+}
+function aloneModifyPwd(element,url) {
+    var time = 1500;
+    element.on("click",function () {
+        var inputs = element.siblings().children("input");
         var selectors = element.siblings("select");
         var param = {};
         console.log(inputs.length);
