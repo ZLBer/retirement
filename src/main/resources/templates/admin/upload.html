@@ -21,21 +21,21 @@
                 <input  type="checkbox" name="informationBasic" value="nation" title="民族" lay-skin="primary">
                 <input id="nativePlace" type="checkbox" name="informationBasic" value="nativePlace" title="籍贯" lay-skin="primary">
                 <input  type="checkbox" name="informationBasic" value="birthPlace" title="出生地" lay-skin="primary">
+                <input type="checkbox" name="informationBasic" value="birthday" title="出生年月" lay-skin="primary">
                 <input  type="checkbox" name="informationBasic"  value="category" title="人员类别" lay-skin="primary">
                 <input  type="checkbox" name="informationOriginal" value="educationLevel" title="最高学历" lay-skin="primary">
-                <input type="checkbox" name="informationBasic" value="birthday" title="出生年月" lay-skin="primary">
                 <input  type="checkbox" name="informationBasic" value="degree" title="最高学位" lay-skin="primary">
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label " style="width: 140px">2.政治面貌信息板块：</label>
-            <div class="layui-input-block">
-                <input lay-filter="selectAll2" type="checkbox" name="nformationPolitics" value="begin" title="全选" lay-skin="primary">
-                <input  type="checkbox" name="informationPolitics" value="politicsStatus" title="政治面貌" lay-skin="primary">
-                <input  type="checkbox" name="informationPolitics" value="joinpartyTime" title="入党时间" lay-skin="primary">
-                <input  type="checkbox" name="informationPolitics" value="conversionTime" title="转正时间" lay-skin="primary">
-            </div>
-        </div>
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label " style="width: 140px">2.政治面貌信息板块：</label>-->
+            <!--<div class="layui-input-block">-->
+                <!--<input lay-filter="selectAll2" type="checkbox" name="nformationPolitics" value="begin" title="全选" lay-skin="primary">-->
+                <!--<input  type="checkbox" name="informationPolitics" value="politicsStatus" title="政治面貌" lay-skin="primary">-->
+                <!--<input  type="checkbox" name="informationPolitics" value="joinpartyTime" title="入党时间" lay-skin="primary">-->
+                <!--<input  type="checkbox" name="informationPolitics" value="conversionTime" title="转正时间" lay-skin="primary">-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="layui-form-item">
             <label class="layui-form-label " style="width: 140px">3.原工作信息板块：</label>
             <div class="layui-input-block">
@@ -55,17 +55,17 @@
             <label class="layui-form-label" style="width: 140px">4.现工作信息板块:</label>
             <div class="layui-input-block">
                 <input  lay-filter="selectAll4"type="checkbox" name="nformationPresent"  value="begin" title="全选" lay-skin="primary">
-                <input  type="checkbox" name="informationPresent"  value="partyBranch" title="党支部名称" lay-skin="primary">
+                <!--<input  type="checkbox" name="informationPresent"  value="partyBranch" title="党支部名称" lay-skin="primary">-->
                 <input  type="checkbox" name="informationPresent"  value="administration" title="行政组" lay-skin="primary">
                 <!--<input  type="checkbox" name="informationPresent"  value="presentDuties" title="现职务" lay-skin="primary">-->
-               <input  type="checkbox" name="informationPresent"  value="basicpartyDuties" title="基层党组织职务" lay-skin="primary">
+               <!--<input  type="checkbox" name="informationPresent"  value="basicpartyDuties" title="基层党组织职务" lay-skin="primary">-->
                 <!--<input  type="checkbox" name="informationPresent"  value="timeBasicparty" title="基层党组织开始时间" lay-skin="primary">-->
                 <!--<input  type="checkbox" name="informationPresent"  value="endtimeBasicparty" title="基层党组织结束时间" lay-skin="primary"><br>-->
                 <input  type="checkbox" name="informationPresent"  value="administrationDuties" title="行政组职务" lay-skin="primary">
                 <!--<input  type="checkbox" name="informationPresent"  value="timeAdministration" title="行政组开始时间" lay-skin="primary">-->
                 <!--<input  type="checkbox" name="informationPresent"  value="endtimeAdministration" title="行政组结束时间" lay-skin="primary">-->
                 <input  type="checkbox" name="informationPresent"  value="committeeDuties" title="关工委工作职务" lay-skin="primary">
-                <input  type="checkbox" name="informationPresent"  value="organizationMember" title="特邀党建组织员" lay-skin="primary">
+                <!--<input  type="checkbox" name="informationPresent"  value="organizationMember" title="特邀党建组织员" lay-skin="primary">-->
                 <!--<input  type="checkbox" name="informationPresent"  value="timeCommittee" title="关工委工作职务开始时间" lay-skin="primary"><br>-->
                 <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
                 <!--<input  type="checkbox" name="informationPresent"  value="endtimeCommittee" title="关工委工作职务结束时间" lay-skin="primary">-->
@@ -109,7 +109,7 @@
             <label class="layui-form-label" style="width: 140px;">选择导入类型：</label>
             <div class="layui-input-inline" style="width: 600px;">
                 <select name="IType">
-                    <option value="2">更新，用于更新已存在和不存在人员信息，对于空或者不导入字段不进行变动</option>
+                    <option value="2">更新，用于更新已存在人员信息，对于空或者不导入字段不进行变动</option>
                     <option value="1">新增,用于增加不存在人员</option>
                     <option value="3">覆盖，用于替换已存在人员信息，类似于先删再加</option>
                 </select>

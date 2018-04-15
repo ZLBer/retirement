@@ -77,20 +77,19 @@
         <tr>
             <th lay-data="{field:'presentWorkInfo',title:'现工作信息'}" width="25" height="200" rowspan="4">现工作信息</th>
             <th colspan="2" lay-data="{field:'administration',title:'行政组'}">所在行政组</th>
-            <td colspan="3" th:text="${all.administration}">一组</td>
-            <th lay-data="{field:'committeeDuties',title:'关工委工作职务'}">关工委</th>
+            <td colspan="2" th:text="${all.administration}">一组</td>
+            <th colspan="2" lay-data="{field:'committeeDuties',title:'关工委工作职务'}">关工委</th>
             <td colspan="2" th:text="${all.committeeDuties}">办公室主任</td>
         </tr>
         <tr>
             <th colspan="2" lay-data="{field:'administrationDuties',title:'行政组职务'}">行政组</th>
-            <td colspan="3" th:text="${all.administrationDuties}">组长</td>
-            <th colspan="2" lay-data="{field:'corporationDuties',title:'老年文体社团职务'}">老年文体社团</th>
-            <td colspan="2" th:text="${all.corporationDuties}">老年模特亮彩队队长</td>
+            <td colspan="2" th:text="${all.administrationDuties}">组长</td>
+            <th colspan="2" lay-data="{field:'steeringMember',title:'督导组成员'}">教学督导组</th>
+            <td colspan="2" th:text="${all.steeringMember}">组长</td>
         </tr>
         <tr>
-
-            <th   lay-data="{field:'steeringMember',title:'督导组成员'}">教学督导组</th>
-            <td colspan="2" th:text="${all.steeringMember}">组长</td>
+            <th colspan="2" lay-data="{field:'corporationDuties',title:'老年文体社团职务'}">老年文体社团</th>
+            <td colspan="5" th:text="${all.corporationDuties}">老年模特亮彩队队长</td>
         </tr>
         </thead>
         <thead align="center">
