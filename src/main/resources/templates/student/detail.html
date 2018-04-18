@@ -28,20 +28,20 @@
         <tr>
             <th lay-data="{field:'nativePlace',title:'籍贯'}">籍贯</th>
             <td colspan="2" th:text="${all.nativePlace}">山东省泰安市</td>
-            <th>出生地*</th>
-            <td colspan="2" th:text="${all.birthPlace}">山东青岛*</td>
+            <th>出生地</th>
+            <td colspan="2" th:text="${all.birthPlace}">山东青岛</td>
         </tr>
         <tr>
-        	<th>人员类别*</th>
-        	<td colspan="2">退休*</td>
+        	<th>人员类别</th>
+        	<td colspan="2" th:text="${all.category}">退休</td>
         	<th lay-data="{field:'educationLevel',title:'最高学历'}">最高学历</th>
             <td colspan="2" th:text="${all.educationLevel}">硕士研究生</td>
         </tr>
         <tr>
         	<th align="center" lay-data="{field:'birthday',title:'出生日期' width:70}">出生日期</th>
             <td colspan="2" th:text="${all.birthday==null?'':#dates.format(all.birthday,'yyyy年MM月dd日')}">1965-5-23</td>
-            <th>最高学位*</th>
-            <td colspan="2" th:text="${all.degree}">硕士*</td>
+            <th>最高学位</th>
+            <td colspan="2" th:text="${all.degree}">硕士</td>
         </tr>
         </thead>
         <thead align="center">
@@ -97,18 +97,18 @@
             <th lay-data="{field:'contactInfo'}" rowspan="3" height="150">联系方式</th>
             <th lay-data="{field:'phoneHome',title:'家庭电话',width:100}">家庭电话</th>
             <td th:text="${all.phoneHome}">0538-8241234</td>
-            <th>QQ号*</th>
-            <td>1234567890</td>
+            <th>QQ号</th>
+            <td th:text="${all.qq}">1234567890</td>
             <th lay-data="{field:'phoneChildren',title:'子女电话',width:100}" >子女电话</th>
             <td colspan="2" th:text="${all.phoneChildren}">0538-8241234</td> 
         </tr>
         <tr>
             <th lay-data="{field:'phoneOwn',title:'手机号码',width:100}">手机号码</th>
             <td th:text="${all.phoneOwn}">17853219633</td>
-            <th>微信号*</th>
-            <td>12345678901*</td>
-            <th>电子邮件*</th>
-            <td colspan="3">adau@sdau.edu.cn*</td>
+            <th >微信号</th>
+            <td th:text="${all.wechat}">12345678901</td>
+            <th>电子邮件</th>
+            <td colspan="3" th:text="${all.email}">adau@sdau.edu.cn</td>
         </tr>
         <tr>
         	<th lay-data="{field:'homeAddress',title:'家庭住址',width:100}">家庭住址</th>

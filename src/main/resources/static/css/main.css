@@ -34,8 +34,6 @@
     margin-top: 5px;
     margin-bottom: 5px;
     min-height: 550px;
-
-
     line-height: 24px;
     font: 14px Helvetica Neue,Helvetica,PingFang SC,微软雅黑,Tahoma,Arial,sans-serif;
     font-weight: normal;
@@ -48,7 +46,7 @@
 .layui-form-select .layui-input {
     padding-right: 0px;
 }
-.layui-body
+
 {
     padding-left: 10px;
 }
@@ -73,7 +71,7 @@
 .layui-layout-admin .layui-header,.layui-footer {
     background-color:  #009688;!important;
 }
-.layui-nav .layui-nav-item a {
+.layui-nav .layui-nav-item a {.layui-body
     display: block;
     padding: 0 10px;
     /* color: #fff; */
