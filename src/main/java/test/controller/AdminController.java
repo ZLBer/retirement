@@ -1,6 +1,8 @@
 package test.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -178,6 +181,16 @@ public class AdminController {
         String r=adminService.deleteById(Integer.parseInt(id));
         Result result = new Result(1, "", r);
         return  result;
+    }
+    @RequestMapping(path = "/deletePersons")
+    @ResponseBody
+    public Result deletePersons(HttpServletRequest request) throws IOException {
+        String ids=request.getParameter("ids");
+       String[]idsint= ids.split(",");
+       for(String id:idsint){
+           adminService.deleteById(Integer.parseInt(id));
+       }
+        return new Result(1,"","删除成功！");
     }
 
     @GetMapping("/goUploadPhoto")

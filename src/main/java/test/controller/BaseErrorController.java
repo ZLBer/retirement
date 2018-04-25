@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by libin on 2017/11/13.
  */
 
-@Controller
-@RequestMapping(value = "error")
+//@Controller
+//@RequestMapping(value = "error")
 public class BaseErrorController implements ErrorController {
     private static final Logger logger = LoggerFactory.getLogger(BaseErrorController.class);
 

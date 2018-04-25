@@ -239,6 +239,7 @@ var radioField = [
 ];
 var table;
 var tableOptions = {
+    id: 'idTest',
     elem:'#dataTable',
     height:600,
     cols:[[
@@ -330,9 +331,10 @@ layui.use('table', function(){
                     data:{ id:id},
                     success: function(data){
                         layer.msg(data.msg,{icon:1,time:1500})
+
                     },
                     error: function(xhr, type){
-                        layer.msg('删除失败,请核对数据格式。',{icon:1,time:1500})
+                        layer.msg('删除失败,请核对数据格式。',{icon:2,time:1500})
                     }
                 })
             }, function(){

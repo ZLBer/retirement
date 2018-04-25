@@ -10,7 +10,11 @@
         <a class="layui-btn layui-btn-mini" lay-event="download">下载</a>
         <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="delete">删除</a>
     </script>
+
     <div th:replace="${'student/test'}::table"></div>
+    <div>
+        &nbsp; &nbsp; &nbsp;<button id="delete" class="layui-btn">点我删除</button>
+    </div>
     <script src="/js/JSONToExcel.js"></script>
     <script src="/js/test.js" th:src="@{/js/test.js}"></script>
 </div>

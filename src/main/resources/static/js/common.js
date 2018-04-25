@@ -112,6 +112,39 @@ $(function () {
                 }
             })
         });
+
+          $('#delete').click(function () {
+              var checkStatus = table.checkStatus('idTest'); //test即为基础参数id对应的值
+              var data=checkStatus.data;
+              checkStatus;
+              console.log(data)
+
+              console.log(checkStatus.data) //获取选中行的数据
+              ids='';
+              for(i=0;i<data.length;i++){
+              ids+=data[i].id+',';
+              }
+              console.log(ids)
+              layer.confirm('确定删除这些人？', {
+                  btn: ['删除','取消'] //按钮
+              }, function() {
+                  $.ajax({
+                      url: '/admin/deletePersons',
+                      type: "post",
+                      dataType: "json",
+                      data: {ids: ids},
+                      success: function (data, textStatus, jqXHR) {
+                          layer.msg(data.msg, {icon: 1, time: 1500})
+                          $("#submit").trigger("click")
+                      },
+                      error: function (XMLHttpRequest, textStatus, errorThrown) {
+                      }
+                  });
+              })
+          })
+
+
+
     });
     layui.use('laydate', function(){
         var laydate = layui.laydate;

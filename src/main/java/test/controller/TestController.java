@@ -50,6 +50,8 @@ public class TestController {
             String classPath = ResourceUtils.getURL("classpath:").toString();
             InformationAll all = mapper.readValue(json,InformationAll.class);
             model.addAttribute("all",all);
+            System.out.println(all.getIdNumber());
+
             model.addAttribute("classPath",classPath.substring(6,classPath.length())+"static/photos/");
         } catch (IOException e) {
             e.printStackTrace();
