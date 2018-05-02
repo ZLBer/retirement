@@ -98,6 +98,7 @@ $(function () {
                 ,data = obj.data //得到所在行所有键值
                 ,field = obj.field; //得到字段
             // layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
+            console.log(JSON.stringify(data))
             $.ajax({
                 type: 'POST',
                 dataType: 'json',

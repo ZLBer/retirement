@@ -3,9 +3,11 @@ package test.controller;
 import com.alibaba.fastjson.JSONArray;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.ibatis.annotations.Param;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import test.domain.*;
+import test.mapper.AdminLoginMapper;
 import test.mapper.InformationPresentMapper;
 import test.service.IAdminService;
 import test.service.impl.AdminService;
@@ -169,6 +172,8 @@ public class AdminController {
     @RequestMapping(path = "/updatePerson")
     @ResponseBody
     public Result update(@RequestBody InformationAll informationAll){
+        System.out.println(informationAll.getDegree());
+        System.out.println(informationAll.getEducationLevel());
         String r=adminService.updateByall(informationAll);
         informationPresentMapper.updateAlld();
         Result result = new Result(1, "", r);
@@ -233,5 +238,21 @@ public class AdminController {
     public boolean isIDCard(String idCard) {
         String REGEX_ID_CARD = "(^\\d{18}$)|(^\\d{15}$)";
         return Pattern.matches(REGEX_ID_CARD, idCard);
+    }
+    @RequestMapping(path = "/goInitPWD")
+    public String goInitPWD(Model model) {
+        model.addAttribute("bodyRightContent", "admin/initPWD");
+    List<AdminLogin> adminLogins=  adminService.getAdminUser();
+    List<MemberLogin> memberLogins= adminService.getMemberUser();
+    model.addAttribute("admins",adminLogins);
+    model.addAttribute("members",memberLogins);
+        return "main";
+    }
+    @RequestMapping(path = "/initPWD")
+    @ResponseBody
+    public Result initPWD(Model model, @Param("name")String name) {
+        System.out.println(name);
+        adminService.initPWD(name,"123");
+        return new  Result(1, "", "重置成功");
     }
 }

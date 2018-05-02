@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="../css/main.css">
+    <title></title>
+</head>
+<body>
+<div th:fragment="mainContent">
+
+    <table align="center">
+    <tr th:each="admin : ${admins}">
+        <td ><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe60c;</i>  </td>
+        <td th:text="${admin.adminName}">Onions</td>
+        <td> <button class="layui-btn layui-btn-warm" th:value="${admin.adminName}"> 重置该用户密码</button></td>
+    </tr>
+    <tr th:each="member : ${members}">
+        <td ><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe60c;</i>  </td>
+        <td th:text="${member.memberName}">Onions</td>
+        <td> <button class="layui-btn layui-btn-normal" th:value="${member.memberName}"> 重置该用户密码</button></td>
+    </tr>
+    </table>
+    <script>
+        $("button").click(function () {
+            var name=$(this).val();
+            console.log($(this).val())
+            layer.confirm('确定重置改密码为123？', {
+                btn: ['重置','取消'] //按钮
+            }, function() {
+                $.ajax({
+                    url: '/admin/initPWD',
+                    type: "post",
+                    dataType: "json",
+                    data: {name: name},
+                    success: function (data, textStatus, jqXHR) {
+                        layer.msg(data.msg, {icon: 1, time: 1500})
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                });
+            })
+        })
+    </script>
+</div>
+</body>
+</html>

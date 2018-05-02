@@ -57,7 +57,7 @@
                             <option field="13" value="工人">工人</option>
                             <option field="13" value="干部">干部</option>
                         </div>
-                        <div th:replace="student/datafilter::selectFilter('文化程度',~{this::option[@field='9']},'educationLevelSelector','educationLevel')">
+                        <div th:replace="student/datafilter::selectFilter('最高学历',~{this::option[@field='9']},'educationLevelSelector','educationLevel')">
                             <option  field="9" value="研究生">研究生</option>
                             <option field="9" value="大学" >大学</option>
                             <option field="9" value="大专">大专</option>

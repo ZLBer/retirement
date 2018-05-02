@@ -34,6 +34,10 @@ public class AdminService implements IAdminService {
     InformationSupplementMapper informationSupplementMapper;
     @Resource
     InformationPresentMapper informationPresentMapper;
+    @Resource
+    AdminLoginMapper adminLoginMapper;
+    @Resource
+    MemberLoginMapper memberLoginMapper;
 
 
     @Override
@@ -720,6 +724,8 @@ public class AdminService implements IAdminService {
         informationBasic.setNation(informationAll.getNation());
         informationBasic.setNativePlace(informationAll.getNativePlace());
         informationBasic.setSex(informationAll.getSex());
+        informationBasic.setDegree(informationAll.getDegree());
+        informationBasic.setBirthPlace(informationAll.getBirthPlace());
 
         informationPolitics.setId(id);
         informationPolitics.setPoliticsStatus(informationAll.getPoliticsStatus());
@@ -814,4 +820,43 @@ public class AdminService implements IAdminService {
     public void updateAlld() {
 
     }
+    @Override
+   public List<AdminLogin> getAdminUser(){
+        AdminLoginExample example = new AdminLoginExample();
+        AdminLoginExample.Criteria criteria = example.createCriteria();
+        criteria.andAdminNameIsNotNull();
+        return adminLoginMapper.selectByExample(example);
+    }
+    @Override
+   public List<MemberLogin> getMemberUser(){
+     MemberLoginExample example=new MemberLoginExample();
+     MemberLoginExample.Criteria criteria=example.createCriteria();
+     criteria.andMemberNameIsNotNull();
+     return  memberLoginMapper.selectByExample(example);
+
+   }
+   @Override
+    public  boolean initPWD(String name,String PWD){
+       MemberLoginExample example=new MemberLoginExample();
+       MemberLoginExample.Criteria criteria=example.createCriteria();
+      criteria.andMemberNameEqualTo(name);
+      AdminLoginExample example1=new AdminLoginExample();
+      AdminLoginExample.Criteria criteria1=example1.createCriteria();
+      criteria1.andAdminNameEqualTo(name);
+  List<MemberLogin> memberLogins= memberLoginMapper.selectByExample(example);
+  List<AdminLogin> adminLogins=adminLoginMapper.selectByExample(example1);
+  if(memberLogins.size()>0){
+    MemberLogin memberLogin= memberLogins.get(0);
+    memberLogin.setMemberPassword(PWD);
+      memberLoginMapper.updateByPrimaryKey(memberLogin);
+      return true;
+  }
+  if(adminLogins.size()>0){
+      AdminLogin adminLogin=adminLogins.get(0);
+      adminLogin.setAdminPassword(PWD);
+      adminLoginMapper.updateByPrimaryKey(adminLogin);
+      return true;
+  }
+return false;
+   }
 }

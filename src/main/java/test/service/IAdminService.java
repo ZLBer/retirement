@@ -1,6 +1,8 @@
 package test.service;
 
+import test.domain.AdminLogin;
 import test.domain.InformationAll;
+import test.domain.MemberLogin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,4 +21,7 @@ public interface IAdminService {
      String updateByall(InformationAll informationAll);
      String deleteById(int id);
      void updateAlld();
+     List<AdminLogin> getAdminUser();
+     List<MemberLogin> getMemberUser();
+     boolean initPWD(String name,String PWD);
 }

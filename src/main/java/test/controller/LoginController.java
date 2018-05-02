@@ -13,6 +13,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import java.util.List;
+
 import static test.GlobleVariance.USER_ADMIN;
 import static test.GlobleVariance.USER_MEMBER;
 
@@ -28,6 +30,7 @@ public class LoginController {
     private final String TUIXIU = "tuixiu";
     private final String LIXIU= "lixiu";
     private final String JIASHU = "jiashu";
+    private  final  String SUADMIN="suadmin";
 
     @RequestMapping("/login")
     public String login(HttpSession session) {
@@ -56,6 +59,7 @@ public class LoginController {
                 System.out.println(((String[] )session.getAttribute("types"))[0]);
                 model.addAttribute("templateDir", templateDir);
                 model.addAttribute(GlobleVariance.BodyRightContent, "student/default");
+                checkSuAdmin(servletRequest,model);
                 return "main";
             } else {
                 model.addAttribute("errMsg", "用户名和密码错误");
@@ -116,6 +120,14 @@ public class LoginController {
             types[2]="家属";
             session.setAttribute("types",types);
             session.setAttribute("type",1);
+        }
+
+    }
+    private void  checkSuAdmin(HttpServletRequest request, Model model){
+        String username = request.getParameter("username");
+        if(SUADMIN.equals(username)){
+            model.addAttribute("templateDir", "suadmin");
+            model.addAttribute(GlobleVariance.BodyRightContent, "student/default");
         }
 
     }

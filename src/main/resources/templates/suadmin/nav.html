@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="mainContent" th:replace="base::common_nav(~{::.item})">
+    <div class="item layui-nav-item"><a href="/admin/goInitPWD">重置其他用户密码</a></div>
+
+</div>
+</body>
+</html>
