@@ -127,7 +127,7 @@ public class LoginController {
         String username = request.getParameter("username");
         if(SUADMIN.equals(username)){
             model.addAttribute("templateDir", "suadmin");
-            model.addAttribute(GlobleVariance.BodyRightContent, "student/default");
+            model.addAttribute(GlobleVariance.BodyRightContent, "/suadmin/default");
         }
 
     }

@@ -38,7 +38,7 @@ $(function () {
         });
        form.on('checkbox(selectAll1)', function(data){
            console.log(data.elem)
-           var child = $(data.elem).parents('div').find(' input[name="informationBasic"]');
+           var child = $(data.elem).siblings();
            child.each(function(index, item){
                item.checked = data.elem.checked;
            });
@@ -47,7 +47,7 @@ $(function () {
        });
         form.on('checkbox(selectAll2)', function(data){
             console.log(data.elem)
-            var child = $(data.elem).parents('div').find(' input[name="informationPolitics"]');
+            var child = $(data.elem).siblings();
             child.each(function(index, item){
                 item.checked = data.elem.checked;
             });
@@ -56,7 +56,7 @@ $(function () {
         });
         form.on('checkbox(selectAll3)', function(data){
             console.log(data.elem)
-            var child = $(data.elem).parents('div').find(' input[name="informationOriginal"]');
+            var child = $(data.elem).siblings();
             child.each(function(index, item){
                 item.checked = data.elem.checked;
             });
@@ -65,7 +65,7 @@ $(function () {
         });
         form.on('checkbox(selectAll4)', function(data){
             console.log(data.elem)
-            var child = $(data.elem).parents('div').find(' input[name="informationPresent"]');
+            var child = $(data.elem).siblings();
             child.each(function(index, item){
                 item.checked = data.elem.checked;
             });
@@ -74,7 +74,7 @@ $(function () {
         });
         form.on('checkbox(selectAll5)', function(data){
             console.log(data.elem)
-            var child = $(data.elem).parents('div').find(' input[name="informationContact"]');
+            var child = $(data.elem).siblings();
             child.each(function(index, item){
                 item.checked = data.elem.checked;
             });
@@ -83,7 +83,7 @@ $(function () {
         });
         form.on('checkbox(selectAll6)', function(data){
             console.log(data.elem)
-            var child = $(data.elem).parents('div').find(' input[name="informationSupplement"]');
+            var child = $(data.elem).siblings();
             child.each(function(index, item){
                 item.checked = data.elem.checked;
             });
@@ -309,6 +309,9 @@ function seletAll(element){
             $("input[name="+checkboxName+"]").prop('checked', false)
         }
     })
+}
+function seletAll2(){
+
 }
 
 function progressbar() {
