@@ -18,14 +18,17 @@
             min-width: 1280px!important;
         }
         .layui-header{
-            height: 500px;
-            float:left;
+            height: 90px;
+
+        }
+        .layui-body{
+            top: 90px !important;
         }
     </style>
     <div class="layui-layout layui-layout-admin">
 
             <div class="layui-header">
-                <div class="layui-logo"><span style="font-family: 华文行楷">山东农业大学</span><br><span style="font-weight: bold">离退休人员精准服务信息系统</span></div>
+                <div class="layui-logo"><span style="font-family: 华文行楷;font-size: 23px">山东农业大学</span><br><span style="font-weight: bold">离退休人员精准服务信息系统</span></div>
                 <ul th:replace="(${session.templateDir}+'/nav')::mainContent" class="layui-nav layui-layout-left" >
                     <li class="layui-nav-item"><a href="">控制台</a></li>
                     <li class="layui-nav-item"><a href="">商品管理</a></li>
@@ -39,7 +42,10 @@
                 </div>
             </div>
 
-
+    </br>
+        </br>
+        </br>
+        </br>
 
             <!--<div class="body layui-row">-->
 
