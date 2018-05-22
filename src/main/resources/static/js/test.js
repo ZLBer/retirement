@@ -31,7 +31,7 @@ $(function () {
     });
     layui.use('element',function () {
         var element = layui.element;
-    })
+    });
     getSelectorsAndInputs();
     bindOnAddAndRemoveButtion();
     getData($('#test').find('#submit'),'/student/dotest');
@@ -124,15 +124,26 @@ function generateExcelTitle(){
     }
 }
 function generateExcelBody() {
+    var j = 0;
     for (var i=0;i<tableOptions.data.length;i++){
         var row = [];
         var data = tableOptions.data[i];
+        j = 0;
         for (var pname in data){
+            if (j>=37){break;}
             var c = {
-                "value":data[pname],
-                "type":"ROW_HEADER"
+                "value":data[pname]
+                // "type":"ROW_HEADER",
+                // "datatype":"String"
             };
+            if(c['value']==null){
+                c['value']="";
+            }
+            if (pname=='idNumber'){
+                c['value']="'"+c['value'];
+            }
             row.push(c);
+            j++;
         }
         JSON_DATA.data.push(row);
     }
@@ -172,53 +183,55 @@ function initTableOptions() {
         tableOptions.cols = tableOptions.cols;
 }
 var fields = [
+    //有效
     //基本信息字段7
     {field:'name',title:'姓名',width:150,edit:editable},
     {field:'sex',title:'性别',width:150,edit:editable},
     {field:'nation',title:'民族',width:150,edit:editable},
     {field:'nativePlace',title:'籍贯',width:150,edit:editable},
+    {field:'birthPlace',title:'出生地',width:150,edit:editable},
     {field:'birthday',title:'出生年月',width:150,edit:editable},
-    {field:'idNumber',title:'身份证号',width:150,edit:editable},
     {field:'category',title:'人员类别',width:150,edit:editable},
+    {field:'degree',title:'最高学位',width:150,edit:editable},
+    {field:'educationLevel',title:'最高学历',width:150,edit:editable},
     //政治面貌信息3
     // {field:'politicsStatus',title:'政治面貌',width:150,edit:editable},
     // {field:'joinpartyTime',title:'入党时间',width:150,edit:editable},
     // {field:'conversionTime',title:'转正时间',width:150,edit:editable},
     //原工作信息10
+    {field:'idNumber',title:'身份证号',width:150,edit:editable},
     {field:'identity',title:'身份',width:150,edit:editable},
-    {field:'educationLevel',title:'最高学历',width:150,edit:editable},
-    {field:'degree',title:'最高学位',width:150,edit:editable},
     {field:'originWorkplace',title:'原单位',width:150,edit:editable},
     {field:'originDuties',title:'原职务',width:150,edit:editable},
     {field:'orginDutiesLevel',title:'原职务级别',width:150,edit:editable},
     {field:'originProfessional',title:'原职称',width:150,edit:editable},
-    {field:'originProfessional_level',title:'原职务级别',width:150,edit:editable},
+    {field:'originProfessional_level',title:'原职称级别',width:150,edit:editable},
     {field:'treatment',title:'享受待遇',width:150,edit:editable},
-    {field:'timeWork',title:'工作时间',width:150,edit:editable},
+    {field:'timeWork',title:'参加工作时间',width:150,edit:editable},
     {field:'timeRetirement',title:'离退休时间',width:150,edit:editable},
     //现工作信息20
     // {field:'partyBranch',title:'所在党支部',width:150,edit:editable},
-    {field:'administration',title:'所在行政组',width:150,edit:editable},
+    {field:'administration',title:'行政组',width:150,edit:editable},
     // {field:'basicpartyDuties',title:'基层党组织',width:150,edit:editable},
-    {field:'presentDuties',title:'现任职务',width:150,edit:editable},
     {field:'administrationDuties',title:'行政组职务',width:150,edit:editable},
-    {field:'committeeDuties',title:'关工委',width:150,edit:editable},
+    {field:'committeeDuties',title:'关工委工作职务',width:150,edit:editable},
+    {field:'corporationDuties',title:'老年文体社团',width:150,edit:editable},
     {field:'steeringMember',title:'教学督导组',width:150,edit:editable},
     // {field:'organizationMember',title:'特邀党建组织员',width:150,edit:editable},
-    {field:'corporationDuties',title:'老年文体社团',width:150,edit:editable},
+    // {field:'presentDuties',title:'现任职务',width:150,edit:editable},
     //联系信息8
-    {field:'homeAddress',title:'家庭住址',width:150,edit:editable},
     {field:'phoneHome',title:'家庭电话',width:150,edit:editable},
-    {field:'phoneOwn',title:'手机号码',width:150,edit:editable},
-    {field:'phoneChildren',title:'子女电话',width:150,edit:editable},
-    {field:'phoneOther',title:'其他联系电话',width:150,edit:editable},
     {field:'qq',title:'QQ',width:150,edit:editable},
+    {field:'phoneChildren',title:'子女电话',width:150,edit:editable},
+    {field:'phoneOwn',title:'手机号码',width:150,edit:editable},
     {field:'wechat',title:'微信',width:150,edit:editable},
     {field:'email',title:'电子邮箱',width:150,edit:editable},
+    {field:'homeAddress',title:'家庭住址',width:150,edit:editable},
+    {field:'phoneOther',title:'其他联系电话',width:150,edit:editable},
     //备注信息4
-    {field:'spouse',title:'配偶情况',width:150,edit:editable},
-    {field:'statusChildren',title:'子女情况',width:150,edit:editable},
     {field:'livingCondition',title:'健在情况',width:150,edit:editable},
+    {field:'statusChildren',title:'子女情况',width:150,edit:editable},
+    {field:'spouse',title:'配偶情况',width:150,edit:editable},
     {field:'statusOther',title:'其他情况',width:150,edit:editable}
 ];
 var radioField = [
@@ -249,48 +262,49 @@ var tableOptions = {
         {field:'sex',title:'性别',width:150,edit:editable},
         {field:'nation',title:'民族',width:150,edit:editable},
         {field:'nativePlace',title:'籍贯',width:150,edit:editable},
+        {field:'birthPlace',title:'出生地',width:150,edit:editable},
         {field:'birthday',title:'出生年月',width:150,edit:editable},
-        {field:'idNumber',title:'身份证号',width:150,edit:editable},
         {field:'category',title:'人员类别',width:150,edit:editable},
+        {field:'degree',title:'最高学位',width:150,edit:editable},
+        {field:'educationLevel',title:'最高学历',width:150,edit:editable},
         //政治面貌信息3
         // {field:'politicsStatus',title:'政治面貌',width:150,edit:editable},
         // {field:'joinpartyTime',title:'入党时间',width:150,edit:editable},
         // {field:'conversionTime',title:'转正时间',width:150,edit:editable},
         //原工作信息10
+        {field:'idNumber',title:'身份证号',width:150,edit:editable},
         {field:'identity',title:'身份',width:150,edit:editable},
-        {field:'educationLevel',title:'最高学历',width:150,edit:editable},
-        {field:'degree',title:'最高学位',width:150,edit:editable},
         {field:'originWorkplace',title:'原单位',width:150,edit:editable},
         {field:'originDuties',title:'原职务',width:150,edit:editable},
         {field:'orginDutiesLevel',title:'原职务级别',width:150,edit:editable},
         {field:'originProfessional',title:'原职称',width:150,edit:editable},
-        {field:'originProfessional_level',title:'原职务级别',width:150,edit:editable},
+        {field:'originProfessional_level',title:'原职称级别',width:150,edit:editable},
         {field:'treatment',title:'享受待遇',width:150,edit:editable},
-        {field:'timeWork',title:'工作时间',width:150,edit:editable},
+        {field:'timeWork',title:'参加工作时间',width:150,edit:editable},
         {field:'timeRetirement',title:'离退休时间',width:150,edit:editable},
         //现工作信息20
         // {field:'partyBranch',title:'所在党支部',width:150,edit:editable},
-        {field:'administration',title:'所在行政组',width:150,edit:editable},
+        {field:'administration',title:'行政组',width:150,edit:editable},
         // {field:'basicpartyDuties',title:'基层党组织',width:150,edit:editable},
-        {field:'presentDuties',title:'现任职务',width:150,edit:editable},
         {field:'administrationDuties',title:'行政组职务',width:150,edit:editable},
-        {field:'committeeDuties',title:'关工委',width:150,edit:editable},
+        {field:'committeeDuties',title:'关工委工作职务',width:150,edit:editable},
+        {field:'corporationDuties',title:'老年文体社团',width:150,edit:editable},
         {field:'steeringMember',title:'教学督导组',width:150,edit:editable},
         // {field:'organizationMember',title:'特邀党建组织员',width:150,edit:editable},
-        {field:'corporationDuties',title:'老年文体社团',width:150,edit:editable},
+        // {field:'presentDuties',title:'现任职务',width:150,edit:editable},
         //联系信息8
-        {field:'homeAddress',title:'家庭住址',width:150,edit:editable},
         {field:'phoneHome',title:'家庭电话',width:150,edit:editable},
-        {field:'phoneOwn',title:'手机号码',width:150,edit:editable},
-        {field:'phoneChildren',title:'子女电话',width:150,edit:editable},
-        {field:'phoneOther',title:'其他联系电话',width:150,edit:editable},
         {field:'qq',title:'QQ',width:150,edit:editable},
+        {field:'phoneChildren',title:'子女电话',width:150,edit:editable},
+        {field:'phoneOwn',title:'手机号码',width:150,edit:editable},
         {field:'wechat',title:'微信',width:150,edit:editable},
         {field:'email',title:'电子邮箱',width:150,edit:editable},
+        {field:'homeAddress',title:'家庭住址',width:150,edit:editable},
+        {field:'phoneOther',title:'其他联系电话',width:150,edit:editable},
         //备注信息4
-        {field:'spouse',title:'配偶情况',width:150,edit:editable},
-        {field:'statusChildren',title:'子女情况',width:150,edit:editable},
         {field:'livingCondition',title:'健在情况',width:150,edit:editable},
+        {field:'statusChildren',title:'子女情况',width:150,edit:editable},
+        {field:'spouse',title:'配偶情况',width:150,edit:editable},
         {field:'statusOther',title:'其他情况',width:150,edit:editable},
         {fixed: 'right', width:220, align:'center', toolbar: '#barDemo'}
     ]],

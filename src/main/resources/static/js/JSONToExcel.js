@@ -19,7 +19,7 @@ function JSONToExcelConvertor(JSONData, FileName, ShowLabel) {
 
         for(var j=0;j<arrData[i].length;j++){
             var value = arrData[i][j].value === "." ? "" : arrData[i][j].value;
-            row += '<td>' + value + '</td>';
+            row += '<td datatype="String">' + value + '</td>';
         }
 
         excel += row + "</tr>";

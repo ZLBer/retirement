@@ -3,118 +3,65 @@ package test.domain;
 import java.util.Date;
 
 public class InformationAll {
+    //严格排序
     private Integer id;
-
     private String name;
-
     private String sex;
-
     private String nation;
-
     private String nativePlace;
-
+    private String birthPlace;
     private Date birthday;
-
-    private String idNumber;
-
     private String category;
-
-    private String politicsStatus;
-
-    private Date joinpartyTime;
-
-    private Date conversionTime;
-
-    private String identity;
-
+    private String degree;
     private String educationLevel;
-
+    private String idNumber;
+    private String identity;
     private String originWorkplace;
-
     private String originDuties;
-
     private String orginDutiesLevel;
-
     private String originProfessional;
-
     private String originProfessionalLevel;
-
     private String treatment;
-
     private Date timeWork;
-
     private Date timeRetirement;
-
-    private String partyBranch;
-
     private String administration;
-
-    private String basicpartyDuties;
-
-    private Date timeBasicparty;
-
-    private Date endtimeBasicparty;
-
     private String administrationDuties;
-
-    private Date timeAdministration;
-
-    private Date endtimeAdministration;
-
     private String committeeDuties;
-
-    private Date timeCommittee;
-
-    private Date endtimeCommittee;
-
-    private String steeringMember;
-
-    private Date timeSteering;
-
-    private Date endtimeSteering;
-
-    private String organizationMember;
-
-    private Date timeOrganization;
-
-    private Date endtimeOrganization;
-
     private String corporationDuties;
-
-    private Date timeCorporation;
-
-    private Date endtimeCorporation;
-
-    private String homeAddress;
-
+    private String steeringMember;
     private String phoneHome;
-
-    private String phoneOwn;
-
+    private String qq;
     private String phoneChildren;
-
+    private String phoneOwn;
+    private String wechat;
+    private String email;
+    private String homeAddress;
     private String phoneOther;
-
-    private String spouse;
-
-    private String statusChildren;
-
     private String livingCondition;
-
+    private String statusChildren;
+    private String spouse;
     private String statusOther;
 
-    private String email;
 
-    private String qq;
-
-    private String wechat;
-
+    private String politicsStatus;
+    private Date joinpartyTime;
+    private Date conversionTime;
+    private String partyBranch;
+    private String basicpartyDuties;
+    private Date timeBasicparty;
+    private Date endtimeBasicparty;
+    private Date timeAdministration;
+    private Date endtimeAdministration;
+    private Date timeCommittee;
+    private Date endtimeCommittee;
+    private Date timeSteering;
+    private Date endtimeSteering;
+    private String organizationMember;
+    private Date timeOrganization;
+    private Date endtimeOrganization;
+    private Date timeCorporation;
+    private Date endtimeCorporation;
     private String presentDuties;
-
-    private String birthPlace;
-
-    private String degree;
-
     private String alld;
 
     public Integer getId() {
