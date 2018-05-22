@@ -245,7 +245,7 @@ var radioField = [
     {field:'originDuties',title:'原职务',width:150,edit:editable},
     {field:'orginDutiesLevel',title:'原职务级别',width:150,edit:editable},
     {field:'originProfessional',title:'原职称',width:150,edit:editable},
-    {field:'originProfessionalLevel',title:'原职务级别',width:150,edit:editable},
+    {field:'originProfessionalLevel',title:'原职称级别',width:150,edit:editable},
     // {field:'partyBranch',title:'所在党支部',width:150,edit:editable},
     {field:'administration',title:'所在行政组',width:150,edit:editable},
     {field:'livingCondition',title:'健在情况',width:150,edit:editable}
@@ -469,6 +469,9 @@ function processData(fieldName){
     }
     var array = [[],[]];
     for (var name in a){
+        if(name=='null'){
+            continue;
+        }
         array[0].push(name);
         array[1].push(a[name]);
     }

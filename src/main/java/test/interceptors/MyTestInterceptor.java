@@ -163,12 +163,12 @@ public class MyTestInterceptor implements HandlerInterceptor {
             } else if (fieldType == Date.class){
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 Logger.getLogger(MyTestInterceptor.class).info(paramRow[startIndex]);
-                if (paramRow[startIndex + 1].equals("4")) {
+                if (paramRow[startIndex + 1].equals("4")||paramRow[startIndex + 1].equals("1")) {
                     String[] strArgu = paramRow[startIndex].split(" ");
                     if (strArgu.length==1){
                         strArgu = new String[]{strArgu[0], strArgu[0]};
                     }
-                    strArgu = new String[]{strArgu[0]+"-00-00", strArgu[1]+"-12-31"};
+                    strArgu = new String[]{strArgu[0]+"-01-01", strArgu[1]+"-12-31"};
                     Date[] intArgu = {dateFormat.parse(strArgu[0]), dateFormat.parse(strArgu[1])};
                     method = clazz.getDeclaredMethod(methodName, new Class[]{fieldType, fieldType});
                     method.invoke(criteria, intArgu[startIndex], intArgu[startIndex + 1]);
